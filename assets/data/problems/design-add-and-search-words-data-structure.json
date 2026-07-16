@@ -1,0 +1,361 @@
+{
+  "id": 71,
+  "slug": "design-add-and-search-words-data-structure",
+  "title": "Design Add and Search Words Data Structure",
+  "difficulty": "medium",
+  "topics": [
+    "tree"
+  ],
+  "description": "Design a data structure that supports adding new words and finding if a string matches any previously added string.\n\nImplement the `WordDictionary` class:\n\n- `WordDictionary()` Initializes the object.\n- `void addWord(word)` Adds `word` to the data structure, it can be matched later.\n- `bool search(word)` Returns `true` if there is any string in the data structure that matches `word` or `false` otherwise. `word` may contain dots `'.'` where dots can be matched with any letter.",
+  "examples": [
+    {
+      "input": "operations = [\"WordDictionary\",\"addWord\",\"addWord\",\"addWord\",\"search\",\"search\",\"search\",\"search\"]\nvalues = [\"\",\"bad\",\"dad\",\"mad\",\"pad\",\"bad\",\".ad\",\"b..\"]",
+      "output": "[null,null,null,null,false,true,true,true]",
+      "explanation": "After adding 'bad', 'dad', and 'mad', searching 'pad' returns false, 'bad' returns true, '.ad' matches 'bad'/'dad'/'mad', 'b..' matches 'bad'."
+    },
+    {
+      "input": "operations = [\"WordDictionary\",\"addWord\",\"search\",\"search\",\"search\"]\nvalues = [\"\",\"a\",\".\",\"a\",\"aa\"]",
+      "output": "[null,null,true,true,false]",
+      "explanation": "After adding 'a', searching '.' matches 'a', searching 'a' matches 'a', searching 'aa' returns false."
+    }
+  ],
+  "constraints": [
+    "`1 <= word.length <= 25`",
+    "`word` in `addWord` consists of lowercase English letters.",
+    "`word` in `search` consist of `'.'` or lowercase English letters.",
+    "There will be at most `10^4` calls to `addWord` and `search`."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class WordDictionary {\n    public WordDictionary() {\n        \n    }\n    \n    public void addWord(String word) {\n        \n    }\n    \n    public boolean search(String word) {\n        return false;\n    }\n}",
+    "python": "class WordDictionary:\n    def __init__(self):\n        \n    def addWord(self, word: str) -> None:\n        \n    def search(self, word: str) -> bool:\n        return False",
+    "cpp": "#include <string>\nusing namespace std;\n\nclass WordDictionary {\npublic:\n    WordDictionary() {\n        \n    }\n    \n    void addWord(string word) {\n        \n    }\n    \n    bool search(string word) {\n        return false;\n    }\n};",
+    "csharp": "using System;\nusing System.Collections.Generic;\n\npublic class WordDictionary {\n    public WordDictionary() {\n        \n    }\n    \n    public void AddWord(string word) {\n        \n    }\n    \n    public bool Search(string word) {\n        return false;\n    }\n}",
+    "rust": "pub struct WordDictionary {\n    \n}\n\nimpl WordDictionary {\n    pub fn new() -> Self {\n        WordDictionary {}\n    }\n    \n    pub fn add_word(&mut self, word: String) {\n        \n    }\n    \n    pub fn search(&self, word: String) -> bool {\n        false\n    }\n}",
+    "go": "package main\n\ntype WordDictionary struct {\n    \n}\n\nfunc Constructor() WordDictionary {\n    return WordDictionary{}\n}\n\nfunc (this *WordDictionary) AddWord(word string) {\n    \n}\n\nfunc (this *WordDictionary) Search(word string) bool {\n    return false\n}",
+    "typescript": "export class WordDictionary {\n    constructor() {\n        \n    }\n\n    addWord(word: string): void {\n        \n    }\n\n    search(word: string): boolean {\n        return false;\n    }\n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "bad",
+          "dad",
+          "mad",
+          "pad",
+          "bad",
+          ".ad",
+          "b.."
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "search",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "a",
+          ".",
+          "a",
+          "aa"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "at",
+          "and",
+          "an",
+          "an",
+          "a.",
+          ".",
+          "..."
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "search",
+          "search",
+          "addWord",
+          "search"
+        ],
+        "values": [
+          "",
+          "a",
+          ".",
+          "a",
+          "a"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "search",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "cat",
+          "car",
+          "card",
+          "cart",
+          "cat",
+          "c.t",
+          "c..",
+          "ca.",
+          "c.r."
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "leetcode",
+          "leet",
+          "code",
+          "leet",
+          "leetcod.",
+          "le.tcode",
+          "....."
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "addWord",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "a",
+          "ab",
+          "abc",
+          "abcd",
+          "a.c",
+          "a..d"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "hello",
+          "world",
+          "hello",
+          "world",
+          "h.llo",
+          "w.r.."
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "xyz",
+          "x.z",
+          "x.."
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-10",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "abcdefghij",
+          "klmnopqrst",
+          "abcdefghij",
+          "klmnopqrst"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-11",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "a",
+          ".",
+          ".."
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-12",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "addWord",
+          "addWord",
+          "addWord",
+          "addWord",
+          "search",
+          "search"
+        ],
+        "values": [
+          "",
+          "aa",
+          "ab",
+          "ba",
+          "bb",
+          "..",
+          ".a"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-13",
+      "input": {
+        "operations": [
+          "WordDictionary"
+        ],
+        "values": [
+          ""
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-14",
+      "input": {
+        "operations": [
+          "WordDictionary",
+          "search",
+          "addWord",
+          "search"
+        ],
+        "values": [
+          "",
+          "word",
+          "word",
+          "word"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

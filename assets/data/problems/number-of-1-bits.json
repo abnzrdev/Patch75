@@ -1,0 +1,108 @@
+{
+  "id": 12,
+  "slug": "number-of-1-bits",
+  "title": "Number of 1 Bits",
+  "difficulty": "easy",
+  "topics": [
+    "binary"
+  ],
+  "description": "Write a function that takes the binary representation of a positive integer and returns the number of '1' bits it has (the Hamming weight).",
+  "examples": [
+    {
+      "input": "n = 11 (0b1011)",
+      "output": "3"
+    },
+    {
+      "input": "n = 128 (0b10000000)",
+      "output": "1"
+    }
+  ],
+  "constraints": [
+    "1 ≤ n ≤ 2^31 - 1"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int hammingWeight(int n) {\n        \n    }\n}",
+    "python": "class Solution:\n    def hammingWeight(self, n: int) -> int:\n        pass\n",
+    "cpp": "class Solution {\npublic:\n    int hammingWeight(uint32_t n) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int HammingWeight(int n) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn hamming_weight(n: i32) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc HammingWeight(n int) int {\n    \n}",
+    "typescript": "export function hammingWeight(n: number): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "n": 11
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "n": 128
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "n": 2147483647
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "n": 1431655765
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "n": 614316765
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "n": 51435765
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "n": 3145765
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "n": 21222
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "n": 1434
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

@@ -1,0 +1,117 @@
+{
+  "id": 11,
+  "slug": "sum-of-two-integers",
+  "title": "Sum of Two Integers",
+  "difficulty": "medium",
+  "topics": [
+    "binary"
+  ],
+  "description": "Given two integers `a` and `b`, return the sum of the two integers without using the operators `+` and `-`.",
+  "examples": [
+    {
+      "input": "a = 1, b = 2",
+      "output": "3"
+    },
+    {
+      "input": "a = 2, b = 3",
+      "output": "5"
+    }
+  ],
+  "constraints": [
+    "-1000 ≤ a, b ≤ 1000"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int getSum(int a, int b) {\n        \n    }\n}",
+    "python": "class Solution:\n    def getSum(self, a: int, b: int) -> int:\n        pass\n",
+    "cpp": "class Solution {\npublic:\n    int getSum(int a, int b) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int GetSum(int a, int b) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn get_sum(a: i32, b: i32) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc GetSum(a int, b int) int {\n    \n}",
+    "typescript": "export function getSum(a: number, b: number): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "a": 1,
+        "b": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "a": 2,
+        "b": 3
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "a": -1,
+        "b": 1
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "a": -5,
+        "b": -7
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "a": 0,
+        "b": 0
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "a": -1000,
+        "b": 1000
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "a": 1000,
+        "b": 0
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "a": -500,
+        "b": -500
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "a": 777,
+        "b": 222
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

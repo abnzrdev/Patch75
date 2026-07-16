@@ -1,0 +1,197 @@
+{
+  "id": 21,
+  "slug": "combination-sum-iv",
+  "title": "Combination Sum IV",
+  "difficulty": "medium",
+  "topics": [
+    "dp"
+  ],
+  "description": "Given an array of distinct integers nums and a target integer target, return the number of possible combinations that add up to target modulo 10^9+7. Different sequences are counted as different combinations.",
+  "examples": [
+    {
+      "input": "nums=[1,2,3], target=4",
+      "output": "7"
+    }
+  ],
+  "constraints": [
+    "1 ≤ nums.length ≤ 200",
+    "1 ≤ nums[i] ≤ 1000",
+    "All the elements of nums are unique.",
+    "1 ≤ target ≤ 1000"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int combinationSum4(int[] nums, int target) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def combinationSum4(self, nums: List[int], target: int) -> int:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    int combinationSum4(vector<int>& nums, int target) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int CombinationSum4(int[] nums, int target) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn combination_sum4(nums: Vec<i32>, target: i32) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc CombinationSum4(nums []int, target int) int {\n    \n}",
+    "typescript": "export function combinationSum4(nums: number[], target: number): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ],
+        "target": 4
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          9
+        ],
+        "target": 3
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          1
+        ],
+        "target": 5
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": [
+          3
+        ],
+        "target": 5
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "nums": [
+          2
+        ],
+        "target": 4
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "nums": [
+          1,
+          2
+        ],
+        "target": 5
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "nums": [
+          3,
+          5
+        ],
+        "target": 7
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "nums": [
+          1,
+          2,
+          5
+        ],
+        "target": 5
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "nums": [
+          10,
+          20,
+          30
+        ],
+        "target": 50
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-10",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ],
+        "target": 10
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-11",
+      "input": {
+        "nums": [
+          1,
+          5,
+          10
+        ],
+        "target": 6
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-12",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "target": 100
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-13",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "target": 1000,
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

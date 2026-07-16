@@ -1,0 +1,131 @@
+{
+  "id": 38,
+  "slug": "meeting-rooms",
+  "title": "Meeting Rooms",
+  "difficulty": "easy",
+  "topics": [
+    "interval"
+  ],
+  "description": "Determine if a person could attend all meetings given start-end intervals.",
+  "examples": [
+    {
+      "input": "intervals = [[0,30],[5,10],[15,20]]",
+      "output": "false"
+    },
+    {
+      "input": "intervals = [[7,10],[2,4]]",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "0 <= intervals.length <= 10^4",
+    "intervals[i].length == 2",
+    "0 <= starti < endi <= 10^6"
+  ],
+  "starterCodeByLanguage": {
+    "java": "import java.util.*;\nclass Solution {\n    public boolean canAttendMeetings(int[][] intervals) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def canAttendMeetings(self, intervals: List[List[int]]) -> bool:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    bool canAttendMeetings(vector<vector<int>>& intervals) {\n        return true;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public bool CanAttendMeetings(int[][] intervals) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn can_attend_meetings(intervals: String) -> bool {\n        \n    }\n}",
+    "go": "package main\n\nfunc CanAttendMeetings(intervals [][]int) bool {\n    \n}",
+    "typescript": "export function canAttendMeetings(intervals: number[][]): boolean {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "intervals": [
+          [
+            0,
+            30
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            15,
+            20
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "intervals": [
+          [
+            7,
+            10
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "intervals": []
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "intervals": [
+          [
+            1,
+            5
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "intervals": [
+          [
+            1,
+            5
+          ],
+          [
+            5,
+            6
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "intervals": [
+          [
+            1,
+            5
+          ],
+          [
+            4,
+            6
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

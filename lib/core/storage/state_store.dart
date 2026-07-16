@@ -7,6 +7,7 @@ class StateStore {
   StateStore(this.directory);
 
   final Directory directory;
+  Future<void> _pendingWrite = Future.value();
 
   File get _file => File('${directory.path}/state.json');
 
@@ -25,7 +26,13 @@ class StateStore {
     }
   }
 
-  Future<void> save(AppState state) async {
+  Future<void> save(AppState state) {
+    final write = _pendingWrite.then((_) => _write(state));
+    _pendingWrite = write.then<void>((_) {}, onError: (_) {});
+    return write;
+  }
+
+  Future<void> _write(AppState state) async {
     await directory.create(recursive: true);
     final temporary = File('${_file.path}.tmp');
     await temporary.writeAsString(jsonEncode(state.toJson()), flush: true);

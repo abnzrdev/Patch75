@@ -1,0 +1,83 @@
+{
+  "id": 19,
+  "slug": "longest-common-subsequence",
+  "title": "Longest Common Subsequence",
+  "difficulty": "medium",
+  "topics": [
+    "dp"
+  ],
+  "description": "Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.",
+  "examples": [
+    {
+      "input": "text1 = \"abcde\", text2 = \"ace\"",
+      "output": "3"
+    },
+    {
+      "input": "text1 = \"abc\", text2 = \"abc\"",
+      "output": "3"
+    }
+  ],
+  "constraints": [
+    "1 ≤ text1.length, text2.length ≤ 1000",
+    "text1 and text2 consist of only lowercase English characters."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int longestCommonSubsequence(String text1, String text2) {\n        \n    }\n}",
+    "python": "class Solution:\n    def longestCommonSubsequence(self, text1: str, text2: str) -> int:\n        pass\n",
+    "cpp": "#include <string>\nusing namespace std;\nclass Solution {\npublic:\n    int longestCommonSubsequence(string text1, string text2) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int LongestCommonSubsequence(string text1, string text2) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn longest_common_subsequence(text1: String, text2: String) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc LongestCommonSubsequence(text1 string, text2 string) int {\n    \n}",
+    "typescript": "export function longestCommonSubsequence(text1: string, text2: string): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "text1": "abcde",
+        "text2": "ace"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "text1": "abc",
+        "text2": "abc"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "text1": "abc",
+        "text2": "def"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "text1": "bl",
+        "text2": "yby"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "text1": "@javascript: 'a'.repeat(3000)",
+        "text2": "@javascript: 'a'.repeat(3000)",
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

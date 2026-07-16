@@ -25,4 +25,17 @@ void main() {
 
     expect(entry.matches(id: 1, slug: 'Two Sum', title: 'Other'), isTrue);
   });
+
+  test('parses license-safe manifest entries without bundled media', () {
+    final entry = AnimationEntry.fromJson({
+      'problemId': 1,
+      'slug': 'two-sum',
+      'title': 'Two Sum',
+      'relativePath': null,
+      'sourceUrl': 'https://github.com/MisterBooo/LeetCodeAnimation',
+    });
+
+    expect(entry.problemId, 1);
+    expect(entry.relativePath, isNull);
+  });
 }

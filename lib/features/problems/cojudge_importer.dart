@@ -25,17 +25,45 @@ Map<String, Object?> normalizeCojudgeProblem({
     'difficulty': (metadata['difficulty'] as String).toLowerCase(),
     'topics': [metadata['category'] as String],
     'description': sections.first.trim(),
-    'examples': metadata['examples'],
+    'examples': [
+      for (final example in metadata['examples'] as List? ?? const [])
+        {
+          'input': _display((example as Map<String, Object?>)['input']),
+          'output': _display(example['output']),
+          if (example['explanation'] != null)
+            'explanation': _display(example['explanation']),
+        },
+    ],
     'constraints': constraints,
     'starterCodeByLanguage': metadata['starterCode'],
     'testCases': [
       for (final (index, test) in tests.indexed)
-        _normalizeTwoSumTest(index, test as Map<String, Object?>),
+        slug == 'two-sum'
+            ? _normalizeTwoSumTest(index, test as Map<String, Object?>)
+            : _normalizeTest(index, test as Map<String, Object?>),
     ],
     'source': 'cojudge',
     'sourceUrl': 'https://github.com/cojudge/cojudge',
   };
 }
+
+Map<String, Object?> _normalizeTest(int index, Map<String, Object?> test) => {
+  'id': 'official-${index + 1}',
+  'input': test.map((key, value) => MapEntry(key, _decodeValue(value))),
+  'expected': null,
+  'sample': false,
+};
+
+Object? _decodeValue(Object? value) {
+  if (value is! String || value.startsWith('@javascript:')) return value;
+  try {
+    return jsonDecode(value);
+  } on FormatException {
+    return value;
+  }
+}
+
+String _display(Object? value) => value is String ? value : jsonEncode(value);
 
 Map<String, Object?> _normalizeTwoSumTest(
   int index,

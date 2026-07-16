@@ -1,0 +1,92 @@
+{
+  "id": 51,
+  "slug": "longest-repeating-character-replacement",
+  "title": "Longest Repeating Character Replacement",
+  "difficulty": "medium",
+  "topics": [
+    "string"
+  ],
+  "description": "You are given a string s and an integer k. You can replace at most k characters in the string to any other uppercase character. Return the length of the longest substring containing the same letter after at most k replacements.",
+  "examples": [
+    {
+      "input": "s=\"ABAB\", k=2",
+      "output": "4"
+    },
+    {
+      "input": "s=\"AABABBA\", k=1",
+      "output": "4"
+    }
+  ],
+  "constraints": [
+    "1 ≤ s.length ≤ 10^5",
+    "s consists of only uppercase English letters.",
+    "0 ≤ k ≤ s.length"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int characterReplacement(String s, int k) {\n        \n    }\n}",
+    "python": "class Solution:\n    def characterReplacement(self, s: str, k: int) -> int:\n        pass\n",
+    "cpp": "#include <string>\nusing namespace std;\nclass Solution {\npublic:\n    int characterReplacement(string s, int k) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int CharacterReplacement(string s, int k) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn character_replacement(s: String, k: i32) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc CharacterReplacement(s string, k int) int {\n    \n}",
+    "typescript": "export function characterReplacement(s: string, k: number): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "s": "ABAB",
+        "k": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "s": "AABABBA",
+        "k": 1
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "s": "AAAA",
+        "k": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "s": "BAAAB",
+        "k": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "s": "ABCDE",
+        "k": 1
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "s": "",
+        "k": 3
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

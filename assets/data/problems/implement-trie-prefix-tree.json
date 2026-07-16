@@ -1,0 +1,241 @@
+{
+  "id": 65,
+  "slug": "implement-trie-prefix-tree",
+  "title": "Implement Trie (Prefix Tree)",
+  "difficulty": "medium",
+  "topics": [
+    "tree"
+  ],
+  "description": "A trie (pronounced as \"try\") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.\n\nImplement the Trie class:\n\n- `Trie()` Initializes the trie object.\n- `void insert(String word)` Inserts the string `word` into the trie.\n- `boolean search(String word)` Returns `true` if the string `word` is in the trie (i.e., was inserted before), and `false` otherwise.\n- `boolean startsWith(String prefix)` Returns `true` if there is a previously inserted string `word` that has the prefix `prefix`, and `false` otherwise.",
+  "examples": [
+    {
+      "input": "operations = [\"Trie\",\"insert\",\"search\",\"search\",\"startsWith\",\"insert\",\"search\"]\nvalues = [\"\",\"apple\",\"apple\",\"app\",\"app\",\"app\",\"app\"]",
+      "output": "[null,null,true,false,true,null,true]",
+      "explanation": "After inserting 'apple', searching 'apple' returns true, searching 'app' returns false, startsWith('app') returns true. After inserting 'app', searching 'app' returns true."
+    },
+    {
+      "input": "operations = [\"Trie\",\"insert\",\"search\",\"startsWith\"]\nvalues = [\"\",\"hello\",\"hello\",\"hell\"]",
+      "output": "[null,null,true,true]",
+      "explanation": "After inserting 'hello', both search('hello') and startsWith('hell') return true."
+    }
+  ],
+  "constraints": [
+    "`1 <= word.length, prefix.length <= 2000`",
+    "`word` and `prefix` consist only of lowercase English letters.",
+    "At most `3 * 10^4` calls in total will be made to `insert`, `search`, and `startsWith`."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Trie {\n    public Trie() {\n        \n    }\n    \n    public void insert(String word) {\n        \n    }\n    \n    public boolean search(String word) {\n        return false;\n    }\n    \n    public boolean startsWith(String prefix) {\n        return false;\n    }\n}",
+    "python": "class Trie:\n    def __init__(self):\n        \n    def insert(self, word: str) -> None:\n        \n    def search(self, word: str) -> bool:\n        return False\n    def startsWith(self, prefix: str) -> bool:\n        return False",
+    "cpp": "#include <string>\nusing namespace std;\n\nclass Trie {\npublic:\n    Trie() {\n        \n    }\n    \n    void insert(string word) {\n        \n    }\n    \n    bool search(string word) {\n        return false;\n    }\n    \n    bool startsWith(string prefix) {\n        return false;\n    }\n};",
+    "csharp": "using System;\nusing System.Collections.Generic;\n\npublic class Trie {\n    public Trie() {\n        \n    }\n    \n    public void Insert(string word) {\n        \n    }\n    \n    public bool Search(string word) {\n        return false;\n    }\n    \n    public bool StartsWith(string prefix) {\n        return false;\n    }\n}",
+    "rust": "pub struct Trie {\n    \n}\n\nimpl Trie {\n    pub fn new() -> Self {\n        Trie {}\n    }\n    \n    pub fn insert(&mut self, word: String) {\n        \n    }\n    \n    pub fn search(&self, word: String) -> bool {\n        false\n    }\n    \n    pub fn starts_with(&self, prefix: String) -> bool {\n        false\n    }\n}",
+    "go": "package main\n\ntype Trie struct {\n    \n}\n\nfunc Constructor() Trie {\n    return Trie{}\n}\n\nfunc (this *Trie) Insert(word string) {\n    \n}\n\nfunc (this *Trie) Search(word string) bool {\n    return false\n}\n\nfunc (this *Trie) StartsWith(prefix string) bool {\n    return false\n}",
+    "typescript": "export class Trie {\n    constructor() {\n        \n    }\n\n    insert(word: string): void {\n        \n    }\n\n    search(word: string): boolean {\n        return false;\n    }\n\n    startsWith(prefix: string): boolean {\n        return false;\n    }\n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "search",
+          "search",
+          "startsWith",
+          "insert",
+          "search"
+        ],
+        "values": [
+          "",
+          "apple",
+          "apple",
+          "app",
+          "app",
+          "app",
+          "app"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "search",
+          "startsWith"
+        ],
+        "values": [
+          "",
+          "hello",
+          "hello",
+          "hell"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "search",
+          "search",
+          "startsWith",
+          "startsWith"
+        ],
+        "values": [
+          "",
+          "abc",
+          "abc",
+          "ab",
+          "a",
+          "abc"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "operations": [
+          "Trie",
+          "search",
+          "startsWith",
+          "insert",
+          "search"
+        ],
+        "values": [
+          "",
+          "key",
+          "ke",
+          "key",
+          "key"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "search",
+          "search",
+          "search",
+          "startsWith"
+        ],
+        "values": [
+          "",
+          "a",
+          "a",
+          "aa",
+          "aaa",
+          "a"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "insert",
+          "search",
+          "search",
+          "search",
+          "startsWith",
+          "startsWith",
+          "startsWith"
+        ],
+        "values": [
+          "",
+          "cat",
+          "car",
+          "card",
+          "cat",
+          "car",
+          "card",
+          "ca",
+          "car",
+          "dog"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "startsWith",
+          "startsWith"
+        ],
+        "values": [
+          "",
+          "leet",
+          "lee",
+          "leetc"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "insert",
+          "search",
+          "search",
+          "startsWith"
+        ],
+        "values": [
+          "",
+          "code",
+          "cojudge",
+          "code",
+          "cojudge",
+          "coj"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "operations": [
+          "Trie",
+          "insert",
+          "search"
+        ],
+        "values": [
+          "",
+          "zebra",
+          "zebra"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

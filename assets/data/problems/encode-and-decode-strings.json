@@ -1,0 +1,175 @@
+{
+  "id": 59,
+  "slug": "encode-and-decode-strings",
+  "title": "Encode and Decode Strings",
+  "difficulty": "medium",
+  "topics": [
+    "string"
+  ],
+  "description": "Design an algorithm to encode **a list of strings** to **a string**. The encoded string is then sent over the network and is decoded back to the original list of strings.\n\nImplement the `Codec` class:\n\n- `String encode(String[] strs)` — Encodes a list of strings to a single string.\n- `List<String> decode(String s)` — Decodes a single string back to a list of strings.",
+  "examples": [
+    {
+      "input": "strs = [\"hello\",\"world\"]",
+      "output": "[\"hello\",\"world\"]",
+      "explanation": "The encoded string is decoded back to the original list."
+    },
+    {
+      "input": "strs = [\"\"]",
+      "output": "[\"\"]",
+      "explanation": "A list containing an empty string is preserved."
+    },
+    {
+      "input": "strs = []",
+      "output": "[]",
+      "explanation": "An empty list remains empty after encoding and decoding."
+    }
+  ],
+  "constraints": [
+    "`0 <= strs.length <= 100`",
+    "`0 <= strs[i].length <= 200`",
+    "`strs[i]` contains any possible characters (including non-ASCII characters and delimiters)."
+  ],
+  "starterCodeByLanguage": {
+    "java": "import java.util.*;\n\npublic class Codec {\n    // Encodes a list of strings to a single string.\n    public String encode(String[] strs) {\n        \n    }\n\n    // Decodes a single string to a list of strings.\n    public List<String> decode(String s) {\n        \n    }\n}",
+    "python": "from typing import List\n\nclass Codec:\n    def encode(self, strs: List[str]) -> str:\n        \n\n    def decode(self, s: str) -> List[str]:\n        ",
+    "cpp": "#include <string>\n#include <vector>\nusing namespace std;\n\nclass Codec {\npublic:\n    string encode(vector<string>& strs) {\n        \n    }\n\n    vector<string> decode(string s) {\n        \n    }\n};",
+    "csharp": "using System;\nusing System.Collections.Generic;\n\npublic class Codec {\n    public string Encode(string[] strs) {\n        \n    }\n\n    public List<string> Decode(string s) {\n        \n    }\n}",
+    "rust": "pub struct Codec;\n\nimpl Codec {\n    pub fn new() -> Self {\n        Codec\n    }\n\n    pub fn encode(&self, strs: Vec<String>) -> String {\n        String::new()\n    }\n\n    pub fn decode(&self, s: String) -> Vec<String> {\n        vec![]\n    }\n}",
+    "go": "package main\n\ntype Codec struct {\n    \n}\n\nfunc (c *Codec) Encode(strs []string) string {\n    return \"\"\n}\n\nfunc (c *Codec) Decode(s string) []string {\n    return []string{}\n}",
+    "typescript": "export class Codec {\n    encode(strs: string[]): string {\n        \n    }\n\n    decode(s: string): string[] {\n        \n    }\n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "strs": [
+          "hello",
+          "world"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "strs": [
+          ""
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "strs": []
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "strs": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "strs": [
+          "leet",
+          "code",
+          "love",
+          "you"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "strs": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "strs": [
+          " ",
+          "  ",
+          "   "
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "strs": [
+          "\\#",
+          "##",
+          "#\\#"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "strs": "@javascript:JSON.stringify([\"verylongstring\"+\"x\".repeat(190),\"short\"])"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-10",
+      "input": {
+        "strs": [
+          "special\ncharacters\there",
+          "unicode✓✓✓"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-11",
+      "input": {
+        "strs": [
+          "a"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-12",
+      "input": {
+        "strs": [
+          "你好",
+          "世界"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

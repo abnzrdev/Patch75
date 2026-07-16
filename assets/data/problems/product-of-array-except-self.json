@@ -1,0 +1,168 @@
+{
+  "id": 4,
+  "slug": "product-of-array-except-self",
+  "title": "Product of Array Except Self",
+  "difficulty": "medium",
+  "topics": [
+    "array"
+  ],
+  "description": "Given an integer array `nums`, return an array `answer` such that `answer[i]` is equal to the product of all the elements of `nums` except `nums[i]`. The product of any prefix or suffix of `nums` is guaranteed to fit in a 32-bit integer.",
+  "examples": [
+    {
+      "input": "nums = [1,2,3,4]",
+      "output": "[24,12,8,6]"
+    },
+    {
+      "input": "nums = [-1,1,0,-3,3]",
+      "output": "[0,0,9,0,0]"
+    }
+  ],
+  "constraints": [
+    "2 ≤ nums.length ≤ 10^5",
+    "-30 ≤ nums[i] ≤ 30",
+    "The input is generated such that answer[i] is guaranteed to fit in a 32-bit integer."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int[] productExceptSelf(int[] nums) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def productExceptSelf(self, nums: List[int]) -> List[int]:\n        ",
+    "cpp": "#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n    vector<int> productExceptSelf(vector<int>& nums) {\n        return {};\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int[] ProductExceptSelf(int[] nums) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn product_except_self(nums: Vec<i32>) -> Vec<i32> {\n        \n    }\n}",
+    "go": "package main\n\nfunc ProductExceptSelf(nums []int) []int {\n    \n}",
+    "typescript": "export function productExceptSelf(nums: number[]): number[] {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          -1,
+          1,
+          0,
+          -3,
+          3
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          0,
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "nums": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "nums": [
+          -2,
+          -3,
+          -4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "nums": [
+          10,
+          -10,
+          10,
+          -10
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "nums": [
+          2,
+          0,
+          2,
+          0,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-10",
+      "input": {
+        "nums": "@javascript:JSON.stringify([...Array(100000).fill(1), 2, 3])",
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

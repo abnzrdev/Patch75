@@ -1,0 +1,126 @@
+{
+  "id": 73,
+  "slug": "word-search-ii",
+  "title": "Word Search II",
+  "difficulty": "hard",
+  "topics": [
+    "tree"
+  ],
+  "description": "Given an m x n board of characters and a list of strings words, return all words on the board. Each word must be constructed from letters of sequentially adjacent cells (horizontally or vertically). The same letter cell may not be used more than once in a word.",
+  "examples": [
+    {
+      "input": "board = [[a,b,c,e],[s,f,c,s],[a,d,e,e]], words = [see,abcced,abcb]",
+      "output": "[see,abcced]"
+    }
+  ],
+  "constraints": [
+    "m == board.length",
+    "n == board[i].length",
+    "1 ≤ m, n ≤ 12",
+    "board[i][j] is a lowercase English letter.",
+    "1 ≤ words.length ≤ 3 * 10^4",
+    "1 ≤ words[i].length ≤ 10",
+    "words[i] consists of lowercase English letters.",
+    "All the strings of words are unique."
+  ],
+  "starterCodeByLanguage": {
+    "java": "import java.util.*;\nclass Solution {\n    public List<String> findWords(char[][] board, String[] words) {\n        return new ArrayList<>();\n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:\n        return []\n",
+    "cpp": "#include <vector>\n#include <string>\nusing namespace std;\nclass Solution {\npublic:\n    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {\n        return {};\n    }\n};",
+    "csharp": "public class Solution \n{\n    public IList<string> FindWords(char[][] board, string[] words) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn find_words(board: String, words: Vec<String>) -> String {\n        \n    }\n}",
+    "go": "package main\n\nfunc FindWords(board [][]byte, words []string) []string {\n    \n}",
+    "typescript": "export function findWords(board: string[][], words: string[]): string[] {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "board": [
+          [
+            "o",
+            "a",
+            "a",
+            "n"
+          ],
+          [
+            "e",
+            "t",
+            "a",
+            "e"
+          ],
+          [
+            "i",
+            "h",
+            "k",
+            "r"
+          ],
+          [
+            "i",
+            "f",
+            "l",
+            "v"
+          ]
+        ],
+        "words": [
+          "oath",
+          "pea",
+          "eat",
+          "rain"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "board": [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "c",
+            "d"
+          ]
+        ],
+        "words": [
+          "ab",
+          "cb",
+          "ad",
+          "bd",
+          "ac",
+          "ca",
+          "da",
+          "bc",
+          "db",
+          "adcb",
+          "dabc",
+          "abb",
+          "acb"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "board": [
+          [
+            "a",
+            "a"
+          ]
+        ],
+        "words": [
+          "aaa"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

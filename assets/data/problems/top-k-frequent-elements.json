@@ -1,0 +1,231 @@
+{
+  "id": 75,
+  "slug": "top-k-frequent-elements",
+  "title": "Top K Frequent Elements",
+  "difficulty": "medium",
+  "topics": [
+    "heap"
+  ],
+  "description": "Given an integer array `nums` and an integer `k`, return the `k` most frequent elements.",
+  "examples": [
+    {
+      "input": "nums = [1,1,1,2,2,3], k = 2",
+      "output": "[1,2]"
+    },
+    {
+      "input": "nums = [1], k = 1",
+      "output": "[1]"
+    }
+  ],
+  "constraints": [
+    "1 ≤ nums.length ≤ 10^5",
+    "-10^4 ≤ nums[i] ≤ 10^4",
+    "k is in the range [1, the number of unique elements in the array].",
+    "It is guaranteed that the answer is unique."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int[] topKFrequent(int[] nums, int k) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def topKFrequent(self, nums: List[int], k: int) -> List[int]:\n        ",
+    "cpp": "#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n    vector<int> topKFrequent(vector<int>& nums, int k) {\n        return {};\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int[] TopKFrequent(int[] nums, int k) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {\n        \n    }\n}",
+    "go": "package main\n\nfunc TopKFrequent(nums []int, k int) []int {\n    \n}",
+    "typescript": "export function topKFrequent(nums: number[], k: number): number[] {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        "k": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          1
+        ],
+        "k": 1
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          4,
+          1,
+          -1,
+          2,
+          -1,
+          2,
+          3
+        ],
+        "k": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": [
+          5,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          8
+        ],
+        "k": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "nums": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "k": 1
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "nums": [
+          2,
+          2,
+          2,
+          3,
+          3,
+          3
+        ],
+        "k": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "nums": [
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          5,
+          5
+        ],
+        "k": 3
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "nums": [
+          9,
+          8,
+          7,
+          9,
+          8,
+          7,
+          9,
+          8,
+          7,
+          6
+        ],
+        "k": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "nums": [
+          -1,
+          -1,
+          -2,
+          -2,
+          -3
+        ],
+        "k": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-10",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          9,
+          9
+        ],
+        "k": 1
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-11",
+      "input": {
+        "nums": [
+          1,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4
+        ],
+        "k": 4
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

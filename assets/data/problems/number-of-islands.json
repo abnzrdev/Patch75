@@ -1,0 +1,175 @@
+{
+  "id": 30,
+  "slug": "number-of-islands",
+  "title": "Number of Islands",
+  "difficulty": "medium",
+  "topics": [
+    "graph"
+  ],
+  "description": "Given an m x n binary matrix grid of 0s (water) and 1s (land), return the number of islands. Islands are connected horizontally or vertically.",
+  "examples": [
+    {
+      "input": "grid = [[1,1,1,1,0],[1,1,0,1,0],[1,1,0,0,0],[0,0,0,0,0]]",
+      "output": "1"
+    },
+    {
+      "input": "grid = [[1,1,0,0,0],[1,1,0,0,0],[0,0,1,0,0],[0,0,0,1,1]]",
+      "output": "3"
+    }
+  ],
+  "constraints": [
+    "m == grid.length",
+    "n == grid[i].length",
+    "1 ≤ m, n ≤ 300",
+    "grid[i][j] is '0' or '1'."
+  ],
+  "starterCodeByLanguage": {
+    "java": "import java.util.*;\nclass Solution {\n    public int numIslands(int[][] grid) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def numIslands(self, grid: List[List[int]]) -> int:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    int numIslands(vector<vector<int>>& grid) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int NumIslands(int[][] grid) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn num_islands(grid: String) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc NumIslands(grid [][]int) int {\n    \n}",
+    "typescript": "export function numIslands(grid: number[][]): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "grid": [
+          [
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "grid": [
+          [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "grid": []
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "grid": [
+          [
+            0
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "grid": [
+          [
+            1
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "grid": [
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0,
+            1
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

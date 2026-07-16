@@ -1,0 +1,95 @@
+{
+  "id": 20,
+  "slug": "word-break",
+  "title": "Word Break",
+  "difficulty": "medium",
+  "topics": [
+    "dp"
+  ],
+  "description": "Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a sequence of one or more dictionary words. The same word may be reused multiple times.",
+  "examples": [
+    {
+      "input": "s=\"leetcode\", wordDict=[\"leet\",\"code\"]",
+      "output": "true"
+    },
+    {
+      "input": "s=\"applepenapple\", wordDict=[\"apple\",\"pen\"]",
+      "output": "true"
+    }
+  ],
+  "constraints": [
+    "1 ≤ s.length ≤ 300",
+    "1 ≤ wordDict.length ≤ 1000",
+    "1 ≤ wordDict[i].length ≤ 20",
+    "s and wordDict[i] consist of only lowercase English letters.",
+    "All the strings of wordDict are unique."
+  ],
+  "starterCodeByLanguage": {
+    "java": "import java.util.*;\nclass Solution {\n    public boolean wordBreak(String s, List<String> wordDict) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def wordBreak(self, s: str, wordDict: List[str]) -> bool:\n        pass\n",
+    "cpp": "#include <vector>\n#include <string>\nusing namespace std;\nclass Solution {\npublic:\n    bool wordBreak(string s, vector<string>& wordDict) {\n        return false;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public bool WordBreak(string s, IList<string> wordDict) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn word_break(s: String, word_dict: Vec<String>) -> bool {\n        \n    }\n}",
+    "go": "package main\n\nfunc WordBreak(s string, wordDict []string) bool {\n    \n}",
+    "typescript": "export function wordBreak(s: string, wordDict: string[]): boolean {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "s": "leetcode",
+        "wordDict": [
+          "leet",
+          "code"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "s": "applepenapple",
+        "wordDict": [
+          "apple",
+          "pen"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "s": "catsandog",
+        "wordDict": [
+          "cats",
+          "dog",
+          "sand",
+          "and",
+          "cat"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "s": "@javascript: 'a'.repeat(40000)",
+        "wordDict": [
+          "a",
+          "aa",
+          "aaa",
+          "aaaa",
+          "aaaaa"
+        ],
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

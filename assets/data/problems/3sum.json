@@ -1,0 +1,153 @@
+{
+  "id": 9,
+  "slug": "3sum",
+  "title": "3Sum",
+  "difficulty": "medium",
+  "topics": [
+    "array"
+  ],
+  "description": "Given an integer array `nums`, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k` and `j != k` and `nums[i] + nums[j] + nums[k] == 0`.",
+  "examples": [
+    {
+      "input": "nums = [-1,0,1,2,-1,-4]",
+      "output": "[[-1,-1,2],[-1,0,1]]"
+    },
+    {
+      "input": "nums = [0,1,1]",
+      "output": "[]"
+    },
+    {
+      "input": "nums = [0,0,0]",
+      "output": "[[0,0,0]]"
+    }
+  ],
+  "constraints": [
+    "3 ≤ nums.length ≤ 3000",
+    "-10^5 ≤ nums[i] ≤ 10^5"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int[][] threeSum(int[] nums) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def threeSum(self, nums: List[int]) -> List[List[int]]:\n        ",
+    "cpp": "#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n    vector<vector<int>> threeSum(vector<int>& nums) {\n        return {};\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int[][] ThreeSum(int[] nums) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn three_sum(nums: Vec<i32>) -> String {\n        \n    }\n}",
+    "go": "package main\n\nfunc ThreeSum(nums []int) [][]int {\n    \n}",
+    "typescript": "export function threeSum(nums: number[]): number[][] {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          -1,
+          0,
+          1,
+          2,
+          -1,
+          -4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          0,
+          1,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": [
+          1,
+          -1,
+          -1,
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "nums": [
+          3,
+          -2,
+          1,
+          0,
+          -1,
+          2,
+          -1,
+          -4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "nums": [
+          -2,
+          0,
+          1,
+          1,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "nums": [
+          4,
+          -2,
+          -2,
+          -2,
+          0,
+          2,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "nums": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

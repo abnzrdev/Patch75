@@ -1,0 +1,116 @@
+{
+  "id": 50,
+  "slug": "longest-substring-without-repeating-characters",
+  "title": "Longest Substring Without Repeating Characters",
+  "difficulty": "medium",
+  "topics": [
+    "string"
+  ],
+  "description": "Given a string s, find the length of the longest substring without repeating characters.",
+  "examples": [
+    {
+      "input": "s=\"abcabcbb\"",
+      "output": "3",
+      "explanation": "The answer is \"abc\" with length 3."
+    },
+    {
+      "input": "s=\"bbbbb\"",
+      "output": "1",
+      "explanation": "The answer is \"b\" with length 1."
+    },
+    {
+      "input": "s=\"pwwkew\"",
+      "output": "3",
+      "explanation": "The answer is \"wke\" with length 3."
+    }
+  ],
+  "constraints": [
+    "0 ≤ s.length ≤ 5 * 10^4",
+    "s consists of English letters, digits, symbols and spaces."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int lengthOfLongestSubstring(String s) {\n        \n    }\n}",
+    "python": "class Solution:\n    def lengthOfLongestSubstring(self, s: str) -> int:\n        pass\n",
+    "cpp": "#include <string>\nusing namespace std;\nclass Solution {\npublic:\n    int lengthOfLongestSubstring(string s) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int LengthOfLongestSubstring(string s) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn length_of_longest_substring(s: String) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc LengthOfLongestSubstring(s string) int {\n    \n}",
+    "typescript": "export function lengthOfLongestSubstring(s: string): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "s": "abcabcbb"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "s": "bbbbb"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "s": "pwwkew"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "s": ""
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "s": "au"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "s": "dvdf"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "s": "abba"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "s": "tmmzuxt"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "s": "anviaj"
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

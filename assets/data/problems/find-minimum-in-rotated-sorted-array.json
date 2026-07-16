@@ -1,0 +1,191 @@
+{
+  "id": 7,
+  "slug": "find-minimum-in-rotated-sorted-array",
+  "title": "Find Minimum in Rotated Sorted Array",
+  "difficulty": "medium",
+  "topics": [
+    "array"
+  ],
+  "description": "Given the sorted rotated array `nums` of unique elements, return the minimum element of this array.",
+  "examples": [
+    {
+      "input": "nums = [3,4,5,1,2]",
+      "output": "1"
+    },
+    {
+      "input": "nums = [4,5,6,7,0,1,2]",
+      "output": "0"
+    }
+  ],
+  "constraints": [
+    "n == nums.length",
+    "1 ≤ n ≤ 5000",
+    "-5000 ≤ nums[i] ≤ 5000",
+    "All the integers of nums are unique.",
+    "nums is sorted and rotated between 1 and n times."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int findMin(int[] nums) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def findMin(self, nums: List[int]) -> int:\n        ",
+    "cpp": "#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n    int findMin(vector<int>& nums) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int FindMin(int[] nums) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn find_min(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc FindMin(nums []int) int {\n    \n}",
+    "typescript": "export function findMin(nums: number[]): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          4,
+          5,
+          6,
+          7,
+          0,
+          1,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          11,
+          13,
+          15,
+          17
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": [
+          2,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "nums": [
+          5,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "nums": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "nums": [
+          10,
+          20,
+          30,
+          40,
+          5
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-10",
+      "input": {
+        "nums": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          0,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-11",
+      "input": {
+        "nums": "@javascript:JSON.stringify([...(Array(50000).keys())].map(x=>x+1))",
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

@@ -1,0 +1,119 @@
+{
+  "id": 34,
+  "slug": "number-of-connected-components-in-an-undirected-graph",
+  "title": "Number of Connected Components in an Undirected Graph",
+  "difficulty": "medium",
+  "topics": [
+    "graph"
+  ],
+  "description": "Given n nodes labeled 0..n-1 and a list of undirected edges, return the number of connected components.",
+  "examples": [
+    {
+      "input": "n=5, edges=[[0,1],[1,2],[3,4]]",
+      "output": "2"
+    },
+    {
+      "input": "n=5, edges=[[0,1],[1,2],[2,3],[3,4]]",
+      "output": "1"
+    }
+  ],
+  "constraints": [
+    "1 <= n <= 2000",
+    "0 <= edges.length <= 10^4",
+    "edges[i].length == 2",
+    "0 <= ai, bi < n"
+  ],
+  "starterCodeByLanguage": {
+    "java": "import java.util.*;\nclass Solution {\n    public int countComponents(int n, int[][] edges) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def countComponents(self, n: int, edges: List[List[int]]) -> int:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    int countComponents(int n, vector<vector<int>>& edges) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int CountComponents(int n, int[][] edges) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn count_components(n: i32, edges: String) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc CountComponents(n int, edges [][]int) int {\n    \n}",
+    "typescript": "export function countComponents(n: number, edges: number[][]): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "n": 5,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "n": 5,
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "n": 4,
+        "edges": []
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "n": 1,
+        "edges": []
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "n": 3,
+        "edges": [
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

@@ -1,0 +1,140 @@
+{
+  "id": 47,
+  "slug": "spiral-matrix",
+  "title": "Spiral Matrix",
+  "difficulty": "medium",
+  "topics": [
+    "matrix"
+  ],
+  "description": "Given an m×n matrix, return all elements of the matrix in spiral order.",
+  "examples": [
+    {
+      "input": "matrix = [[1,2,3],[4,5,6],[7,8,9]]",
+      "output": "[1,2,3,6,9,8,7,4,5]"
+    },
+    {
+      "input": "matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]",
+      "output": "[1,2,3,4,8,12,11,10,9,5,6,7]"
+    }
+  ],
+  "constraints": [
+    "m == matrix.length",
+    "n == matrix[i].length",
+    "1 ≤ m, n ≤ 10",
+    "-100 ≤ matrix[i][j] ≤ 100"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int[] spiralOrder(int[][] matrix) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    vector<int> spiralOrder(vector<vector<int>>& matrix) {\n        return {};\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int[] SpiralOrder(int[][] matrix) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn spiral_order(matrix: String) -> Vec<i32> {\n        \n    }\n}",
+    "go": "package main\n\nfunc SpiralOrder(matrix [][]int) []int {\n    \n}",
+    "typescript": "export function spiralOrder(matrix: number[][]): number[] {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "matrix": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "matrix": [
+          [
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            5,
+            6,
+            7,
+            8
+          ],
+          [
+            9,
+            10,
+            11,
+            12
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "matrix": [
+          [
+            1
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "matrix": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "matrix": [
+          [
+            2,
+            5
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            0,
+            -1
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

@@ -1,0 +1,85 @@
+{
+  "id": 58,
+  "slug": "palindromic-substrings",
+  "title": "Palindromic Substrings",
+  "difficulty": "medium",
+  "topics": [
+    "string"
+  ],
+  "description": "Given a string s, return the number of palindromic substrings in it.",
+  "examples": [
+    {
+      "input": "s=\"abc\"",
+      "output": "3"
+    },
+    {
+      "input": "s=\"aaa\"",
+      "output": "6"
+    }
+  ],
+  "constraints": [
+    "1 ≤ s.length ≤ 1000",
+    "s consists of lowercase English letters."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int countSubstrings(String s) {\n        \n    }\n}",
+    "python": "class Solution:\n    def countSubstrings(self, s: str) -> int:\n        pass\n",
+    "cpp": "#include <string>\nusing namespace std;\nclass Solution {\npublic:\n    int countSubstrings(string s) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int CountSubstrings(string s) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn count_substrings(s: String) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc CountSubstrings(s string) int {\n    \n}",
+    "typescript": "export function countSubstrings(s: string): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "s": "abc"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "s": "aaa"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "s": "abccba"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "s": ""
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "s": "a"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "s": "ababa"
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

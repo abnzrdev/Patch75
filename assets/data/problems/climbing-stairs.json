@@ -1,0 +1,101 @@
+{
+  "id": 16,
+  "slug": "climbing-stairs",
+  "title": "Climbing Stairs",
+  "difficulty": "easy",
+  "topics": [
+    "dp"
+  ],
+  "description": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+  "examples": [
+    {
+      "input": "n = 2",
+      "output": "2"
+    },
+    {
+      "input": "n = 3",
+      "output": "3"
+    }
+  ],
+  "constraints": [
+    "1 ≤ n ≤ 45"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int climbStairs(int n) {\n        \n    }\n}",
+    "python": "class Solution:\n    def climbStairs(self, n: int) -> int:\n        pass\n",
+    "cpp": "class Solution {\npublic:\n    int climbStairs(int n) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int ClimbStairs(int n) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn climb_stairs(n: i32) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc ClimbStairs(n int) int {\n    \n}",
+    "typescript": "export function climbStairs(n: number): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "n": 1
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "n": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "n": 3
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "n": 4
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "n": 5
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "n": 10
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "n": 20
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "n": 45,
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

@@ -1,0 +1,86 @@
+{
+  "id": 22,
+  "slug": "house-robber",
+  "title": "House Robber",
+  "difficulty": "medium",
+  "topics": [
+    "dp"
+  ],
+  "description": "Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police (no adjacent houses).",
+  "examples": [
+    {
+      "input": "nums=[1,2,3,1]",
+      "output": "4"
+    },
+    {
+      "input": "nums=[2,7,9,3,1]",
+      "output": "12"
+    }
+  ],
+  "constraints": [
+    "1 ≤ nums.length ≤ 100",
+    "0 ≤ nums[i] ≤ 400"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int rob(int[] nums) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    int rob(vector<int>& nums) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int Rob(int[] nums) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn rob(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc Rob(nums []int) int {\n    \n}",
+    "typescript": "export function rob(nums: number[]): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          2,
+          7,
+          9,
+          3,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          2,
+          1,
+          1,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": "@javascript: JSON.stringify(Array.from({length: 200000}, (_,i)=> (i%2===0? 1: 100)))",
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

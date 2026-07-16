@@ -1,0 +1,144 @@
+{
+  "id": 49,
+  "slug": "word-search",
+  "title": "Word Search",
+  "difficulty": "medium",
+  "topics": [
+    "matrix"
+  ],
+  "description": "Given an m×n grid of characters board and a string word, return true if the word exists in the grid. The word can be constructed from letters of sequentially adjacent cells (horizontally or vertically). The same letter cell may not be used more than once.",
+  "examples": [
+    {
+      "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCCED\"",
+      "output": "true"
+    },
+    {
+      "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"SEE\"",
+      "output": "true"
+    },
+    {
+      "input": "board = [[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], word = \"ABCB\"",
+      "output": "false"
+    }
+  ],
+  "constraints": [
+    "m == board.length",
+    "n = board[i].length",
+    "1 ≤ m, n ≤ 6",
+    "1 ≤ word.length ≤ 15",
+    "board and word consists of only lowercase and uppercase English letters."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public boolean exist(char[][] board, String word) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def exist(self, board: List[List[str]], word: str) -> bool:\n        pass\n",
+    "cpp": "#include <vector>\n#include <string>\nusing namespace std;\nclass Solution {\npublic:\n    bool exist(vector<vector<char>>& board, string word) {\n        return false;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public bool Exist(char[][] board, string word) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn exist(board: String, word: String) -> bool {\n        \n    }\n}",
+    "go": "package main\n\nfunc Exist(board [][]byte, word string) bool {\n    \n}",
+    "typescript": "export function exist(board: string[][], word: string): boolean {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "board": [
+          [
+            "A",
+            "B",
+            "C",
+            "E"
+          ],
+          [
+            "S",
+            "F",
+            "C",
+            "S"
+          ],
+          [
+            "A",
+            "D",
+            "E",
+            "E"
+          ]
+        ],
+        "word": "ABCCED"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "board": [
+          [
+            "A",
+            "B",
+            "C",
+            "E"
+          ],
+          [
+            "S",
+            "F",
+            "C",
+            "S"
+          ],
+          [
+            "A",
+            "D",
+            "E",
+            "E"
+          ]
+        ],
+        "word": "SEE"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "board": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "word": "ABCD"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "board": [
+          [
+            "A"
+          ]
+        ],
+        "word": "A"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "board": [
+          [
+            "A"
+          ]
+        ],
+        "word": "B"
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

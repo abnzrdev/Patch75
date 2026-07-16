@@ -14,6 +14,8 @@ void main() {
     expect(state.drafts['two-sum:python'], 'pass');
     expect(state.notes, isEmpty);
     expect(state.timerSeconds, isEmpty);
+    expect(state.testHistory, isEmpty);
+    expect(state.importedDataVersion, 1);
   });
 
   test('round trips persisted workspace state', () {
@@ -24,6 +26,11 @@ void main() {
       timerSeconds: {'two-sum': 42},
       focusMode: true,
       progress: {'two-sum': 'solved'},
+      testHistory: {
+        'two-sum': ['passed:3/3'],
+      },
+      settings: {'compactMetadata': true},
+      importedDataVersion: 1,
     );
 
     expect(AppState.fromJson(state.toJson()), state);

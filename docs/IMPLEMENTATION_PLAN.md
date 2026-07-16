@@ -66,7 +66,7 @@
 
 ## Phase E — Android Python
 
-1. Add Chaquopy 17.0 with Python 3.13, minimum SDK 24, arm64-v8a support, and no
+1. Add Chaquopy 17.0 with Python 3.11, minimum SDK 24, Android ABI support, and no
    extra Android permissions.
 2. Add a non-exported isolated service and MethodChannel implementation that
    validates requests again, executes the Two Sum harness, bounds output, and
@@ -98,4 +98,3 @@
 5. Run `dart format --set-exit-if-changed .`, `flutter analyze`,
    `flutter test`, `flutter build linux`, `flutter build apk --debug`, and
    `flutter build web`. Record exact outputs and never infer device coverage.
-

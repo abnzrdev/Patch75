@@ -1,0 +1,92 @@
+{
+  "id": 13,
+  "slug": "counting-bits",
+  "title": "Counting Bits",
+  "difficulty": "easy",
+  "topics": [
+    "binary"
+  ],
+  "description": "Given an integer `n`, return an array `ans` of length `n + 1` such that for each `i` (0 <= i <= n), `ans[i]` is the number of 1's in the binary representation of `i`.",
+  "examples": [
+    {
+      "input": "n = 2",
+      "output": "[0,1,1]"
+    },
+    {
+      "input": "n = 5",
+      "output": "[0,1,1,2,1,2]"
+    }
+  ],
+  "constraints": [
+    "0 ≤ n ≤ 10^5"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int[] countBits(int n) {\n        \n    }\n}",
+    "python": "class Solution:\n    def countBits(self, n: int) -> list[int]:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    vector<int> countBits(int n) {\n        return {};\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int[] CountBits(int n) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn count_bits(n: i32) -> Vec<i32> {\n        \n    }\n}",
+    "go": "package main\n\nfunc CountBits(n int) []int {\n    \n}",
+    "typescript": "export function countBits(n: number): number[] {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "n": 0
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "n": 1
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "n": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "n": 5
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "n": 16
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "n": 31
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "n": 100
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

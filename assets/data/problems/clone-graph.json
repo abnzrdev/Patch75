@@ -1,0 +1,292 @@
+{
+  "id": 27,
+  "slug": "clone-graph",
+  "title": "Clone Graph",
+  "difficulty": "medium",
+  "topics": [
+    "graph"
+  ],
+  "description": "Given a reference of a node in a **connected undirected** graph.\n\nReturn a **deep copy** (clone) of the graph.\n\nEach node in the graph contains a value (`int`) and a list of its neighbors.\n\n```java\nclass Node {\n    public int val;\n    public List<Node> neighbors;\n}\n```\n\n**Test case format:**\n\nFor simplicity, each node's value is the same as the node's index (1-indexed). The given `adjList` is a 2D array where `adjList[i]` is an array of all the neighbors of the `i`-th node (1-indexed). Each `adjList[i]` is not sorted.\n\nYour function receives a reference to the first node of the graph (`Node` with `val = 1`). You must return a reference to the same node in the cloned graph.",
+  "examples": [
+    {
+      "input": "adjList = [[2,4],[1,3],[2,4],[1,3]]",
+      "output": "[[2,4],[1,3],[2,4],[1,3]]",
+      "explanation": "A graph with 4 nodes connected as a cycle."
+    },
+    {
+      "input": "adjList = [[]]",
+      "output": "[[]]",
+      "explanation": "A graph with 1 node and no neighbors."
+    },
+    {
+      "input": "adjList = []",
+      "output": "[]",
+      "explanation": "An empty graph."
+    },
+    {
+      "input": "adjList = [[2],[1]]",
+      "output": "[[2],[1]]",
+      "explanation": "Two nodes connected by a single edge."
+    }
+  ],
+  "constraints": [
+    "The number of nodes in the graph is in the range `[0, 100]`.",
+    "`1 <= Node.val <= 100`",
+    "`Node.val` is unique for each node.",
+    "There are no repeated edges and no self-loops in the graph.",
+    "The graph is connected and all nodes can be visited starting from the given node."
+  ],
+  "starterCodeByLanguage": {
+    "java": "/*\n// Definition for a GraphNode.\nclass GraphNode {\n    public int val;\n    public List<GraphNode> neighbors;\n    public GraphNode() {\n        val = 0;\n        neighbors = new ArrayList<GraphNode>();\n    }\n    public GraphNode(int _val) {\n        val = _val;\n        neighbors = new ArrayList<GraphNode>();\n    }\n    public GraphNode(int _val, List<GraphNode> _neighbors) {\n        val = _val;\n        neighbors = _neighbors;\n    }\n};\n*/\nimport java.util.*;\nclass Solution {\n    public GraphNode cloneGraph(GraphNode node) {\n        \n    }\n}",
+    "python": "# Definition for a GraphNode.\n# class GraphNode:\n#     def __init__(self, val=0, neighbors=None):\n#         self.val = val\n#         self.neighbors = neighbors if neighbors is not None else []\n\nfrom typing import Optional, List\nclass Solution:\n    def cloneGraph(self, node: Optional['GraphNode']) -> Optional['GraphNode']:\n        ",
+    "cpp": "/*\n// Definition for a GraphNode.\nclass GraphNode {\npublic:\n    int val;\n    vector<GraphNode*> neighbors;\n    GraphNode() {\n        val = 0;\n        neighbors = vector<GraphNode*>();\n    }\n    GraphNode(int _val) {\n        val = _val;\n        neighbors = vector<GraphNode*>();\n    }\n    GraphNode(int _val, vector<GraphNode*> _neighbors) {\n        val = _val;\n        neighbors = _neighbors;\n    }\n};\n*/\n#include <vector>\n#include <unordered_map>\nusing namespace std;\n\nclass Solution {\npublic:\n    GraphNode* cloneGraph(GraphNode* node) {\n        return nullptr;\n    }\n};",
+    "csharp": "/*\n// Definition for a GraphNode.\nclass GraphNode {\n    public int val;\n    public List<GraphNode> neighbors;\n    public GraphNode() {\n        val = 0;\n        neighbors = new List<GraphNode>();\n    }\n    public GraphNode(int _val) {\n        val = _val;\n        neighbors = new List<GraphNode>();\n    }\n    public GraphNode(int _val, List<GraphNode> _neighbors) {\n        val = _val;\n        neighbors = _neighbors;\n    }\n};\n*/\nusing System;\nusing System.Collections.Generic;\n\npublic class Solution {\n    public GraphNode CloneGraph(GraphNode node) {\n        \n    }\n}",
+    "rust": "// Definition for a GraphNode.\n// #[derive(Debug, PartialEq, Eq)]\n// pub struct GraphNode {\n//   pub val: i32,\n//   pub neighbors: Vec<Option<Rc<RefCell<GraphNode>>>>,\n// }\n//\n// impl GraphNode {\n//   pub fn new(val: i32) -> Self {\n//     GraphNode { val, neighbors: vec![] }\n//   }\n// }\n\nuse std::rc::Rc;\nuse std::cell::RefCell;\nuse std::collections::HashMap;\n\npub struct Solution;\n\nimpl Solution {\n    pub fn clone_graph(node: Option<Rc<RefCell<GraphNode>>>) -> Option<Rc<RefCell<GraphNode>>> {\n        None\n    }\n}",
+    "go": "// Definition for a GraphNode.\n// type GraphNode struct {\n//     Val int\n//     Neighbors []*GraphNode\n// }\n\npackage main\n\nfunc CloneGraph(adjList *GraphNode) *GraphNode {\n    \n}",
+    "typescript": "// Definition for a GraphNode.\n// class GraphNode {\n//     val: number;\n//     neighbors: GraphNode[];\n//     constructor(val?: number, neighbors?: GraphNode[]) {\n//         this.val = val ?? 0;\n//         this.neighbors = neighbors ?? [];\n//     }\n// }\n\nimport { GraphNode } from './GraphNode';\nexport function cloneGraph(adjList: GraphNode | null): GraphNode | null {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "adjList": [
+          [
+            2,
+            4
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "adjList": [
+          []
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "adjList": []
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "adjList": [
+          [
+            2
+          ],
+          [
+            1
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "adjList": [
+          [
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            9
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "adjList": [
+          [
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "adjList": [
+          [
+            2,
+            3,
+            4,
+            5
+          ],
+          [
+            1,
+            3,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            4,
+            5
+          ],
+          [
+            1,
+            2,
+            3,
+            5
+          ],
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "adjList": [
+          [
+            2,
+            3
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "adjList": [
+          [
+            2,
+            5
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            1,
+            4
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-10",
+      "input": {
+        "adjList": [
+          [
+            2,
+            3,
+            4
+          ],
+          [
+            1,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            4
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

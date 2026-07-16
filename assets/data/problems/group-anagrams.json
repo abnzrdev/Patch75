@@ -1,0 +1,91 @@
+{
+  "id": 54,
+  "slug": "group-anagrams",
+  "title": "Group Anagrams",
+  "difficulty": "medium",
+  "topics": [
+    "string"
+  ],
+  "description": "Given an array of strings strs, group the anagrams together. You can return the answer in any order.",
+  "examples": [
+    {
+      "input": "strs=[\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]",
+      "output": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]] (order may vary)"
+    }
+  ],
+  "constraints": [
+    "1 ≤ strs.length ≤ 10^4",
+    "0 ≤ strs[i].length ≤ 100",
+    "strs[i] consists of lowercase English letters."
+  ],
+  "starterCodeByLanguage": {
+    "java": "import java.util.*;\nclass Solution {\n    public List<List<String>> groupAnagrams(String[] strs) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:\n        pass\n",
+    "cpp": "#include <vector>\n#include <string>\nusing namespace std;\nclass Solution {\npublic:\n    vector<vector<string>> groupAnagrams(vector<string>& strs) {\n        return {};\n    }\n};",
+    "csharp": "public class Solution \n{\n    public List<List<String>> GroupAnagrams(string[] strs) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn group_anagrams(strs: Vec<String>) -> String {\n        \n    }\n}",
+    "go": "package main\n\nfunc GroupAnagrams(strs []string) [][]string {\n    \n}",
+    "typescript": "export function groupAnagrams(strs: string[]): string[][] {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "strs": [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "strs": [
+          ""
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "strs": [
+          "a"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "strs": [
+          "",
+          ""
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "strs": [
+          "bdddddddddd",
+          "bbbbbbbbbbc"
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

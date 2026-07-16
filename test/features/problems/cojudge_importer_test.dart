@@ -31,4 +31,28 @@ void main() {
       containsPair('expected', [0, 1]),
     );
   });
+
+  test('normalizes non-Two-Sum cases without inventing expected output', () {
+    final result = normalizeCojudgeProblem(
+      slug: 'contains-duplicate',
+      statement: 'Detect duplicates.',
+      metadata: {
+        'title': '3. Contains Duplicate',
+        'difficulty': 'Easy',
+        'link': 'https://leetcode.com/problems/contains-duplicate/',
+        'category': 'array',
+        'examples': <Object?>[],
+        'starterCode': {'python': 'class Solution: pass'},
+      },
+      tests: [
+        {'nums': '[1,2,1]'},
+      ],
+    );
+
+    final test = (result['testCases'] as List).single as Map;
+    expect(test['input'], {
+      'nums': [1, 2, 1],
+    });
+    expect(test['expected'], isNull);
+  });
 }

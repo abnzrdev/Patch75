@@ -1,0 +1,197 @@
+{
+  "id": 2,
+  "slug": "best-time-to-buy-and-sell-stock",
+  "title": "Best Time to Buy and Sell Stock",
+  "difficulty": "easy",
+  "topics": [
+    "array"
+  ],
+  "description": "You are given an array `prices` where prices[i] is the price of a given stock on the i-th day. Find the maximum profit you can achieve. You may complete at most one transaction (i.e., buy one and sell one share of the stock). Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.",
+  "examples": [
+    {
+      "input": "prices = [7,1,5,3,6,4]",
+      "output": "5",
+      "explanation": "Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5. Note that buying on day 1 and selling on day 2 is not allowed because you must buy before you sell."
+    },
+    {
+      "input": "prices = [7,6,4,3,1]",
+      "output": "0",
+      "explanation": "In this case no transaction is done and the max profit = 0."
+    },
+    {
+      "input": "prices = [1,2]",
+      "output": "1"
+    }
+  ],
+  "constraints": [
+    "1 ≤ prices.length ≤ 10^5",
+    "0 ≤ prices[i] ≤ 10^4"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int maxProfit(int[] prices) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def maxProfit(self, prices: List[int]) -> int:\n        ",
+    "cpp": "#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n    int maxProfit(vector<int>& prices) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int MaxProfit(int[] prices) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn max_profit(prices: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc MaxProfit(prices []int) int {\n    \n}",
+    "typescript": "export function maxProfit(prices: number[]): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "prices": [
+          7,
+          1,
+          5,
+          3,
+          6,
+          4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "prices": [
+          7,
+          6,
+          4,
+          3,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "prices": [
+          1,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "prices": [
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "prices": [
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "prices": [
+          0,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "prices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          5,
+          6,
+          7,
+          8,
+          8,
+          1,
+          2,
+          3,
+          4,
+          5,
+          4,
+          4,
+          3
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "prices": [
+          0,
+          1,
+          6,
+          7,
+          8,
+          8,
+          1,
+          2,
+          3,
+          4,
+          5,
+          4,
+          4,
+          3
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "prices": [
+          0,
+          4,
+          3
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-10",
+      "input": {
+        "prices": [
+          152,
+          3
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-11",
+      "input": {
+        "prices": "@javascript:JSON.stringify([...Array(500000).fill(1), 2, 2])",
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

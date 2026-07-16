@@ -1,0 +1,135 @@
+{
+  "id": 14,
+  "slug": "missing-number",
+  "title": "Missing Number",
+  "difficulty": "easy",
+  "topics": [
+    "binary"
+  ],
+  "description": "Given an array `nums` containing `n` distinct numbers in the range `[0, n]`, return the only number in the range that is missing from the array.",
+  "examples": [
+    {
+      "input": "nums = [3,0,1]",
+      "output": "2"
+    },
+    {
+      "input": "nums = [0,1]",
+      "output": "2"
+    },
+    {
+      "input": "nums = [9,6,4,2,3,5,7,0,1]",
+      "output": "8"
+    }
+  ],
+  "constraints": [
+    "n == nums.length",
+    "1 ≤ n ≤ 10^4",
+    "0 ≤ nums[i] ≤ n",
+    "All the numbers of nums are unique."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int missingNumber(int[] nums) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def missingNumber(self, nums: List[int]) -> int:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    int missingNumber(vector<int>& nums) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int MissingNumber(int[] nums) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn missing_number(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc MissingNumber(nums []int) int {\n    \n}",
+    "typescript": "export function missingNumber(nums: number[]): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          3,
+          0,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          0,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          9,
+          6,
+          4,
+          2,
+          3,
+          5,
+          7,
+          0,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": [
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "nums": [
+          0,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

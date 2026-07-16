@@ -1,0 +1,83 @@
+{
+  "id": 23,
+  "slug": "house-robber-ii",
+  "title": "House Robber II",
+  "difficulty": "medium",
+  "topics": [
+    "dp"
+  ],
+  "description": "Houses are arranged in a circle. Find the maximum amount of money you can rob without robbing adjacent houses.",
+  "examples": [
+    {
+      "input": "nums=[2,3,2]",
+      "output": "3"
+    },
+    {
+      "input": "nums=[1,2,3,1]",
+      "output": "4"
+    }
+  ],
+  "constraints": [
+    "1 ≤ nums.length ≤ 100",
+    "0 ≤ nums[i] ≤ 1000"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int rob(int[] nums) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def rob(self, nums: List[int]) -> int:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    int rob(vector<int>& nums) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int Rob(int[] nums) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn rob(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc Rob(nums []int) int {\n    \n}",
+    "typescript": "export function rob(nums: number[]): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          2,
+          3,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": "@javascript: JSON.stringify(Array.from({length: 150000}, (_,i)=> (i%3===0? 100: 1)))",
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

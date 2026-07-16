@@ -1,0 +1,156 @@
+{
+  "id": 39,
+  "slug": "meeting-rooms-ii",
+  "title": "Meeting Rooms II",
+  "difficulty": "medium",
+  "topics": [
+    "interval"
+  ],
+  "description": "Find the minimum number of conference rooms required to host all meetings.",
+  "examples": [
+    {
+      "input": "intervals = [[0,30],[5,10],[15,20]]",
+      "output": "2"
+    },
+    {
+      "input": "intervals = [[7,10],[2,4]]",
+      "output": "1"
+    }
+  ],
+  "constraints": [
+    "0 <= intervals.length <= 10^4",
+    "intervals[i].length == 2",
+    "0 <= starti < endi <= 10^6"
+  ],
+  "starterCodeByLanguage": {
+    "java": "import java.util.*;\nclass Solution {\n    public int minMeetingRooms(int[][] intervals) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def minMeetingRooms(self, intervals: List[List[int]]) -> int:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    int minMeetingRooms(vector<vector<int>>& intervals) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int MinMeetingRooms(int[][] intervals) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn min_meeting_rooms(intervals: String) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc MinMeetingRooms(intervals [][]int) int {\n    \n}",
+    "typescript": "export function minMeetingRooms(intervals: number[][]): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "intervals": [
+          [
+            0,
+            30
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            15,
+            20
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "intervals": [
+          [
+            7,
+            10
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "intervals": []
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "intervals": [
+          [
+            1,
+            5
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "intervals": [
+          [
+            1,
+            5
+          ],
+          [
+            5,
+            6
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "intervals": [
+          [
+            1,
+            5
+          ],
+          [
+            4,
+            6
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "intervals": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            7,
+            8
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

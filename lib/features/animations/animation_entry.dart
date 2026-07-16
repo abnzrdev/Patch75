@@ -7,6 +7,14 @@ class AnimationEntry {
     required this.sourceUrl,
   });
 
+  factory AnimationEntry.fromJson(Map<String, Object?> json) => AnimationEntry(
+    problemId: json['problemId'] as int,
+    slug: json['slug'] as String,
+    title: json['title'] as String,
+    relativePath: json['relativePath'] as String?,
+    sourceUrl: json['sourceUrl'] as String,
+  );
+
   final int problemId;
   final String slug;
   final String title;

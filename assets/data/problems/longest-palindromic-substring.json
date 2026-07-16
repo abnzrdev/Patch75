@@ -1,0 +1,77 @@
+{
+  "id": 57,
+  "slug": "longest-palindromic-substring",
+  "title": "Longest Palindromic Substring",
+  "difficulty": "medium",
+  "topics": [
+    "string"
+  ],
+  "description": "Given a string s, return the longest palindromic substring in s.",
+  "examples": [
+    {
+      "input": "s=\"babad\"",
+      "output": "\"bab\" or \"aba\""
+    },
+    {
+      "input": "s=\"cbbd\"",
+      "output": "\"bb\""
+    }
+  ],
+  "constraints": [
+    "1 ≤ s.length ≤ 1000",
+    "s consist of only digits and English letters."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public String longestPalindrome(String s) {\n        \n    }\n}",
+    "python": "class Solution:\n    def longestPalindrome(self, s: str) -> str:\n        pass\n",
+    "cpp": "#include <string>\nusing namespace std;\nclass Solution {\npublic:\n    string longestPalindrome(string s) {\n        return \"\";\n    }\n};",
+    "csharp": "public class Solution \n{\n    public string LongestPalindrome(string s) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn longest_palindrome(s: String) -> String {\n        \n    }\n}",
+    "go": "package main\n\nfunc LongestPalindrome(s string) string {\n    \n}",
+    "typescript": "export function longestPalindrome(s: string): string {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "s": "babad"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "s": "cbbd"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "s": "a"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "s": "ac"
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "s": "forgeeksskeegfor"
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

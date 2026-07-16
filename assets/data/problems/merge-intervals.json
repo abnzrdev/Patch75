@@ -1,0 +1,177 @@
+{
+  "id": 36,
+  "slug": "merge-intervals",
+  "title": "Merge Intervals",
+  "difficulty": "medium",
+  "topics": [
+    "interval"
+  ],
+  "description": "Merge all overlapping intervals and return the resulting non-overlapping intervals covering the same ranges.",
+  "examples": [
+    {
+      "input": "intervals = [[1,3],[2,6],[8,10],[15,18]]",
+      "output": "[[1,6],[8,10],[15,18]]"
+    },
+    {
+      "input": "intervals = [[1,4],[4,5]]",
+      "output": "[[1,5]]"
+    }
+  ],
+  "constraints": [
+    "1 ≤ intervals.length ≤ 10^4",
+    "intervals[i].length == 2",
+    "0 ≤ starti ≤ endi ≤ 10^4"
+  ],
+  "starterCodeByLanguage": {
+    "java": "import java.util.*;\nclass Solution {\n    public int[][] merge(int[][] intervals) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def merge(self, intervals: List[List[int]]) -> List[List[int]]:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    vector<vector<int>> merge(vector<vector<int>>& intervals) {\n        return {};\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int[][] Merge(int[][] intervals) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn merge(intervals: String) -> String {\n        \n    }\n}",
+    "go": "package main\n\nfunc Merge(intervals [][]int) [][]int {\n    \n}",
+    "typescript": "export function merge(intervals: number[][]): number[][] {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "intervals": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "intervals": [
+          [
+            1,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "intervals": [
+          [
+            1,
+            4
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            3,
+            5
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "intervals": [
+          [
+            1,
+            4
+          ],
+          [
+            5,
+            6
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "intervals": [
+          [
+            1,
+            10
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            8,
+            9
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "intervals": [
+          [
+            1,
+            2
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "intervals": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

@@ -1,0 +1,95 @@
+{
+  "id": 26,
+  "slug": "jump-game",
+  "title": "Jump Game",
+  "difficulty": "medium",
+  "topics": [
+    "dp"
+  ],
+  "description": "Given an integer array nums where each element represents your maximum jump length, return true if you can reach the last index.",
+  "examples": [
+    {
+      "input": "nums=[2,3,1,1,4]",
+      "output": "true"
+    },
+    {
+      "input": "nums=[3,2,1,0,4]",
+      "output": "false"
+    }
+  ],
+  "constraints": [
+    "1 ≤ nums.length ≤ 10^4",
+    "0 ≤ nums[i] ≤ 10^5"
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public boolean canJump(int[] nums) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def canJump(self, nums: List[int]) -> bool:\n        pass\n",
+    "cpp": "#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n    bool canJump(vector<int>& nums) {\n        return false;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public bool CanJump(int[] nums) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn can_jump(nums: Vec<i32>) -> bool {\n        \n    }\n}",
+    "go": "package main\n\nfunc CanJump(nums []int) bool {\n    \n}",
+    "typescript": "export function canJump(nums: number[]): boolean {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          2,
+          3,
+          1,
+          1,
+          4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          3,
+          2,
+          1,
+          0,
+          4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": [
+          2,
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "nums": "@javascript: JSON.stringify(Array.from({length: 300000}, (_,i)=> (i%5)))",
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

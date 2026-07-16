@@ -1,0 +1,100 @@
+{
+  "id": 15,
+  "slug": "reverse-bits",
+  "title": "Reverse Bits",
+  "difficulty": "easy",
+  "topics": [
+    "binary"
+  ],
+  "description": "Reverse bits of a given 32-bit unsigned even integer.",
+  "examples": [
+    {
+      "input": "n = 43261596 (00000010100101000001111010011100)",
+      "output": "964176192 (00111001011110000010100101000000)"
+    },
+    {
+      "input": "n = 2 (00000000000000000000000000000010)",
+      "output": "1073741824 (01000000000000000000000000000000)"
+    }
+  ],
+  "constraints": [
+    "The input is a non-negative even integer."
+  ],
+  "starterCodeByLanguage": {
+    "java": "public class Solution {\n    public int reverseBits(int n) {\n        \n    }\n}",
+    "python": "class Solution:\n    def reverseBits(self, n: int) -> int:\n        pass\n",
+    "cpp": "class Solution {\npublic:\n    uint32_t reverseBits(uint32_t n) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int ReverseBits(int n) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn reverse_bits(n: i32) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc ReverseBits(n int) int {\n    \n}",
+    "typescript": "export function reverseBits(n: number): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "n": 43261596
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "n": 0
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "n": 2
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "n": 4
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "n": 16
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "n": 1024
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "n": 2147483646
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "n": 1073741824
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}

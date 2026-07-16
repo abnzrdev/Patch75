@@ -1,0 +1,251 @@
+{
+  "id": 6,
+  "slug": "maximum-product-subarray",
+  "title": "Maximum Product Subarray",
+  "difficulty": "medium",
+  "topics": [
+    "array"
+  ],
+  "description": "Given an integer array `nums`, find a subarray that has the largest product, and return the product.",
+  "examples": [
+    {
+      "input": "nums = [2,3,-2,4]",
+      "output": "6"
+    },
+    {
+      "input": "nums = [-2,0,-1]",
+      "output": "0"
+    }
+  ],
+  "constraints": [
+    "1 ≤ nums.length ≤ 2 * 10^4",
+    "-10 ≤ nums[i] ≤ 10",
+    "The product of any subarray of nums is guaranteed to fit in a 32-bit integer."
+  ],
+  "starterCodeByLanguage": {
+    "java": "class Solution {\n    public int maxProduct(int[] nums) {\n        \n    }\n}",
+    "python": "from typing import List\nclass Solution:\n    def maxProduct(self, nums: List[int]) -> int:\n        ",
+    "cpp": "#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n    int maxProduct(vector<int>& nums) {\n        return 0;\n    }\n};",
+    "csharp": "public class Solution \n{\n    public int MaxProduct(int[] nums) \n    {\n        \n    }\n}",
+    "rust": "pub struct Solution;\n\nimpl Solution {\n    pub fn max_product(nums: Vec<i32>) -> i32 {\n        \n    }\n}",
+    "go": "package main\n\nfunc MaxProduct(nums []int) int {\n    \n}",
+    "typescript": "export function maxProduct(nums: number[]): number {\n    \n}"
+  },
+  "testCases": [
+    {
+      "id": "official-1",
+      "input": {
+        "nums": [
+          2,
+          3,
+          -2,
+          4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-2",
+      "input": {
+        "nums": [
+          -2,
+          0,
+          -1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-3",
+      "input": {
+        "nums": [
+          0,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-4",
+      "input": {
+        "nums": [
+          -2,
+          3,
+          -4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-5",
+      "input": {
+        "nums": [
+          6,
+          -3,
+          -10,
+          0,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-6",
+      "input": {
+        "nums": [
+          2,
+          -5,
+          -2,
+          -4,
+          3
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-7",
+      "input": {
+        "nums": [
+          -1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-8",
+      "input": {
+        "nums": [
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-9",
+      "input": {
+        "nums": [
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-10",
+      "input": {
+        "nums": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-11",
+      "input": {
+        "nums": [
+          -1,
+          -2,
+          -9,
+          -6
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-12",
+      "input": {
+        "nums": [
+          1,
+          -2,
+          3,
+          -4,
+          -3,
+          2
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-13",
+      "input": {
+        "nums": [
+          -1,
+          -1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-14",
+      "input": {
+        "nums": [
+          2,
+          -1,
+          1,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-15",
+      "input": {
+        "nums": [
+          0,
+          -3,
+          1,
+          1
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-16",
+      "input": {
+        "nums": [
+          2,
+          3,
+          -2,
+          4,
+          -1,
+          2,
+          1,
+          -5,
+          4
+        ]
+      },
+      "expected": null,
+      "sample": false
+    },
+    {
+      "id": "official-17",
+      "input": {
+        "nums": "@javascript:JSON.stringify(Array(10000).fill(1))",
+        "_isLargeTest": true
+      },
+      "expected": null,
+      "sample": false
+    }
+  ],
+  "source": "cojudge",
+  "sourceUrl": "https://github.com/cojudge/cojudge"
+}
