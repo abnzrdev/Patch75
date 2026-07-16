@@ -1,0 +1,30 @@
+external/*
+!external/README.md
+.cache/
+.codegraph/
+qdem_backups/
+
+# Flutter / Dart generated output
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+coverage/
+
+# Local SDK and IDE state
+android/local.properties
+.idea/
+*.iml
+.claude/
+.cursor/
+.gemini/
+.windsurf/
+
+# Local Codex tooling
+.tools/
+
+# Runtime scratch data
+.judge-tmp/
+tmp/
+screenshots/runtime/

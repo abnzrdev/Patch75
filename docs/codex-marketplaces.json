@@ -1,0 +1,16 @@
+{
+  "marketplaces": [
+    {
+      "name": "ponytail",
+      "root": "/home/abnzr/.codex/.tmp/marketplaces/ponytail",
+      "marketplaceSource": {
+        "sourceType": "git",
+        "source": "https://github.com/DietrichGebert/ponytail.git"
+      }
+    },
+    {
+      "name": "openai-curated",
+      "root": "/home/abnzr/.codex/.tmp/plugins"
+    }
+  ]
+}

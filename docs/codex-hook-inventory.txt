@@ -1,0 +1,4 @@
+/home/abnzr/.codex/.tmp/plugins/plugins/figma/hooks.json
+/home/abnzr/.codex/.tmp/plugins/plugins/replayio/hooks.json
+/home/abnzr/.codex/plugins/cache/openai-curated-remote/figma/2.0.14/hooks.json
+/home/abnzr/.codex/plugins/cache/openai-curated/figma/d6169bef/hooks.json

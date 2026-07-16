@@ -1,0 +1,80 @@
+{
+  "installed": [
+    {
+      "pluginId": "ponytail@ponytail",
+      "name": "ponytail",
+      "marketplaceName": "ponytail",
+      "version": "4.8.4",
+      "installed": true,
+      "enabled": true,
+      "source": {
+        "source": "git",
+        "url": "https://github.com/DietrichGebert/ponytail.git",
+        "ref": "main"
+      },
+      "marketplaceSource": {
+        "sourceType": "git",
+        "source": "https://github.com/DietrichGebert/ponytail.git"
+      },
+      "installPolicy": "AVAILABLE",
+      "authPolicy": "ON_INSTALL"
+    },
+    {
+      "pluginId": "figma@openai-curated",
+      "name": "figma",
+      "marketplaceName": "openai-curated",
+      "version": "d6169bef",
+      "installed": true,
+      "enabled": true,
+      "source": {
+        "source": "local",
+        "path": "/home/abnzr/.codex/.tmp/plugins/plugins/figma"
+      },
+      "installPolicy": "AVAILABLE",
+      "authPolicy": "ON_INSTALL"
+    },
+    {
+      "pluginId": "superpowers@openai-curated",
+      "name": "superpowers",
+      "marketplaceName": "openai-curated",
+      "version": "d6169bef",
+      "installed": true,
+      "enabled": true,
+      "source": {
+        "source": "local",
+        "path": "/home/abnzr/.codex/.tmp/plugins/plugins/superpowers"
+      },
+      "installPolicy": "AVAILABLE",
+      "authPolicy": "ON_INSTALL"
+    },
+    {
+      "pluginId": "github@openai-curated",
+      "name": "github",
+      "marketplaceName": "openai-curated",
+      "version": "d6169bef",
+      "installed": true,
+      "enabled": true,
+      "source": {
+        "source": "local",
+        "path": "/home/abnzr/.codex/.tmp/plugins/plugins/github"
+      },
+      "installPolicy": "AVAILABLE",
+      "authPolicy": "ON_INSTALL"
+    },
+    {
+      "pluginId": "coderabbit@openai-curated",
+      "name": "coderabbit",
+      "marketplaceName": "openai-curated",
+      "version": "d6169bef",
+      "installed": true,
+      "enabled": true,
+      "source": {
+        "source": "local",
+        "path": "/home/abnzr/.codex/.tmp/plugins/plugins/coderabbit"
+      },
+      "installPolicy": "AVAILABLE",
+      "authPolicy": "ON_INSTALL"
+    }
+  ],
+  "available": []
+}

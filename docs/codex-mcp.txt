@@ -1,0 +1,7 @@
+Name       Command    Args                      Env  Cwd  Status   Auth       
+codegraph  codegraph  serve --mcp               -    -    enabled  Unsupported
+context7   npx        -y @upstash/context7-mcp  -    -    enabled  Unsupported
+
+Name    Url                                 Bearer Token Env Var  Status   Auth         
+figma   https://mcp.figma.com/mcp           -                     enabled  Not logged in
+github  https://api.githubcopilot.com/mcp/  GITHUB_PAT_TOKEN      enabled  Bearer token
