@@ -60,6 +60,9 @@ void main(List<String> args) {
         ],
       })}\n',
     );
+  File(
+    'assets/data/index/all_problems.json',
+  ).writeAsStringSync('${encoder.convert(results)}\n');
   stdout.writeln('Wrote ${results.length} problems and ${index.path}');
 }
 
