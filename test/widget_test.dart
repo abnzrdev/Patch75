@@ -79,6 +79,41 @@ void main() {
     expect(find.byKey(const Key('editor-pane')), findsOneWidget);
     await _disposeEditor(tester);
   });
+
+  testWidgets('large text scale remains usable at a narrow width', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 780);
+    tester.view.devicePixelRatio = 1;
+    tester.platformDispatcher.textScaleFactorTestValue = 2;
+    addTearDown(tester.view.reset);
+    addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+    await tester.pumpWidget(
+      OfflineTrainerApp(
+        controller: AppController(problem: problem, state: const AppState()),
+      ),
+    );
+
+    expect(find.text('PROBLEM'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    await _disposeEditor(tester);
+  });
+
+  testWidgets('lifecycle pause stops and resume restarts the timer', (
+    tester,
+  ) async {
+    final controller = AppController(problem: problem, state: const AppState());
+    await tester.pumpWidget(OfflineTrainerApp(controller: controller));
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
+    await tester.pump();
+    expect(controller.timerPaused, isTrue);
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await tester.pump();
+    expect(controller.timerPaused, isFalse);
+    await _disposeEditor(tester);
+  });
 }
 
 Future<void> _disposeEditor(WidgetTester tester) async {

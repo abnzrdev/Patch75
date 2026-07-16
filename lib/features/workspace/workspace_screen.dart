@@ -21,6 +21,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
   late final CodeLineEditingController _code;
   late final TextEditingController _notes;
   late String _loadedSlug;
+  bool _pausedByLifecycle = false;
 
   @override
   void initState() {
@@ -60,7 +61,13 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state != AppLifecycleState.resumed && !widget.controller.timerPaused) {
+    if (state == AppLifecycleState.resumed) {
+      if (_pausedByLifecycle) {
+        _pausedByLifecycle = false;
+        widget.controller.toggleTimer();
+      }
+    } else if (!widget.controller.timerPaused) {
+      _pausedByLifecycle = true;
       widget.controller.toggleTimer();
     }
   }
@@ -413,7 +420,7 @@ class _StatusRail extends StatelessWidget {
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final compact = constraints.maxWidth < 600;
+          final compact = constraints.maxWidth < 840;
           return Row(
             children: [
               if (!compact) ...[
@@ -457,11 +464,21 @@ class _StatusRail extends StatelessWidget {
                   onPressed: onBrowse,
                   icon: const Icon(Icons.list, size: 18),
                 ),
-              OltButton(
-                buttonKey: const Key('focus-toggle'),
-                label: controller.state.focusMode ? 'EXIT FOCUS' : 'FOCUS',
-                onPressed: controller.toggleFocus,
-              ),
+              if (!compact)
+                OltButton(
+                  buttonKey: const Key('focus-toggle'),
+                  label: controller.state.focusMode ? 'EXIT FOCUS' : 'FOCUS',
+                  onPressed: controller.toggleFocus,
+                )
+              else
+                IconButton(
+                  key: const Key('focus-toggle'),
+                  tooltip: controller.state.focusMode
+                      ? 'Exit focus mode'
+                      : 'Enter focus mode',
+                  onPressed: controller.toggleFocus,
+                  icon: const Icon(Icons.center_focus_strong, size: 18),
+                ),
             ],
           );
         },

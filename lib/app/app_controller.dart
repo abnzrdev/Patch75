@@ -92,6 +92,7 @@ class AppController extends ChangeNotifier {
 
   void toggleTimer() {
     _timerPaused = !_timerPaused;
+    _save();
     notifyListeners();
   }
 
