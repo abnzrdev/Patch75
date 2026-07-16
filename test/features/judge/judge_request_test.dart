@@ -47,4 +47,28 @@ void main() {
     expect(truncateOutput('abcdefgh', 5), 'abcde');
     expect(truncateOutput('🙂🙂', 5), '🙂');
   });
+
+  test('parses structured judge results', () {
+    final result = JudgeResult.fromJson({
+      'status': 'passed',
+      'stdout': '',
+      'stderr': '',
+      'executionTimeMs': 12,
+      'memoryUsageBytes': null,
+      'passedTests': 1,
+      'totalTests': 1,
+      'testResults': [
+        {
+          'id': 'sample-1',
+          'passed': true,
+          'output': '[0,1]',
+          'expected': '[0,1]',
+          'error': null,
+        },
+      ],
+    });
+
+    expect(result.status, JudgeStatus.passed);
+    expect(result.testResults.single.passed, isTrue);
+  });
 }

@@ -96,7 +96,7 @@ argument arrays, creates mode-0700 temporary directories, and starts
 unprivileged containers with no network, no capabilities, a read-only root,
 memory/PID/CPU limits, and no host mounts other than the temporary submission.
 
-Chaquopy runs Android Python in an isolated Android service process. It is not a
+Chaquopy runs Python 3.11 in a separate Android service process. It is not a
 security sandbox: Python has the service process's app UID and a timeout cannot
 reliably stop native/interpreter work in-process. The service has no exported
 components or permissions and is killed/recreated after a timeout.
@@ -123,4 +123,3 @@ explicit navigation and lifecycle changes flush immediately.
 Missing Docker, bridge failure, unsupported platforms, missing/corrupt assets,
 invalid persisted state, and malformed problem data are visible states. Study
 features remain usable when judging or animation is unavailable.
-

@@ -34,7 +34,7 @@
 - `re_highlight`: BSD-3-Clause; Python syntax highlighting used by
   `re_editor`.
 - `path_provider`: BSD-3-Clause; application-support directory discovery.
-- Chaquopy 17.0: MIT; Android embedded CPython. Minimum Android API 24 and AGP
+- Chaquopy 17.0 with Python 3.11: MIT; Android embedded CPython. Minimum Android API 24 and AGP
   7.3–9.2. It is an execution runtime, not a secure hostile-code sandbox.
 
 Package versions and transitive notices are regenerated from `pubspec.lock`

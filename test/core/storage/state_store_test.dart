@@ -33,4 +33,17 @@ void main() {
       isTrue,
     );
   });
+
+  test('serializes repeated writes and keeps the latest state', () async {
+    final directory = await Directory.systemTemp.createTemp('olt-state-');
+    addTearDown(() => directory.delete(recursive: true));
+    final store = StateStore(directory);
+
+    await Future.wait([
+      for (var seconds = 0; seconds < 50; seconds++)
+        store.save(AppState(timerSeconds: {'two-sum': seconds})),
+    ]);
+
+    expect((await store.load()).timerSeconds['two-sum'], 49);
+  });
 }

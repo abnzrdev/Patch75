@@ -3,6 +3,9 @@ import 'package:re_editor/re_editor.dart';
 
 import '../../app/app_controller.dart';
 import '../../core/design/olt_design.dart';
+import '../judge/judge_models.dart';
+import '../animations/animation_viewer.dart';
+import '../problems/problem_browser.dart';
 
 class WorkspaceScreen extends StatefulWidget {
   const WorkspaceScreen({required this.controller, super.key});
@@ -17,11 +20,14 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
     with WidgetsBindingObserver {
   late final CodeLineEditingController _code;
   late final TextEditingController _notes;
+  late String _loadedSlug;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _loadedSlug = widget.controller.problem.slug;
+    widget.controller.addListener(_syncProblem);
     _code = CodeLineEditingController.fromText(widget.controller.draft)
       ..addListener(_saveCode);
     _notes = TextEditingController(text: widget.controller.notes)
@@ -30,6 +36,27 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
 
   void _saveCode() => widget.controller.updateDraft(_code.text);
   void _saveNotes() => widget.controller.updateNotes(_notes.text);
+
+  void _syncProblem() {
+    if (_loadedSlug == widget.controller.problem.slug) return;
+    _loadedSlug = widget.controller.problem.slug;
+    _code.text = widget.controller.draft;
+    _notes.text = widget.controller.notes;
+  }
+
+  Future<void> _openBrowser() => showDialog<void>(
+    context: context,
+    builder: (context) => Dialog.fullscreen(
+      child: ProblemBrowser(
+        problems: widget.controller.problems,
+        progress: widget.controller.state.progress,
+        onSelected: (problem) {
+          widget.controller.selectProblem(problem);
+          Navigator.pop(context);
+        },
+      ),
+    ),
+  );
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -41,6 +68,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    widget.controller.removeListener(_syncProblem);
     _code
       ..removeListener(_saveCode)
       ..dispose();
@@ -60,7 +88,10 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
         body: SafeArea(
           child: Column(
             children: [
-              _StatusRail(controller: widget.controller),
+              _StatusRail(
+                controller: widget.controller,
+                onBrowse: _openBrowser,
+              ),
               Expanded(
                 child: compact
                     ? _compactBody(widget.controller.compactIndex)
@@ -136,6 +167,20 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
       child: ListView(
         padding: const EdgeInsets.all(OltSpace.x4),
         children: [
+          Row(
+            children: [
+              OltButton(
+                label: 'PREV',
+                onPressed: () => widget.controller.selectAdjacent(-1),
+              ),
+              const SizedBox(width: OltSpace.x2),
+              OltButton(
+                label: 'NEXT',
+                onPressed: () => widget.controller.selectAdjacent(1),
+              ),
+            ],
+          ),
+          const SizedBox(height: OltSpace.x4),
           Text(
             widget.controller.problem.title.toUpperCase(),
             maxLines: 2,
@@ -199,6 +244,8 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
             ),
           ),
         ),
+        if (widget.controller.judgeResult != null)
+          SizedBox(height: 144, child: _resultContent()),
         Container(
           padding: const EdgeInsets.all(OltSpace.x2),
           decoration: const BoxDecoration(
@@ -207,18 +254,33 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
           child: LayoutBuilder(
             builder: (context, constraints) => Row(
               children: [
-                const OltButton(
+                OltButton(
                   label: 'RUN TESTS',
                   signal: true,
-                  onPressed: null,
+                  onPressed:
+                      widget.controller.judgeAvailable &&
+                          !widget.controller.judging
+                      ? () => widget.controller.runTests(submit: false)
+                      : null,
                 ),
                 const SizedBox(width: OltSpace.x2),
-                const OltButton(label: 'SUBMIT', onPressed: null),
+                OltButton(
+                  label: 'SUBMIT',
+                  onPressed:
+                      widget.controller.judgeAvailable &&
+                          !widget.controller.judging
+                      ? () => widget.controller.runTests(submit: true)
+                      : null,
+                ),
                 if (constraints.maxWidth > 500) ...[
                   const Spacer(),
                   Flexible(
                     child: Text(
-                      'TEST/NOT-RUN · JUDGE/UNAVAILABLE',
+                      widget.controller.judging
+                          ? 'TEST/RUNNING · JUDGE/ACTIVE'
+                          : widget.controller.judgeAvailable
+                          ? 'TEST/READY · JUDGE/DESKTOP'
+                          : 'TEST/NOT-RUN · JUDGE/UNAVAILABLE',
                       overflow: TextOverflow.ellipsis,
                       style: microStyle.copyWith(color: OltColors.foreground),
                     ),
@@ -258,11 +320,49 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
     ),
   );
 
-  Widget _resultsPane() => const OltPanel(
-    panelKey: Key('results-pane'),
+  Widget _resultsPane() => OltPanel(
+    panelKey: const Key('results-pane'),
     label: 'RESULTS/LOCAL · TEST/NOT-RUN',
-    child: Center(child: Text('Run tests to inspect structured output.')),
+    child: _resultContent(),
   );
+
+  Widget _resultContent() {
+    final result = widget.controller.judgeResult;
+    if (widget.controller.judging) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    if (result == null) {
+      return const Center(
+        child: Text('Run tests to inspect structured output.'),
+      );
+    }
+    return ListView(
+      padding: const EdgeInsets.all(OltSpace.x2),
+      children: [
+        Text(
+          'TEST/${result.passedTests.toString().padLeft(2, '0')}-PASSED · '
+          'TOTAL/${result.totalTests.toString().padLeft(2, '0')} · '
+          'TIME/${result.executionTimeMs}MS',
+          style: microStyle.copyWith(
+            color: result.status == JudgeStatus.passed
+                ? OltColors.signal
+                : OltColors.danger,
+          ),
+        ),
+        const SizedBox(height: OltSpace.x2),
+        for (final test in result.testResults)
+          Padding(
+            padding: const EdgeInsets.only(bottom: OltSpace.x1),
+            child: Text(
+              '${test.passed ? 'PASS' : 'FAIL'} · ${test.id} · '
+              '${test.error ?? test.output}',
+            ),
+          ),
+        if (result.stderr.isNotEmpty)
+          Text(result.stderr, style: const TextStyle(color: OltColors.danger)),
+      ],
+    );
+  }
 
   Widget _animationPane() => OltPanel(
     panelKey: const Key('animation-pane'),
@@ -270,23 +370,10 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
     child: _animationContent(),
   );
 
-  Widget _animationContent() => const Center(
-    child: Padding(
-      padding: EdgeInsets.all(OltSpace.x4),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.broken_image_outlined, size: 48, color: OltColors.muted),
-          SizedBox(height: OltSpace.x2),
-          Text('ANIM/LOCAL-ASSET-MISSING', style: microStyle),
-          SizedBox(height: OltSpace.x2),
-          Text(
-            'LeetCodeAnimation media is not bundled because the source has no redistribution license.',
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
-    ),
+  Widget _animationContent() => AnimationViewer(
+    key: ValueKey(widget.controller.problem.slug),
+    title: widget.controller.problem.title,
+    assetPath: null,
   );
 
   Widget _notesPane() => OltPanel(
@@ -306,9 +393,10 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
 }
 
 class _StatusRail extends StatelessWidget {
-  const _StatusRail({required this.controller});
+  const _StatusRail({required this.controller, required this.onBrowse});
 
   final AppController controller;
+  final VoidCallback onBrowse;
 
   @override
   Widget build(BuildContext context) {
@@ -328,16 +416,18 @@ class _StatusRail extends StatelessWidget {
           final compact = constraints.maxWidth < 600;
           return Row(
             children: [
-              Text(
-                compact ? 'OLT' : 'OFFLINE LEETCODE TRAINER',
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: -.5,
+              if (!compact) ...[
+                const Text(
+                  'OFFLINE LEETCODE TRAINER',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: -.5,
+                  ),
                 ),
-              ),
-              const SizedBox(width: OltSpace.x4),
+                const SizedBox(width: OltSpace.x4),
+              ],
               if (!compact)
                 const Expanded(
                   child: Text(
@@ -359,6 +449,14 @@ class _StatusRail extends StatelessWidget {
                   size: 18,
                 ),
               ),
+              if (!compact)
+                OltButton(label: 'BROWSE/75', onPressed: onBrowse)
+              else
+                IconButton(
+                  tooltip: 'Browse Blind 75',
+                  onPressed: onBrowse,
+                  icon: const Icon(Icons.list, size: 18),
+                ),
               OltButton(
                 buttonKey: const Key('focus-toggle'),
                 label: controller.state.focusMode ? 'EXIT FOCUS' : 'FOCUS',
