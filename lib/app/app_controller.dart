@@ -64,6 +64,7 @@ class AppController extends ChangeNotifier {
         problemSlug: problem.slug,
         language: 'python',
         sourceCode: draft,
+        submit: submit,
         selectedTests: cases.map((test) => test.id).toList(),
       ),
       cases,
