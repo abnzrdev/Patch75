@@ -7,13 +7,15 @@ import 'package:path_provider/path_provider.dart';
 import 'app/app_controller.dart';
 import 'app/offline_trainer_app.dart';
 import 'core/storage/state_store.dart';
+import 'features/animations/local_animation_store.dart';
 import 'features/judge/judge_service.dart';
 import 'features/problems/problem_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final problems = await AssetProblemRepository(rootBundle).loadAll();
-  final store = StateStore(await getApplicationSupportDirectory());
+  final supportDirectory = await getApplicationSupportDirectory();
+  final store = StateStore(supportDirectory);
   final state = await store.load();
   final controller = AppController(
     problem: problems.firstWhere(
@@ -23,6 +25,7 @@ Future<void> main() async {
     problems: problems,
     state: state,
     onSave: store.save,
+    animationStore: LocalAnimationStore(supportDirectory: supportDirectory),
     judgeService: kIsWeb
         ? const UnsupportedJudgeService()
         : switch (defaultTargetPlatform) {
