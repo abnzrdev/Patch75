@@ -26,6 +26,7 @@ void main() {
 
   test('copies an animation into private problem storage', () async {
     final source = File('${temporaryDirectory.path}/source.gif');
+
     await source.writeAsBytes(<int>[71, 73, 70, 56, 57, 97]);
 
     final store = LocalAnimationStore(
@@ -39,15 +40,20 @@ void main() {
 
     final importedPath = await store.importForProblem('two-sum');
 
+    expect(importedPath, isNotNull);
     expect(
       importedPath,
-      '${supportDirectory.path}/animations/two-sum/animation.gif',
+      startsWith(
+        '${supportDirectory.path}/animations/'
+        'two-sum/animation-',
+      ),
     );
+    expect(importedPath, endsWith('.gif'));
 
     expect(await File(importedPath!).readAsBytes(), await source.readAsBytes());
   });
 
-  test('returns null when file selection is cancelled', () async {
+  test('returns null when selection is cancelled', () async {
     final store = LocalAnimationStore(
       supportDirectory: supportDirectory,
       picker: () async => null,
@@ -58,6 +64,7 @@ void main() {
 
   test('rejects unsupported formats', () async {
     final source = File('${temporaryDirectory.path}/animation.txt');
+
     await source.writeAsString('not an image');
 
     final store = LocalAnimationStore(
@@ -83,13 +90,15 @@ void main() {
 
   test('replaces an older animation format', () async {
     final oldFile = File(
-      '${supportDirectory.path}/animations/two-sum/animation.png',
+      '${supportDirectory.path}/animations/'
+      'two-sum/animation.png',
     );
 
     await oldFile.parent.create(recursive: true);
     await oldFile.writeAsBytes(<int>[1, 2, 3]);
 
     final source = File('${temporaryDirectory.path}/replacement.gif');
+
     await source.writeAsBytes(<int>[71, 73, 70, 56, 57, 97]);
 
     final store = LocalAnimationStore(
@@ -105,5 +114,25 @@ void main() {
 
     expect(await oldFile.exists(), isFalse);
     expect(await File(importedPath!).exists(), isTrue);
+  });
+
+  test('removes the private animation copy', () async {
+    final animation = File(
+      '${supportDirectory.path}/animations/'
+      'two-sum/animation-123.gif',
+    );
+
+    await animation.parent.create(recursive: true);
+    await animation.writeAsBytes(<int>[1, 2, 3]);
+
+    final store = LocalAnimationStore(
+      supportDirectory: supportDirectory,
+      picker: () async => null,
+    );
+
+    await store.removeForProblem('two-sum');
+
+    expect(await animation.exists(), isFalse);
+    expect(await animation.parent.exists(), isFalse);
   });
 }

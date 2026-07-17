@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import '../core/storage/app_state.dart';
+import '../features/animations/local_animation_store.dart';
 import '../features/judge/judge_models.dart';
 import '../features/judge/judge_service.dart';
 import '../features/problems/problem.dart';
@@ -13,6 +14,7 @@ class AppController extends ChangeNotifier {
     List<Problem>? problems,
     required this.state,
     this.onSave,
+    this.animationStore,
     JudgeService? judgeService,
   }) : problem = problem,
        problems = problems ?? [problem],
@@ -30,6 +32,7 @@ class AppController extends ChangeNotifier {
   Problem problem;
   final List<Problem> problems;
   final Future<void> Function(AppState state)? onSave;
+  final LocalAnimationStore? animationStore;
   final JudgeService judgeService;
   late final Timer _timer;
   AppState state;
@@ -38,6 +41,8 @@ class AppController extends ChangeNotifier {
   bool judgeAvailable = false;
   bool judging = false;
   JudgeResult? judgeResult;
+  bool importingAnimation = false;
+  String? animationError;
 
   int get elapsedSeconds => state.timerSeconds[problem.slug] ?? 0;
   bool get timerPaused => _timerPaused;
@@ -46,6 +51,7 @@ class AppController extends ChangeNotifier {
       problem.starterCodeByLanguage['python'] ??
       '';
   String get notes => state.notes[problem.slug] ?? '';
+  String? get animationPath => state.animationPaths[problem.slug];
 
   Future<void> refreshJudgeAvailability() async {
     judgeAvailable = await judgeService.isAvailable();
@@ -86,6 +92,58 @@ class AppController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> importAnimation() async {
+    final store = animationStore;
+
+    if (store == null || importingAnimation) return;
+
+    importingAnimation = true;
+    animationError = null;
+    notifyListeners();
+
+    try {
+      final path = await store.importForProblem(problem.slug);
+
+      if (path == null) return;
+
+      state = state.copyWith(
+        animationPaths: {...state.animationPaths, problem.slug: path},
+      );
+      _changed();
+    } on Object catch (error) {
+      animationError = 'Animation import failed: $error';
+    } finally {
+      importingAnimation = false;
+      notifyListeners();
+    }
+  }
+
+  Future<void> removeAnimation() async {
+    final store = animationStore;
+
+    if (store == null || importingAnimation || animationPath == null) {
+      return;
+    }
+
+    importingAnimation = true;
+    animationError = null;
+    notifyListeners();
+
+    try {
+      await store.removeForProblem(problem.slug);
+
+      final paths = {...state.animationPaths}..remove(problem.slug);
+
+      state = state.copyWith(animationPaths: paths);
+      _changed();
+    } on Object catch (error) {
+      animationError = 'Animation removal failed: $error';
+    } finally {
+      importingAnimation = false;
+      notifyListeners();
+    }
+  }
+
   void toggleFocus() {
     state = state.copyWith(focusMode: !state.focusMode);
     _changed();
@@ -105,6 +163,7 @@ class AppController extends ChangeNotifier {
   void selectProblem(Problem value) {
     problem = value;
     judgeResult = null;
+    animationError = null;
     state = state.copyWith(
       selectedProblemSlug: value.slug,
       progress: {

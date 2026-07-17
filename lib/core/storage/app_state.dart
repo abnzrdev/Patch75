@@ -8,6 +8,7 @@ class AppState {
     this.focusMode = false,
     this.progress = const {},
     this.testHistory = const {},
+    this.animationPaths = const {},
     this.settings = const {},
     this.importedDataVersion = 1,
   });
@@ -26,11 +27,12 @@ class AppState {
     testHistory: (json['testHistory'] as Map? ?? const {}).map(
       (key, value) => MapEntry(key as String, List<String>.from(value as List)),
     ),
+    animationPaths: _stringMap(json['animationPaths']),
     settings: Map<String, Object?>.from(json['settings'] as Map? ?? const {}),
     importedDataVersion: json['importedDataVersion'] as int? ?? 1,
   );
 
-  static const currentSchemaVersion = 2;
+  static const currentSchemaVersion = 3;
 
   final int schemaVersion;
   final String selectedProblemSlug;
@@ -40,6 +42,7 @@ class AppState {
   final bool focusMode;
   final Map<String, String> progress;
   final Map<String, List<String>> testHistory;
+  final Map<String, String> animationPaths;
   final Map<String, Object?> settings;
   final int importedDataVersion;
 
@@ -51,6 +54,7 @@ class AppState {
     bool? focusMode,
     Map<String, String>? progress,
     Map<String, List<String>>? testHistory,
+    Map<String, String>? animationPaths,
     Map<String, Object?>? settings,
     int? importedDataVersion,
   }) => AppState(
@@ -61,6 +65,7 @@ class AppState {
     focusMode: focusMode ?? this.focusMode,
     progress: progress ?? this.progress,
     testHistory: testHistory ?? this.testHistory,
+    animationPaths: animationPaths ?? this.animationPaths,
     settings: settings ?? this.settings,
     importedDataVersion: importedDataVersion ?? this.importedDataVersion,
   );
@@ -74,6 +79,7 @@ class AppState {
     'focusMode': focusMode,
     'progress': progress,
     'testHistory': testHistory,
+    'animationPaths': animationPaths,
     'settings': settings,
     'importedDataVersion': importedDataVersion,
   };
@@ -89,6 +95,7 @@ class AppState {
       focusMode == other.focusMode &&
       _mapsEqual(progress, other.progress) &&
       _historyEqual(testHistory, other.testHistory) &&
+      _mapsEqual(animationPaths, other.animationPaths) &&
       _mapsEqual(settings, other.settings) &&
       importedDataVersion == other.importedDataVersion;
 
@@ -106,6 +113,7 @@ class AppState {
         (entry) => Object.hash(entry.key, Object.hashAll(entry.value)),
       ),
     ),
+    Object.hashAllUnordered(animationPaths.entries),
     Object.hashAllUnordered(settings.entries),
     importedDataVersion,
   );
@@ -126,6 +134,7 @@ bool _historyEqual(
     left.length == right.length &&
     left.entries.every((entry) {
       final values = right[entry.key];
+
       return values != null &&
           values.length == entry.value.length &&
           values.indexed.every((item) => item.$2 == entry.value[item.$1]);

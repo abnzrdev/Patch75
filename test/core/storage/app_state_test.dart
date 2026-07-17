@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:offline_leetcode_trainer/core/storage/app_state.dart';
 
 void main() {
-  test('loads defaults for missing fields and migrates version one', () {
+  test('loads defaults for missing fields and migrates old state', () {
     final state = AppState.fromJson({
       'schemaVersion': 1,
       'selectedProblem': 'two-sum',
@@ -15,6 +15,7 @@ void main() {
     expect(state.notes, isEmpty);
     expect(state.timerSeconds, isEmpty);
     expect(state.testHistory, isEmpty);
+    expect(state.animationPaths, isEmpty);
     expect(state.importedDataVersion, 1);
   });
 
@@ -29,6 +30,7 @@ void main() {
       testHistory: {
         'two-sum': ['passed:3/3'],
       },
+      animationPaths: {'two-sum': '/private/animation.gif'},
       settings: {'compactMetadata': true},
       importedDataVersion: 1,
     );

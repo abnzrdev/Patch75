@@ -378,9 +378,16 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
   );
 
   Widget _animationContent() => AnimationViewer(
-    key: ValueKey(widget.controller.problem.slug),
+    key: ValueKey(
+      '${widget.controller.problem.slug}:'
+      '${widget.controller.animationPath ?? ''}',
+    ),
     title: widget.controller.problem.title,
-    assetPath: null,
+    assetPath: widget.controller.animationPath,
+    importing: widget.controller.importingAnimation,
+    errorMessage: widget.controller.animationError,
+    onImport: widget.controller.importAnimation,
+    onRemove: widget.controller.removeAnimation,
   );
 
   Widget _notesPane() => OltPanel(

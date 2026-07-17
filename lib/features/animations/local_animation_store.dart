@@ -39,16 +39,12 @@ class LocalAnimationStore {
       throw const FormatException('Animation must be between 1 byte and 64 MB');
     }
 
-    final directory = Directory(
-      '${supportDirectory.path}/animations/$problemSlug',
-    );
+    final directory = _problemDirectory(problemSlug);
     await directory.create(recursive: true);
 
-    final target = File('${directory.path}/animation.$extension');
-    final temporary = File(
-      '${directory.path}/.import-'
-      '${DateTime.now().microsecondsSinceEpoch}.$extension',
-    );
+    final version = DateTime.now().microsecondsSinceEpoch;
+    final target = File('${directory.path}/animation-$version.$extension');
+    final temporary = File('${directory.path}/.import-$version.$extension');
 
     try {
       final sourcePath = picked.path;
@@ -75,12 +71,8 @@ class LocalAnimationStore {
         throw StateError('Selected animation has no readable file data');
       }
 
-      if (await target.exists()) {
-        await target.delete();
-      }
-
       await temporary.rename(target.path);
-      await _deleteOtherFormats(directory, target.path);
+      await _deleteOtherAnimations(directory, keepPath: target.path);
 
       return target.path;
     } finally {
@@ -89,6 +81,22 @@ class LocalAnimationStore {
       }
     }
   }
+
+  Future<void> removeForProblem(String problemSlug) async {
+    _validateSlug(problemSlug);
+
+    final directory = _problemDirectory(problemSlug);
+    if (!await directory.exists()) return;
+
+    await _deleteOtherAnimations(directory);
+
+    if (await directory.list().isEmpty) {
+      await directory.delete();
+    }
+  }
+
+  Directory _problemDirectory(String slug) =>
+      Directory('${supportDirectory.path}/animations/$slug');
 
   static Future<PlatformFile?> _pickFile() async {
     final extensions = allowedExtensions.toList()..sort();
@@ -118,18 +126,21 @@ class LocalAnimationStore {
     }
   }
 
-  static Future<void> _deleteOtherFormats(
-    Directory directory,
-    String keepPath,
-  ) async {
+  static Future<void> _deleteOtherAnimations(
+    Directory directory, {
+    String? keepPath,
+  }) async {
     await for (final entity in directory.list()) {
       if (entity is! File || entity.path == keepPath) continue;
 
       final filename = entity.uri.pathSegments.last;
 
-      if (filename.startsWith('animation.')) {
+      if (_isManagedAnimation(filename)) {
         await entity.delete();
       }
     }
   }
+
+  static bool _isManagedAnimation(String filename) =>
+      filename.startsWith('animation-') || filename.startsWith('animation.');
 }
