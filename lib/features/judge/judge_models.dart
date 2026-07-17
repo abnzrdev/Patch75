@@ -6,6 +6,7 @@ class JudgeRequest {
     required this.language,
     required this.sourceCode,
     required this.selectedTests,
+    this.submit = false,
   });
 
   static const maxSourceBytes = 64 * 1024;
@@ -15,6 +16,7 @@ class JudgeRequest {
   final String language;
   final String sourceCode;
   final List<String> selectedTests;
+  final bool submit;
 
   void validate() {
     if (!RegExp(r'^[a-z0-9]+(?:-[a-z0-9]+)*$').hasMatch(problemSlug)) {

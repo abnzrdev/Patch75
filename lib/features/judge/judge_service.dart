@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer' as developer;
+import 'dart:io' as io;
 
-import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 
 import 'judge_models.dart';
 
@@ -13,22 +16,69 @@ abstract interface class JudgeService {
 }
 
 class DesktopCojudgeJudgeService implements JudgeService {
-  DesktopCojudgeJudgeService({http.Client? client})
-    : _client = client ?? http.Client();
+  DesktopCojudgeJudgeService({
+    http.Client? client,
+    this._healthTimeout = const Duration(seconds: 1),
+    this._retryDelay = const Duration(milliseconds: 200),
+  }) : _client = client ?? _createDirectClient();
 
   static final _endpoint = Uri.parse('http://127.0.0.1:5376');
+
   final http.Client _client;
+  final Duration _healthTimeout;
+  final Duration _retryDelay;
+
+  static http.Client _createDirectClient() {
+    final client = io.HttpClient();
+    client.findProxy = (_) => 'DIRECT';
+    return IOClient(client);
+  }
 
   @override
   Future<bool> isAvailable() async {
-    try {
-      final response = await _client
-          .get(_endpoint.resolve('/health'))
-          .timeout(const Duration(milliseconds: 750));
-      return response.statusCode == 200;
-    } on Object {
-      return false;
+    Object? lastError;
+    StackTrace? lastStackTrace;
+
+    for (var attempt = 1; attempt <= 3; attempt++) {
+      try {
+        final response = await _client
+            .get(_endpoint.resolve('/health'))
+            .timeout(_healthTimeout);
+
+        if (response.statusCode != 200) {
+          throw http.ClientException(
+            'Judge health returned HTTP ${response.statusCode}',
+            _endpoint.resolve('/health'),
+          );
+        }
+
+        final payload = jsonDecode(response.body);
+
+        if (payload is! Map<String, dynamic> || payload['status'] != 'ok') {
+          throw const FormatException(
+            'Judge health response must contain status "ok"',
+          );
+        }
+
+        return true;
+      } on Object catch (error, stackTrace) {
+        lastError = error;
+        lastStackTrace = stackTrace;
+
+        if (attempt < 3) {
+          await Future<void>.delayed(_retryDelay);
+        }
+      }
     }
+
+    developer.log(
+      'Desktop judge health check failed after 3 attempts',
+      name: 'offline_leetcode_trainer.judge',
+      error: lastError,
+      stackTrace: lastStackTrace,
+    );
+
+    return false;
   }
 
   @override
@@ -47,10 +97,15 @@ class DesktopCojudgeJudgeService implements JudgeService {
               'language': request.language,
               'sourceCode': request.sourceCode,
               'selectedTests': request.selectedTests,
+              'submit': request.submit,
               'tests': tests.map((test) => test.toJson()).toList(),
             }),
           )
-          .timeout(const Duration(seconds: 10));
+          .timeout(
+            request.submit
+                ? const Duration(minutes: 5)
+                : const Duration(minutes: 2),
+          );
       if (response.statusCode != 200 ||
           response.bodyBytes.length > 256 * 1024) {
         throw const FormatException('Invalid judge response');
