@@ -3,6 +3,9 @@ external/*
 .cache/
 .codegraph/
 qdem_backups/
+.backups/
+.logs/
+*.log
 
 # Flutter / Dart generated output
 .dart_tool/

@@ -1,10 +1,15 @@
 import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:offline_leetcode_trainer/app/app_controller.dart';
 import 'package:offline_leetcode_trainer/core/storage/app_state.dart';
 import 'package:offline_leetcode_trainer/features/judge/judge_models.dart';
 import 'package:offline_leetcode_trainer/features/judge/judge_service.dart';
+import 'package:offline_leetcode_trainer/features/materials/learning_material.dart';
+import 'package:offline_leetcode_trainer/features/materials/local_material_store.dart';
 import 'package:offline_leetcode_trainer/features/problems/problem.dart';
 
 void main() {
@@ -24,6 +29,142 @@ void main() {
     expect(controller.judgeResult?.passedTests, 1);
     expect(controller.judging, isFalse);
     expect(controller.state.testHistory['two-sum'], ['passed:1/1']);
+  });
+
+  test(
+    'imports materials per problem and preserves legacy animations',
+    () async {
+      final root = await Directory.systemTemp.createTemp('olt-controller-');
+      addTearDown(() => root.delete(recursive: true));
+      final picks = <PlatformFile>[
+        PlatformFile(
+          name: 'trace.gif',
+          size: 3,
+          bytes: Uint8List.fromList([1, 2, 3]),
+        ),
+        PlatformFile(
+          name: 'notes.txt',
+          size: 4,
+          bytes: Uint8List.fromList([4, 5, 6, 7]),
+        ),
+      ];
+      final problems = [
+        Problem.fromJson(jsonDecode(_problemJson) as Map<String, Object?>),
+        Problem.fromJson(
+          jsonDecode(_problemJson.replaceAll('two-sum', 'three-sum'))
+              as Map<String, Object?>,
+        ),
+      ];
+      final controller = AppController(
+        problem: problems.first,
+        problems: problems,
+        state: const AppState(
+          animationPaths: {'two-sum': '/private/legacy.gif'},
+        ),
+        materialStore: LocalMaterialStore(
+          supportDirectory: Directory('${root.path}/support'),
+          picker: (_) async => picks.removeAt(0),
+        ),
+      );
+      addTearDown(controller.dispose);
+
+      expect(controller.materials.single.name, 'legacy.gif');
+      await controller.importAnimation();
+      expect(controller.materials.last.name, 'trace.gif');
+      expect(controller.animationPath, controller.materials.last.path);
+
+      controller.selectProblem(problems.last);
+      expect(controller.materials, isEmpty);
+      await controller.addMaterial();
+      expect(controller.materials.single.name, 'notes.txt');
+
+      controller.selectProblem(problems.first);
+      expect(
+        controller.materials.map((item) => item.name),
+        contains('trace.gif'),
+      );
+    },
+  );
+
+  test('replaces, opens and removes a material after saving state', () async {
+    final root = await Directory.systemTemp.createTemp('olt-controller-');
+    addTearDown(() => root.delete(recursive: true));
+    final support = Directory('${root.path}/support');
+    final store = LocalMaterialStore(
+      supportDirectory: support,
+      picker: (_) async => PlatformFile(
+        name: 'replacement.md',
+        size: 3,
+        bytes: Uint8List.fromList([1, 2, 3]),
+      ),
+    );
+    final oldFile = File('${support.path}/materials/two-sum/material-old.txt');
+    await oldFile.parent.create(recursive: true);
+    await oldFile.writeAsString('old');
+    final old = LearningMaterial(
+      id: 'old',
+      name: 'old.txt',
+      path: oldFile.path,
+      kind: LearningMaterialKind.text,
+      extension: 'txt',
+      sizeBytes: 3,
+    );
+    final events = <String>[];
+    final controller = AppController(
+      problem: Problem.fromJson(
+        jsonDecode(_problemJson) as Map<String, Object?>,
+      ),
+      state: AppState(
+        materials: {
+          'two-sum': [old],
+        },
+      ),
+      materialStore: store,
+      materialOpener: (material) async {
+        events.add('open:${material.name}');
+        return null;
+      },
+      onSave: (state) async {
+        final values = state.materials['two-sum'] ?? const [];
+        events.add('save:${values.isEmpty ? 'empty' : values.single.name}');
+      },
+    );
+    addTearDown(controller.dispose);
+
+    await controller.replaceMaterial(old);
+    final replacement = controller.materials.single;
+    expect(events.first, 'save:replacement.md');
+    expect(await oldFile.exists(), isFalse);
+
+    await controller.openMaterial(replacement);
+    expect(events, contains('open:replacement.md'));
+
+    await controller.removeMaterial(replacement);
+    expect(events, contains('save:empty'));
+    expect(await File(replacement.path).exists(), isFalse);
+  });
+
+  test('keeps notes separate when navigating between problems', () {
+    final first = Problem.fromJson(
+      jsonDecode(_problemJson) as Map<String, Object?>,
+    );
+    final second = Problem.fromJson(
+      jsonDecode(_problemJson.replaceAll('two-sum', 'three-sum'))
+          as Map<String, Object?>,
+    );
+    final controller = AppController(
+      problem: first,
+      problems: [first, second],
+      state: const AppState(notes: {'two-sum': 'map note'}),
+    );
+    addTearDown(controller.dispose);
+
+    expect(controller.notes, 'map note');
+    controller.selectProblem(second);
+    controller.updateNotes('pointer note');
+    controller.selectProblem(first);
+    expect(controller.notes, 'map note');
+    expect(controller.state.notes['three-sum'], 'pointer note');
   });
 }
 

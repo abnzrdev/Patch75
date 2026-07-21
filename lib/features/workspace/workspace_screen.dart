@@ -4,8 +4,10 @@ import 'package:re_editor/re_editor.dart';
 import '../../app/app_controller.dart';
 import '../../core/design/olt_design.dart';
 import '../judge/judge_models.dart';
-import '../animations/animation_viewer.dart';
+import '../materials/learning_materials_panel.dart';
+import '../problems/problem.dart';
 import '../problems/problem_browser.dart';
+import 'python_code_theme.dart';
 
 class WorkspaceScreen extends StatefulWidget {
   const WorkspaceScreen({required this.controller, super.key});
@@ -123,8 +125,8 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
                     label: 'RESULTS',
                   ),
                   NavigationDestination(
-                    icon: Icon(Icons.animation),
-                    label: 'ANIMATION',
+                    icon: Icon(Icons.attach_file),
+                    label: 'MATERIALS',
                   ),
                   NavigationDestination(
                     icon: Icon(Icons.notes),
@@ -169,9 +171,13 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
 
   Widget _problemPane() => OltPanel(
     panelKey: const Key('problem-pane'),
-    label: 'PROBLEM/0001 · REF/BLIND75-TWO-SUM · EASY',
+    label:
+        'PROBLEM/${widget.controller.problem.id.toString().padLeft(4, '0')} · '
+        'REF/${widget.controller.problem.slug.toUpperCase()} · '
+        '${widget.controller.problem.difficulty.toUpperCase()}',
     child: SelectionArea(
       child: ListView(
+        key: const Key('problem-scroll'),
         padding: const EdgeInsets.all(OltSpace.x4),
         children: [
           Row(
@@ -189,33 +195,64 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
           ),
           const SizedBox(height: OltSpace.x4),
           Text(
+            key: const Key('problem-title'),
             widget.controller.problem.title.toUpperCase(),
-            maxLines: 2,
             style: const TextStyle(
-              fontSize: 64,
-              height: .9,
+              color: OltColors.foreground,
+              fontSize: 44,
+              height: 1,
               fontWeight: FontWeight.w900,
-              letterSpacing: -2,
+              letterSpacing: -1.5,
             ),
           ),
-          const SizedBox(height: OltSpace.x4),
-          Text(
-            widget.controller.problem.description,
-            style: const TextStyle(fontSize: 16, height: 1.5),
+          const SizedBox(height: OltSpace.x3),
+          Wrap(
+            spacing: OltSpace.x2,
+            runSpacing: OltSpace.x1,
+            children: [
+              for (final topic in widget.controller.problem.topics)
+                _Tag(topic.toUpperCase()),
+            ],
           ),
-          const SizedBox(height: OltSpace.x4),
-          for (final example in widget.controller.problem.examples) ...[
-            const Text('EXAMPLE', style: microStyle),
-            const SizedBox(height: OltSpace.x1),
-            Text('INPUT  ${example.input}'),
-            Text('OUTPUT ${example.output}'),
-            if (example.explanation != null) Text(example.explanation!),
+          const SizedBox(height: OltSpace.x6),
+          const Text('DESCRIPTION', style: microStyle),
+          const SizedBox(height: OltSpace.x2),
+          _InlineCodeText(
+            key: const Key('problem-description'),
+            text: widget.controller.problem.description,
+          ),
+          const SizedBox(height: OltSpace.x6),
+          for (final (index, example)
+              in widget.controller.problem.examples.indexed) ...[
+            _ExampleCard(index: index + 1, example: example),
             const SizedBox(height: OltSpace.x4),
           ],
           const Text('CONSTRAINTS', style: microStyle),
-          const SizedBox(height: OltSpace.x1),
-          for (final constraint in widget.controller.problem.constraints)
-            Text('— $constraint'),
+          const SizedBox(height: OltSpace.x2),
+          Container(
+            key: const Key('constraint-list'),
+            padding: const EdgeInsets.all(OltSpace.x3),
+            decoration: const BoxDecoration(
+              color: OltColors.raised,
+              border: Border.fromBorderSide(
+                BorderSide(color: OltColors.border),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (final constraint in widget.controller.problem.constraints)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: OltSpace.x2),
+                    child: _InlineCodeText(
+                      text: '• $constraint',
+                      compact: true,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(height: OltSpace.x4),
         ],
       ),
     ),
@@ -228,8 +265,10 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
       children: [
         Expanded(
           child: CodeEditor(
+            key: const Key('code-editor'),
             controller: _code,
-            style: const CodeEditorStyle(
+            padding: const EdgeInsets.all(OltSpace.x3),
+            style: CodeEditorStyle(
               fontFamily: 'monospace',
               fontSize: 15,
               fontHeight: 1.45,
@@ -237,6 +276,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
               backgroundColor: OltColors.background,
               cursorColor: OltColors.signal,
               cursorLineColor: OltColors.raised,
+              codeTheme: pythonCodeTheme,
             ),
             wordWrap: false,
             indicatorBuilder:
@@ -311,16 +351,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(OltSpace.x2),
-            child: TextField(
-              controller: _notes,
-              expands: true,
-              maxLines: null,
-              minLines: null,
-              decoration: const InputDecoration(
-                labelText: 'NOTES/LOCAL',
-                alignLabelWithHint: true,
-              ),
-            ),
+            child: _notesContent(),
           ),
         ),
       ],
@@ -358,11 +389,32 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
         ),
         const SizedBox(height: OltSpace.x2),
         for (final test in result.testResults)
-          Padding(
-            padding: const EdgeInsets.only(bottom: OltSpace.x1),
-            child: Text(
-              '${test.passed ? 'PASS' : 'FAIL'} · ${test.id} · '
-              '${test.error ?? test.output}',
+          Container(
+            margin: const EdgeInsets.only(bottom: OltSpace.x2),
+            padding: const EdgeInsets.all(OltSpace.x2),
+            decoration: const BoxDecoration(
+              color: OltColors.raised,
+              border: Border.fromBorderSide(
+                BorderSide(color: OltColors.border),
+              ),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  test.passed ? 'PASS' : 'FAIL',
+                  style: microStyle.copyWith(
+                    color: test.passed ? OltColors.signal : OltColors.danger,
+                  ),
+                ),
+                const SizedBox(width: OltSpace.x2),
+                Expanded(
+                  child: Text(
+                    '${test.id}\n${test.error ?? test.output}',
+                    style: const TextStyle(height: 1.4),
+                  ),
+                ),
+              ],
             ),
           ),
         if (result.stderr.isNotEmpty)
@@ -373,35 +425,167 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
 
   Widget _animationPane() => OltPanel(
     panelKey: const Key('animation-pane'),
-    label: 'ANIMATION/LOCAL',
+    label: 'MATERIALS/LOCAL · STORAGE/PRIVATE',
     child: _animationContent(),
   );
 
-  Widget _animationContent() => AnimationViewer(
-    key: ValueKey(
-      '${widget.controller.problem.slug}:'
-      '${widget.controller.animationPath ?? ''}',
-    ),
+  Widget _animationContent() => LearningMaterialsPanel(
+    key: ValueKey(widget.controller.problem.slug),
     title: widget.controller.problem.title,
-    assetPath: widget.controller.animationPath,
-    importing: widget.controller.importingAnimation,
-    errorMessage: widget.controller.animationError,
-    onImport: widget.controller.importAnimation,
-    onRemove: widget.controller.removeAnimation,
+    materials: widget.controller.materials,
+    busy: widget.controller.importingMaterial,
+    errorMessage:
+        widget.controller.materialError ?? widget.controller.animationError,
+    onImportAnimation: widget.controller.importAnimation,
+    onAddMaterial: widget.controller.addMaterial,
+    onReplace: widget.controller.replaceMaterial,
+    onRemove: widget.controller.removeMaterial,
+    onExternalOpen: widget.controller.openMaterial,
   );
 
   Widget _notesPane() => OltPanel(
     panelKey: const Key('notes-pane'),
-    label: 'NOTES/TWO-SUM · STORAGE/LOCAL',
+    label:
+        'NOTES/${widget.controller.problem.slug.toUpperCase()} · STORAGE/LOCAL',
     child: Padding(
       padding: const EdgeInsets.all(OltSpace.x2),
-      child: TextField(
-        controller: _notes,
-        expands: true,
-        maxLines: null,
-        minLines: null,
-        decoration: const InputDecoration(alignLabelWithHint: true),
+      child: _notesContent(),
+    ),
+  );
+
+  Widget _notesContent() => Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      Expanded(
+        child: TextField(
+          key: const Key('notes-field'),
+          controller: _notes,
+          expands: true,
+          maxLines: null,
+          minLines: null,
+          textAlignVertical: TextAlignVertical.top,
+          scrollPadding: const EdgeInsets.all(OltSpace.x3),
+          decoration: const InputDecoration(
+            hintText: 'Capture the idea, invariant, or mistake to revisit…',
+            alignLabelWithHint: true,
+            contentPadding: EdgeInsets.all(OltSpace.x3),
+          ),
+        ),
       ),
+      const SizedBox(height: OltSpace.x1),
+      ValueListenableBuilder<TextEditingValue>(
+        valueListenable: _notes,
+        builder: (_, value, _) => Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            '${value.text.characters.length} CHARACTERS',
+            key: const Key('notes-count'),
+            style: microStyle,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+class _Tag extends StatelessWidget {
+  const _Tag(this.label);
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(
+      horizontal: OltSpace.x2,
+      vertical: OltSpace.x1,
+    ),
+    decoration: const BoxDecoration(
+      color: OltColors.raised,
+      border: Border.fromBorderSide(BorderSide(color: OltColors.border)),
+    ),
+    child: Text(label, style: microStyle),
+  );
+}
+
+class _InlineCodeText extends StatelessWidget {
+  const _InlineCodeText({required this.text, this.compact = false, super.key});
+
+  final String text;
+  final bool compact;
+
+  @override
+  Widget build(BuildContext context) {
+    final spans = <TextSpan>[];
+    final pattern = RegExp(r'`([^`]+)`');
+    var offset = 0;
+    for (final match in pattern.allMatches(text)) {
+      if (match.start > offset) {
+        spans.add(TextSpan(text: text.substring(offset, match.start)));
+      }
+      spans.add(
+        TextSpan(
+          text: match.group(1),
+          style: const TextStyle(
+            color: OltColors.signal,
+            backgroundColor: OltColors.raised,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      );
+      offset = match.end;
+    }
+    if (offset < text.length) spans.add(TextSpan(text: text.substring(offset)));
+    return RichText(
+      text: TextSpan(
+        style: TextStyle(
+          color: OltColors.readable,
+          fontFamily: 'monospace',
+          fontSize: compact ? 13 : 15,
+          height: compact ? 1.45 : 1.65,
+        ),
+        children: spans,
+      ),
+    );
+  }
+}
+
+class _ExampleCard extends StatelessWidget {
+  const _ExampleCard({required this.index, required this.example});
+
+  final int index;
+  final ProblemExample example;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    key: ValueKey('example-$index'),
+    padding: const EdgeInsets.all(OltSpace.x3),
+    decoration: const BoxDecoration(
+      color: OltColors.raised,
+      border: Border(
+        left: BorderSide(color: OltColors.signal, width: 2),
+        top: BorderSide(color: OltColors.border),
+        right: BorderSide(color: OltColors.border),
+        bottom: BorderSide(color: OltColors.border),
+      ),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('EXAMPLE ${index.toString().padLeft(2, '0')}', style: microStyle),
+        const SizedBox(height: OltSpace.x2),
+        const Text('INPUT', style: microStyle),
+        _InlineCodeText(text: example.input, compact: true),
+        const SizedBox(height: OltSpace.x2),
+        const Text('OUTPUT', style: microStyle),
+        _InlineCodeText(text: example.output, compact: true),
+        if (example.explanation != null) ...[
+          const SizedBox(height: OltSpace.x2),
+          Text(
+            example.explanation!,
+            style: const TextStyle(color: OltColors.readable),
+          ),
+        ],
+      ],
     ),
   );
 }

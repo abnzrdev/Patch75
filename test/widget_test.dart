@@ -6,6 +6,8 @@ import 'package:offline_leetcode_trainer/app/app_controller.dart';
 import 'package:offline_leetcode_trainer/app/offline_trainer_app.dart';
 import 'package:offline_leetcode_trainer/core/storage/app_state.dart';
 import 'package:offline_leetcode_trainer/features/problems/problem.dart';
+import 'package:offline_leetcode_trainer/features/workspace/python_code_theme.dart';
+import 'package:re_editor/re_editor.dart';
 
 void main() {
   late Problem problem;
@@ -26,11 +28,20 @@ void main() {
 
     expect(find.text('OFFLINE LEETCODE TRAINER'), findsOneWidget);
     expect(find.textContaining('PROBLEM/0001'), findsOneWidget);
-    expect(find.text('Given an array of integers'), findsOneWidget);
+    expect(
+      tester
+          .widgetList<RichText>(find.byType(RichText))
+          .any(
+            (widget) => widget.text.toPlainText().contains(
+              'Given an array of integers',
+            ),
+          ),
+      isTrue,
+    );
     expect(find.byKey(const Key('problem-pane')), findsOneWidget);
     expect(find.byKey(const Key('editor-pane')), findsOneWidget);
     expect(find.byKey(const Key('right-pane')), findsOneWidget);
-    expect(find.text('ANIM/LOCAL-ASSET-MISSING'), findsOneWidget);
+    expect(find.text('NO LOCAL MATERIALS'), findsOneWidget);
     await _disposeEditor(tester);
   });
 
@@ -71,7 +82,7 @@ void main() {
     expect(find.text('PROBLEM'), findsOneWidget);
     expect(find.text('CODE'), findsOneWidget);
     expect(find.text('RESULTS'), findsOneWidget);
-    expect(find.text('ANIMATION'), findsOneWidget);
+    expect(find.text('MATERIALS'), findsOneWidget);
     expect(find.text('NOTES'), findsOneWidget);
 
     await tester.tap(find.text('CODE'));
@@ -95,6 +106,100 @@ void main() {
     );
 
     expect(find.text('PROBLEM'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    await _disposeEditor(tester);
+  });
+
+  testWidgets('editor and notes fill from the top-left', (tester) async {
+    tester.view.physicalSize = const Size(1280, 720);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    await tester.pumpWidget(
+      OfflineTrainerApp(
+        controller: AppController(problem: problem, state: const AppState()),
+      ),
+    );
+
+    final editor = tester.widget<CodeEditor>(
+      find.byKey(const Key('code-editor')),
+    );
+    expect(editor.style!.codeTheme, pythonCodeTheme);
+    expect(editor.padding, const EdgeInsets.all(12));
+
+    final notes = tester.widget<TextField>(
+      find.byKey(const Key('notes-field')),
+    );
+    expect(notes.textAlignVertical, TextAlignVertical.top);
+    expect(notes.expands, isTrue);
+    expect(find.text('0 CHARACTERS'), findsOneWidget);
+    final notesTop = tester.getTopLeft(find.byKey(const Key('notes-field'))).dy;
+    final editableTop = tester
+        .getTopLeft(
+          find.descendant(
+            of: find.byKey(const Key('notes-field')),
+            matching: find.byType(EditableText),
+          ),
+        )
+        .dy;
+    expect(editableTop - notesTop, lessThan(24));
+    await _disposeEditor(tester);
+  });
+
+  testWidgets('long problem descriptions scroll through constraints', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 780);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final longProblem = Problem.fromJson({
+      ...(jsonDecode(_twoSumJson) as Map<String, Object?>),
+      'description': List.filled(
+        20,
+        'Readable paragraph with `inline_code`.',
+      ).join('\n\n'),
+      'constraints': ['first constraint', 'FINAL CONSTRAINT'],
+    });
+    await tester.pumpWidget(
+      OfflineTrainerApp(
+        controller: AppController(
+          problem: longProblem,
+          state: const AppState(),
+        ),
+      ),
+    );
+
+    expect(find.byKey(const Key('problem-description')), findsOneWidget);
+    for (var i = 0; i < 8; i++) {
+      await tester.drag(
+        find.byKey(const Key('problem-scroll')),
+        const Offset(0, -500),
+      );
+      await tester.pump();
+    }
+    expect(find.byKey(const Key('constraint-list')), findsOneWidget);
+    expect(
+      tester
+          .widgetList<RichText>(find.byType(RichText))
+          .any(
+            (widget) => widget.text.toPlainText().contains('FINAL CONSTRAINT'),
+          ),
+      isTrue,
+    );
+    expect(tester.takeException(), isNull);
+    await _disposeEditor(tester);
+  });
+
+  testWidgets('Android landscape layout has no overflow', (tester) async {
+    tester.view.physicalSize = const Size(780, 390);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    await tester.pumpWidget(
+      OfflineTrainerApp(
+        controller: AppController(problem: problem, state: const AppState()),
+      ),
+    );
+
+    expect(find.byKey(const Key('problem-pane')), findsOneWidget);
     expect(tester.takeException(), isNull);
     await _disposeEditor(tester);
   });

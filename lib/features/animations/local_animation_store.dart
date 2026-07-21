@@ -65,10 +65,14 @@ class LocalAnimationStore {
         }
 
         await source.copy(temporary.path);
-      } else if (picked.bytes != null) {
-        await temporary.writeAsBytes(picked.bytes!, flush: true);
       } else {
-        throw StateError('Selected animation has no readable file data');
+        final bytes = await picked.readAsBytes();
+        if (bytes.isEmpty || bytes.length > maxFileBytes) {
+          throw const FormatException(
+            'Animation must be between 1 byte and 64 MB',
+          );
+        }
+        await temporary.writeAsBytes(bytes, flush: true);
       }
 
       await temporary.rename(target.path);
@@ -101,13 +105,10 @@ class LocalAnimationStore {
   static Future<PlatformFile?> _pickFile() async {
     final extensions = allowedExtensions.toList()..sort();
 
-    final result = await FilePicker.pickFiles(
-      allowMultiple: false,
+    return FilePicker.pickFile(
       type: FileType.custom,
       allowedExtensions: extensions,
     );
-
-    return result?.files.single;
   }
 
   static String _extensionFrom(String filename) {

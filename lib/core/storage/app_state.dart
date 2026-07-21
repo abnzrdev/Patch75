@@ -1,3 +1,5 @@
+import '../../features/materials/learning_material.dart';
+
 class AppState {
   const AppState({
     this.schemaVersion = currentSchemaVersion,
@@ -9,6 +11,7 @@ class AppState {
     this.progress = const {},
     this.testHistory = const {},
     this.animationPaths = const {},
+    this.materials = const {},
     this.settings = const {},
     this.importedDataVersion = 1,
   });
@@ -28,11 +31,23 @@ class AppState {
       (key, value) => MapEntry(key as String, List<String>.from(value as List)),
     ),
     animationPaths: _stringMap(json['animationPaths']),
+    materials: (json['materials'] as Map? ?? const {}).map(
+      (key, value) => MapEntry(
+        key as String,
+        (value as List)
+            .map(
+              (item) => LearningMaterial.fromJson(
+                Map<String, Object?>.from(item as Map),
+              ),
+            )
+            .toList(),
+      ),
+    ),
     settings: Map<String, Object?>.from(json['settings'] as Map? ?? const {}),
     importedDataVersion: json['importedDataVersion'] as int? ?? 1,
   );
 
-  static const currentSchemaVersion = 3;
+  static const currentSchemaVersion = 4;
 
   final int schemaVersion;
   final String selectedProblemSlug;
@@ -43,6 +58,7 @@ class AppState {
   final Map<String, String> progress;
   final Map<String, List<String>> testHistory;
   final Map<String, String> animationPaths;
+  final Map<String, List<LearningMaterial>> materials;
   final Map<String, Object?> settings;
   final int importedDataVersion;
 
@@ -55,6 +71,7 @@ class AppState {
     Map<String, String>? progress,
     Map<String, List<String>>? testHistory,
     Map<String, String>? animationPaths,
+    Map<String, List<LearningMaterial>>? materials,
     Map<String, Object?>? settings,
     int? importedDataVersion,
   }) => AppState(
@@ -66,6 +83,7 @@ class AppState {
     progress: progress ?? this.progress,
     testHistory: testHistory ?? this.testHistory,
     animationPaths: animationPaths ?? this.animationPaths,
+    materials: materials ?? this.materials,
     settings: settings ?? this.settings,
     importedDataVersion: importedDataVersion ?? this.importedDataVersion,
   );
@@ -80,6 +98,10 @@ class AppState {
     'progress': progress,
     'testHistory': testHistory,
     'animationPaths': animationPaths,
+    'materials': materials.map(
+      (key, value) =>
+          MapEntry(key, value.map((item) => item.toJson()).toList()),
+    ),
     'settings': settings,
     'importedDataVersion': importedDataVersion,
   };
@@ -96,6 +118,7 @@ class AppState {
       _mapsEqual(progress, other.progress) &&
       _historyEqual(testHistory, other.testHistory) &&
       _mapsEqual(animationPaths, other.animationPaths) &&
+      _materialMapsEqual(materials, other.materials) &&
       _mapsEqual(settings, other.settings) &&
       importedDataVersion == other.importedDataVersion;
 
@@ -114,6 +137,11 @@ class AppState {
       ),
     ),
     Object.hashAllUnordered(animationPaths.entries),
+    Object.hashAllUnordered(
+      materials.entries.map(
+        (entry) => Object.hash(entry.key, Object.hashAll(entry.value)),
+      ),
+    ),
     Object.hashAllUnordered(settings.entries),
     importedDataVersion,
   );
@@ -135,6 +163,18 @@ bool _historyEqual(
     left.entries.every((entry) {
       final values = right[entry.key];
 
+      return values != null &&
+          values.length == entry.value.length &&
+          values.indexed.every((item) => item.$2 == entry.value[item.$1]);
+    });
+
+bool _materialMapsEqual(
+  Map<String, List<LearningMaterial>> left,
+  Map<String, List<LearningMaterial>> right,
+) =>
+    left.length == right.length &&
+    left.entries.every((entry) {
+      final values = right[entry.key];
       return values != null &&
           values.length == entry.value.length &&
           values.indexed.every((item) => item.$2 == entry.value[item.$1]);

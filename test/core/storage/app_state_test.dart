@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:offline_leetcode_trainer/core/storage/app_state.dart';
+import 'package:offline_leetcode_trainer/features/materials/learning_material.dart';
 
 void main() {
   test('loads defaults for missing fields and migrates old state', () {
@@ -16,6 +17,7 @@ void main() {
     expect(state.timerSeconds, isEmpty);
     expect(state.testHistory, isEmpty);
     expect(state.animationPaths, isEmpty);
+    expect(state.materials, isEmpty);
     expect(state.importedDataVersion, 1);
   });
 
@@ -31,10 +33,54 @@ void main() {
         'two-sum': ['passed:3/3'],
       },
       animationPaths: {'two-sum': '/private/animation.gif'},
+      materials: {
+        'two-sum': [
+          LearningMaterial(
+            id: 'material-1',
+            name: 'notes.txt',
+            path: '/private/material-1.txt',
+            kind: LearningMaterialKind.text,
+            extension: 'txt',
+            sizeBytes: 12,
+          ),
+        ],
+      },
       settings: {'compactMetadata': true},
       importedDataVersion: 1,
     );
 
     expect(AppState.fromJson(state.toJson()), state);
+  });
+
+  test('keeps materials isolated by problem', () {
+    final state = AppState.fromJson({
+      'animationPaths': {'two-sum': '/private/legacy.gif'},
+      'materials': {
+        'two-sum': [
+          {
+            'id': 'one',
+            'name': 'one.pdf',
+            'path': '/private/one.pdf',
+            'kind': 'pdf',
+            'extension': 'pdf',
+            'sizeBytes': 10,
+          },
+        ],
+        'three-sum': [
+          {
+            'id': 'two',
+            'name': 'two.txt',
+            'path': '/private/two.txt',
+            'kind': 'text',
+            'extension': 'txt',
+            'sizeBytes': 20,
+          },
+        ],
+      },
+    });
+
+    expect(state.animationPaths['two-sum'], '/private/legacy.gif');
+    expect(state.materials['two-sum']!.single.id, 'one');
+    expect(state.materials['three-sum']!.single.id, 'two');
   });
 }
