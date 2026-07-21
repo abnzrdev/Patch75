@@ -12,6 +12,7 @@ import 'features/animations/local_animation_store.dart';
 import 'features/judge/judge_service.dart';
 import 'features/materials/local_material_store.dart';
 import 'features/problems/problem_repository.dart';
+import 'features/review/fsrs_scheduler_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +40,10 @@ Future<void> main() async {
         return 'Could not open ${material.name}: $error';
       }
     },
+    reviewScheduler: FsrsSchedulerService(
+      desiredRetention:
+          (state.settings['desiredRetention'] as num?)?.toDouble() ?? 0.90,
+    ),
     judgeService: kIsWeb
         ? const UnsupportedJudgeService()
         : switch (defaultTargetPlatform) {
@@ -49,6 +54,7 @@ Future<void> main() async {
             _ => const UnsupportedJudgeService(),
           },
   );
+  await controller.initializeReviews();
   unawaited(controller.refreshJudgeAvailability());
   runApp(OfflineTrainerApp(controller: controller));
 }

@@ -7,6 +7,8 @@ import '../judge/judge_models.dart';
 import '../materials/learning_materials_panel.dart';
 import '../problems/problem.dart';
 import '../problems/problem_browser.dart';
+import '../review/review_queue_screen.dart';
+import '../review/review_summary_sheet.dart';
 import 'python_code_theme.dart';
 
 class WorkspaceScreen extends StatefulWidget {
@@ -24,6 +26,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
   late final TextEditingController _notes;
   late String _loadedSlug;
   bool _pausedByLifecycle = false;
+  bool _reviewPausedByLifecycle = false;
 
   @override
   void initState() {
@@ -61,8 +64,42 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
     ),
   );
 
+  Future<void> _openReviews() => showDialog<void>(
+    context: context,
+    builder: (context) => Dialog.fullscreen(
+      child: ReviewQueueScreen(controller: widget.controller),
+    ),
+  );
+
+  Future<void> _openReviewSummary() => showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    builder: (_) => FractionallySizedBox(
+      heightFactor: .9,
+      child: ReviewSummarySheet(controller: widget.controller),
+    ),
+  );
+
+  Future<void> _submit() async {
+    await widget.controller.runTests(submit: true);
+    if (mounted && widget.controller.activeReviewAttempt != null) {
+      await _openReviewSummary();
+    }
+  }
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    final review = widget.controller.activeReviewAttempt;
+    if (review != null) {
+      final paused = review.timer['paused'] as bool? ?? false;
+      if (state == AppLifecycleState.resumed && _reviewPausedByLifecycle) {
+        _reviewPausedByLifecycle = false;
+        widget.controller.toggleReviewPause();
+      } else if (state != AppLifecycleState.resumed && !paused) {
+        _reviewPausedByLifecycle = true;
+        widget.controller.toggleReviewPause();
+      }
+    }
     if (state == AppLifecycleState.resumed) {
       if (_pausedByLifecycle) {
         _pausedByLifecycle = false;
@@ -100,6 +137,8 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
               _StatusRail(
                 controller: widget.controller,
                 onBrowse: _openBrowser,
+                onReview: _openReviews,
+                onReviewSummary: _openReviewSummary,
               ),
               Expanded(
                 child: compact
@@ -316,7 +355,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
                   onPressed:
                       widget.controller.judgeAvailable &&
                           !widget.controller.judging
-                      ? () => widget.controller.runTests(submit: true)
+                      ? _submit
                       : null,
                 ),
                 if (constraints.maxWidth > 500) ...[
@@ -591,10 +630,17 @@ class _ExampleCard extends StatelessWidget {
 }
 
 class _StatusRail extends StatelessWidget {
-  const _StatusRail({required this.controller, required this.onBrowse});
+  const _StatusRail({
+    required this.controller,
+    required this.onBrowse,
+    required this.onReview,
+    required this.onReviewSummary,
+  });
 
   final AppController controller;
   final VoidCallback onBrowse;
+  final VoidCallback onReview;
+  final VoidCallback onReviewSummary;
 
   @override
   Widget build(BuildContext context) {
@@ -636,7 +682,47 @@ class _StatusRail extends StatelessWidget {
                 )
               else
                 const Spacer(),
-              Text('T-$time', style: microStyle),
+              if (compact)
+                Flexible(
+                  child: Text(
+                    'T-$time',
+                    style: microStyle,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                )
+              else
+                Text('T-$time', style: microStyle),
+              if (controller.activeReviewAttempt != null) ...[
+                const SizedBox(width: OltSpace.x2),
+                if (!compact)
+                  Text(
+                    'REVIEW/TIMED · TARGET/${controller.reviewTargetMinutes(controller.problem.difficulty)}M',
+                    style: microStyle.copyWith(color: OltColors.signal),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                IconButton(
+                  tooltip:
+                      controller.activeReviewAttempt!.timer['paused'] == true
+                      ? 'Resume review'
+                      : 'Pause review',
+                  onPressed: controller.toggleReviewPause,
+                  icon: Icon(
+                    controller.activeReviewAttempt!.timer['paused'] == true
+                        ? Icons.play_arrow
+                        : Icons.pause,
+                  ),
+                ),
+                IconButton(
+                  tooltip: 'End review and choose rating',
+                  onPressed: onReviewSummary,
+                  icon: const Icon(Icons.rate_review_outlined),
+                ),
+                IconButton(
+                  tooltip: 'Abandon review',
+                  onPressed: controller.abandonReview,
+                  icon: const Icon(Icons.close),
+                ),
+              ],
               IconButton(
                 tooltip: controller.timerPaused
                     ? 'Resume timer'
@@ -654,6 +740,21 @@ class _StatusRail extends StatelessWidget {
                   tooltip: 'Browse Blind 75',
                   onPressed: onBrowse,
                   icon: const Icon(Icons.list, size: 18),
+                ),
+              if (!compact)
+                OltButton(
+                  label: 'REVIEW/${controller.dueReviewCount}',
+                  signal: controller.dueReviewCount > 0,
+                  onPressed: onReview,
+                )
+              else
+                IconButton(
+                  tooltip: '${controller.dueReviewCount} reviews due',
+                  onPressed: onReview,
+                  icon: Badge(
+                    label: Text('${controller.dueReviewCount}'),
+                    child: const Icon(Icons.event_repeat, size: 18),
+                  ),
                 ),
               if (!compact)
                 OltButton(

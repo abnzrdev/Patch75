@@ -10,6 +10,10 @@ import '../features/judge/judge_service.dart';
 import '../features/materials/learning_material.dart';
 import '../features/materials/local_material_store.dart';
 import '../features/problems/problem.dart';
+import '../features/review/fsrs_scheduler_service.dart';
+import '../features/review/review_attempt.dart';
+import '../features/review/review_models.dart';
+import '../features/review/review_repository.dart';
 
 class AppController extends ChangeNotifier {
   AppController({
@@ -20,10 +24,18 @@ class AppController extends ChangeNotifier {
     this.animationStore,
     this.materialStore,
     this.materialOpener,
+    ReviewSchedulerService? reviewScheduler,
+    ReviewRepository? reviewRepository,
+    DateTime Function()? now,
+    this.platformName = 'unknown',
     JudgeService? judgeService,
   }) : problem = problem,
        problems = problems ?? [problem],
-       judgeService = judgeService ?? const UnsupportedJudgeService() {
+       judgeService = judgeService ?? const UnsupportedJudgeService(),
+       reviewScheduler = reviewScheduler ?? FsrsSchedulerService(),
+       now = now ?? DateTime.now {
+    this.reviewRepository =
+        reviewRepository ?? LocalReviewRepository(this.reviewScheduler);
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (!_timerPaused) {
         final timers = {...state.timerSeconds};
@@ -41,6 +53,10 @@ class AppController extends ChangeNotifier {
   final LocalMaterialStore? materialStore;
   final Future<String?> Function(LearningMaterial material)? materialOpener;
   final JudgeService judgeService;
+  ReviewSchedulerService reviewScheduler;
+  late final ReviewRepository reviewRepository;
+  final DateTime Function() now;
+  final String platformName;
   late final Timer _timer;
   AppState state;
   bool _timerPaused = false;
@@ -52,6 +68,40 @@ class AppController extends ChangeNotifier {
   String? animationError;
   bool importingMaterial = false;
   String? materialError;
+
+  ReviewAttempt? get activeReviewAttempt => state.activeReviewAttemptId == null
+      ? null
+      : state.reviewAttempts[state.activeReviewAttemptId];
+  List<ReviewQueueItem> get reviewQueue =>
+      reviewRepository.queue(state.reviewRecords, nowUtc: now().toUtc());
+  int get dueReviewCount => reviewQueue
+      .where((item) => item.bucket != ReviewQueueBucket.upcoming)
+      .length;
+  int get activeReviewElapsedMilliseconds {
+    final attempt = activeReviewAttempt;
+    if (attempt == null) return 0;
+    return ReviewTimer.fromJson(attempt.timer).elapsedAt(now().toUtc());
+  }
+
+  int reviewTargetMinutes(String difficulty) =>
+      (state.settings['reviewTarget${difficulty.toLowerCase()}Minutes']
+          as int?) ??
+      switch (difficulty.toLowerCase()) {
+        'easy' => 20,
+        'hard' => 50,
+        _ => 35,
+      };
+
+  Future<void> initializeReviews() async {
+    final records = await reviewRepository.migrateSolved(
+      progress: state.progress,
+      records: state.reviewRecords,
+      nowUtc: now().toUtc(),
+    );
+    if (mapEquals(records, state.reviewRecords)) return;
+    state = state.copyWith(reviewRecords: records);
+    _changed();
+  }
 
   int get elapsedSeconds => state.timerSeconds[problem.slug] ?? 0;
   bool get timerPaused => _timerPaused;
@@ -120,9 +170,214 @@ class AppController extends ChangeNotifier {
         ],
       },
     );
-    if (submit && judgeResult!.status == JudgeStatus.passed) markSolved();
+    _recordJudgeTelemetry(submit: submit, result: judgeResult!);
+    if (submit && judgeResult!.status == JudgeStatus.passed) {
+      markSolved();
+      await _ensureReviewCard(problem.slug);
+    }
     _save();
     notifyListeners();
+  }
+
+  Future<void> startReview(Problem value) async {
+    selectProblem(value);
+    await _ensureReviewCard(value.slug);
+    final instant = now().toUtc();
+    final id = 'attempt-${value.slug}-${instant.microsecondsSinceEpoch}';
+    final attempt = ReviewAttempt.start(
+      id: id,
+      problemSlug: value.slug,
+      startedAtUtc: instant,
+      isFsrsReview: true,
+      dueDateBeforeUtc: state.reviewRecords[value.slug]?.nextDueUtc,
+      platform: platformName,
+    );
+    state = state.copyWith(
+      reviewAttempts: {...state.reviewAttempts, id: attempt},
+      activeReviewAttemptId: id,
+    );
+    _changed();
+  }
+
+  void toggleReviewPause() {
+    final attempt = activeReviewAttempt;
+    if (attempt == null) return;
+    final timer = ReviewTimer.fromJson(attempt.timer);
+    if (timer.paused) {
+      timer.resume(now().toUtc());
+    } else {
+      timer.pause(now().toUtc());
+    }
+    _replaceAttempt(
+      attempt.copyWith(timer: timer.toJson(), updatedAtUtc: now()),
+    );
+  }
+
+  void abandonReview() {
+    final attempt = activeReviewAttempt;
+    if (attempt == null) return;
+    final instant = now().toUtc();
+    final timer = ReviewTimer.fromJson(attempt.timer)..pause(instant);
+    _replaceAttempt(
+      attempt
+          .finish(
+            finishedAtUtc: instant,
+            elapsedMilliseconds: timer.elapsedAt(instant),
+            abandoned: true,
+          )
+          .copyWith(timer: timer.toJson()),
+      clearActive: true,
+    );
+  }
+
+  Future<ReviewScheduleResult?> rateActiveReview(ReviewRating rating) async {
+    final attempt = activeReviewAttempt;
+    final record = attempt == null
+        ? null
+        : state.reviewRecords[attempt.problemSlug];
+    if (attempt == null || record == null) return null;
+    final instant = now().toUtc();
+    final timer = ReviewTimer.fromJson(attempt.timer)..pause(instant);
+    final scheduled = await reviewScheduler.rate(
+      record,
+      rating,
+      reviewedAtUtc: instant,
+      reviewDurationMs: timer.elapsedAt(instant),
+    );
+    final finished = attempt
+        .finish(
+          finishedAtUtc: instant,
+          elapsedMilliseconds: timer.elapsedAt(instant),
+        )
+        .copyWith(
+          fsrsRating: rating,
+          dueDateAfterUtc: scheduled.record.nextDueUtc,
+          timer: timer.toJson(),
+        );
+    state = state.copyWith(
+      reviewRecords: {
+        ...state.reviewRecords,
+        record.problemSlug: scheduled.record,
+      },
+      reviewAttempts: {...state.reviewAttempts, finished.id: finished},
+      activeReviewAttemptId: null,
+    );
+    _changed();
+    return scheduled;
+  }
+
+  Future<Map<ReviewRating, Duration>> previewReviewIntervals() async {
+    final attempt = activeReviewAttempt;
+    final record = attempt == null
+        ? null
+        : state.reviewRecords[attempt.problemSlug];
+    if (record == null) return const {};
+    final instant = now().toUtc();
+    return {
+      for (final rating in ReviewRating.values)
+        rating: (await reviewScheduler.rate(
+          record,
+          rating,
+          reviewedAtUtc: instant,
+        )).nextInterval,
+    };
+  }
+
+  void postponeReview(
+    ReviewRecord record, {
+    Duration by = const Duration(days: 1),
+  }) {
+    final due = now().toUtc().add(by);
+    final card = {...record.card, 'due': due.toIso8601String()};
+    state = state.copyWith(
+      reviewRecords: {
+        ...state.reviewRecords,
+        record.problemSlug: record.copyWith(
+          card: card,
+          nextDueUtc: due,
+          updatedAtUtc: now().toUtc(),
+        ),
+      },
+    );
+    _changed();
+  }
+
+  void updateReviewSettings({
+    double? desiredRetention,
+    int? easyMinutes,
+    int? mediumMinutes,
+    int? hardMinutes,
+  }) {
+    if (desiredRetention != null &&
+        (desiredRetention < 0.70 || desiredRetention > 0.99)) {
+      throw ArgumentError.value(desiredRetention, 'desiredRetention');
+    }
+    for (final value in [easyMinutes, mediumMinutes, hardMinutes]) {
+      if (value != null && (value < 1 || value > 240)) {
+        throw ArgumentError.value(value, 'review target minutes');
+      }
+    }
+    final settings = {...state.settings};
+    if (desiredRetention != null) {
+      settings['desiredRetention'] = desiredRetention;
+      reviewScheduler = FsrsSchedulerService(
+        desiredRetention: desiredRetention,
+      );
+    }
+    if (easyMinutes != null) settings['reviewTargeteasyMinutes'] = easyMinutes;
+    if (mediumMinutes != null) {
+      settings['reviewTargetmediumMinutes'] = mediumMinutes;
+    }
+    if (hardMinutes != null) settings['reviewTargethardMinutes'] = hardMinutes;
+    state = state.copyWith(settings: settings);
+    _changed();
+  }
+
+  Future<void> _ensureReviewCard(String slug) async {
+    if (state.reviewRecords.containsKey(slug)) return;
+    final record = await reviewScheduler.createCard(
+      slug,
+      nowUtc: now().toUtc(),
+    );
+    state = state.copyWith(
+      reviewRecords: {...state.reviewRecords, slug: record},
+    );
+  }
+
+  void _recordJudgeTelemetry({
+    required bool submit,
+    required JudgeResult result,
+  }) {
+    final attempt = activeReviewAttempt;
+    if (attempt == null) return;
+    _replaceAttempt(
+      attempt.copyWith(
+        runTestCount: attempt.runTestCount + (submit ? 0 : 1),
+        submitCount: attempt.submitCount + (submit ? 1 : 0),
+        passedTests: result.passedTests,
+        totalTests: result.totalTests,
+        successful: submit && result.status == JudgeStatus.passed
+            ? true
+            : attempt.successful,
+        finalSubmissionResult: submit
+            ? result.status.name
+            : attempt.finalSubmissionResult,
+        updatedAtUtc: now().toUtc(),
+      ),
+      notify: false,
+    );
+  }
+
+  void _replaceAttempt(
+    ReviewAttempt attempt, {
+    bool clearActive = false,
+    bool notify = true,
+  }) {
+    state = state.copyWith(
+      reviewAttempts: {...state.reviewAttempts, attempt.id: attempt},
+      activeReviewAttemptId: clearActive ? null : state.activeReviewAttemptId,
+    );
+    if (notify) _changed();
   }
 
   Future<void> importAnimation() async {

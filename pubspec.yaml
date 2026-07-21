@@ -41,6 +41,7 @@ dependencies:
   flutter_markdown_plus: ^1.0.12
   open_filex: ^4.7.0
   re_highlight: ^0.0.3
+  fsrs: ^2.0.1
 
 dev_dependencies:
   flutter_test:

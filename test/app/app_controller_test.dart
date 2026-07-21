@@ -11,6 +11,8 @@ import 'package:offline_leetcode_trainer/features/judge/judge_service.dart';
 import 'package:offline_leetcode_trainer/features/materials/learning_material.dart';
 import 'package:offline_leetcode_trainer/features/materials/local_material_store.dart';
 import 'package:offline_leetcode_trainer/features/problems/problem.dart';
+import 'package:offline_leetcode_trainer/features/review/fsrs_scheduler_service.dart';
+import 'package:offline_leetcode_trainer/features/review/review_models.dart';
 
 void main() {
   test('runs sample tests and exposes the structured result', () async {
@@ -165,6 +167,83 @@ void main() {
     controller.selectProblem(first);
     expect(controller.notes, 'map note');
     expect(controller.state.notes['three-sum'], 'pointer note');
+  });
+
+  test(
+    'migrates solved progress and prevents duplicate review cards',
+    () async {
+      final problem = Problem.fromJson(
+        jsonDecode(_problemJson) as Map<String, Object?>,
+      );
+      final controller = AppController(
+        problem: problem,
+        state: const AppState(progress: {'two-sum': 'solved'}),
+        reviewScheduler: FsrsSchedulerService(),
+        now: () => DateTime.utc(2026, 7, 22),
+      );
+      addTearDown(controller.dispose);
+
+      await controller.initializeReviews();
+      await controller.initializeReviews();
+
+      expect(controller.state.reviewRecords, hasLength(1));
+      expect(controller.dueReviewCount, 1);
+    },
+  );
+
+  test(
+    'successful submission creates a card and records attempt telemetry',
+    () async {
+      final problem = Problem.fromJson(
+        jsonDecode(_problemJson) as Map<String, Object?>,
+      );
+      var now = DateTime.utc(2026, 7, 22, 10);
+      final controller = AppController(
+        problem: problem,
+        state: const AppState(),
+        judgeService: _PassingJudge(),
+        reviewScheduler: FsrsSchedulerService(),
+        now: () => now,
+        platformName: 'test',
+      );
+      addTearDown(controller.dispose);
+
+      await controller.startReview(problem);
+      await controller.runTests(submit: false);
+      now = now.add(const Duration(minutes: 3));
+      await controller.runTests(submit: true);
+
+      expect(controller.state.reviewRecords['two-sum'], isNotNull);
+      expect(controller.activeReviewAttempt?.runTestCount, 1);
+      expect(controller.activeReviewAttempt?.submitCount, 1);
+      expect(controller.activeReviewAttempt?.successful, isTrue);
+
+      await controller.rateActiveReview(ReviewRating.good);
+      expect(controller.activeReviewAttempt, isNull);
+      expect(
+        controller.state.reviewAttempts.values.single.fsrsRating,
+        ReviewRating.good,
+      );
+    },
+  );
+
+  test('abandoning a review persists history without rating', () async {
+    final problem = Problem.fromJson(
+      jsonDecode(_problemJson) as Map<String, Object?>,
+    );
+    final controller = AppController(
+      problem: problem,
+      state: const AppState(),
+      reviewScheduler: FsrsSchedulerService(),
+      now: () => DateTime.utc(2026, 7, 22),
+    );
+    addTearDown(controller.dispose);
+
+    await controller.startReview(problem);
+    controller.abandonReview();
+
+    expect(controller.state.reviewAttempts.values.single.abandoned, isTrue);
+    expect(controller.state.reviewAttempts.values.single.fsrsRating, isNull);
   });
 }
 

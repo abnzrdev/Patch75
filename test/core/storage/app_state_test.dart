@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:offline_leetcode_trainer/core/storage/app_state.dart';
 import 'package:offline_leetcode_trainer/features/materials/learning_material.dart';
+import 'package:offline_leetcode_trainer/features/review/fsrs_scheduler_service.dart';
 
 void main() {
   test('loads defaults for missing fields and migrates old state', () {
@@ -82,5 +83,21 @@ void main() {
     expect(state.animationPaths['two-sum'], '/private/legacy.gif');
     expect(state.materials['two-sum']!.single.id, 'one');
     expect(state.materials['three-sum']!.single.id, 'two');
+  });
+
+  test('round trips review records and keeps old solved progress', () async {
+    final record = await FsrsSchedulerService().createCard(
+      'two-sum',
+      nowUtc: DateTime.utc(2026, 7, 22),
+    );
+    final state = AppState(
+      progress: const {'two-sum': 'solved'},
+      reviewRecords: {'two-sum': record},
+    );
+
+    final restored = AppState.fromJson(state.toJson());
+
+    expect(restored.progress['two-sum'], 'solved');
+    expect(restored.reviewRecords['two-sum'], record);
   });
 }
