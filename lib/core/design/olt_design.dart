@@ -7,6 +7,7 @@ abstract final class OltColors {
   static const border = Color(0xFF3D463D);
   static const muted = Color(0xFFA7B0A7);
   static const foreground = Color(0xFFF2F3ED);
+  static const readable = Color(0xFFD2D8D0);
   static const signal = Color(0xFFB7FF3C);
   static const danger = Color(0xFFFF6B57);
 }

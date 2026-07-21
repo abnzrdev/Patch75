@@ -3,12 +3,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:open_filex/open_filex.dart';
 
 import 'app/app_controller.dart';
 import 'app/offline_trainer_app.dart';
 import 'core/storage/state_store.dart';
 import 'features/animations/local_animation_store.dart';
 import 'features/judge/judge_service.dart';
+import 'features/materials/local_material_store.dart';
 import 'features/problems/problem_repository.dart';
 
 Future<void> main() async {
@@ -26,6 +28,17 @@ Future<void> main() async {
     state: state,
     onSave: store.save,
     animationStore: LocalAnimationStore(supportDirectory: supportDirectory),
+    materialStore: LocalMaterialStore(supportDirectory: supportDirectory),
+    materialOpener: (material) async {
+      try {
+        final result = await OpenFilex.open(material.path);
+        return result.type == ResultType.done
+            ? null
+            : 'Could not open ${material.name}: ${result.message}';
+      } on Object catch (error) {
+        return 'Could not open ${material.name}: $error';
+      }
+    },
     judgeService: kIsWeb
         ? const UnsupportedJudgeService()
         : switch (defaultTargetPlatform) {
