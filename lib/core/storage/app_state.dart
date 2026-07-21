@@ -1,4 +1,6 @@
 import '../../features/materials/learning_material.dart';
+import '../../features/review/review_attempt.dart';
+import '../../features/review/review_models.dart';
 
 class AppState {
   const AppState({
@@ -12,6 +14,9 @@ class AppState {
     this.testHistory = const {},
     this.animationPaths = const {},
     this.materials = const {},
+    this.reviewRecords = const {},
+    this.reviewAttempts = const {},
+    this.activeReviewAttemptId,
     this.settings = const {},
     this.importedDataVersion = 1,
   });
@@ -43,11 +48,24 @@ class AppState {
             .toList(),
       ),
     ),
+    reviewRecords: (json['reviewRecords'] as Map? ?? const {}).map(
+      (key, value) => MapEntry(
+        key as String,
+        ReviewRecord.fromJson(Map<String, Object?>.from(value as Map)),
+      ),
+    ),
+    reviewAttempts: (json['reviewAttempts'] as Map? ?? const {}).map(
+      (key, value) => MapEntry(
+        key as String,
+        ReviewAttempt.fromJson(Map<String, Object?>.from(value as Map)),
+      ),
+    ),
+    activeReviewAttemptId: json['activeReviewAttemptId'] as String?,
     settings: Map<String, Object?>.from(json['settings'] as Map? ?? const {}),
     importedDataVersion: json['importedDataVersion'] as int? ?? 1,
   );
 
-  static const currentSchemaVersion = 4;
+  static const currentSchemaVersion = 5;
 
   final int schemaVersion;
   final String selectedProblemSlug;
@@ -59,6 +77,9 @@ class AppState {
   final Map<String, List<String>> testHistory;
   final Map<String, String> animationPaths;
   final Map<String, List<LearningMaterial>> materials;
+  final Map<String, ReviewRecord> reviewRecords;
+  final Map<String, ReviewAttempt> reviewAttempts;
+  final String? activeReviewAttemptId;
   final Map<String, Object?> settings;
   final int importedDataVersion;
 
@@ -72,6 +93,9 @@ class AppState {
     Map<String, List<String>>? testHistory,
     Map<String, String>? animationPaths,
     Map<String, List<LearningMaterial>>? materials,
+    Map<String, ReviewRecord>? reviewRecords,
+    Map<String, ReviewAttempt>? reviewAttempts,
+    Object? activeReviewAttemptId = _unset,
     Map<String, Object?>? settings,
     int? importedDataVersion,
   }) => AppState(
@@ -84,6 +108,11 @@ class AppState {
     testHistory: testHistory ?? this.testHistory,
     animationPaths: animationPaths ?? this.animationPaths,
     materials: materials ?? this.materials,
+    reviewRecords: reviewRecords ?? this.reviewRecords,
+    reviewAttempts: reviewAttempts ?? this.reviewAttempts,
+    activeReviewAttemptId: activeReviewAttemptId == _unset
+        ? this.activeReviewAttemptId
+        : activeReviewAttemptId as String?,
     settings: settings ?? this.settings,
     importedDataVersion: importedDataVersion ?? this.importedDataVersion,
   );
@@ -102,6 +131,13 @@ class AppState {
       (key, value) =>
           MapEntry(key, value.map((item) => item.toJson()).toList()),
     ),
+    'reviewRecords': reviewRecords.map(
+      (key, value) => MapEntry(key, value.toJson()),
+    ),
+    'reviewAttempts': reviewAttempts.map(
+      (key, value) => MapEntry(key, value.toJson()),
+    ),
+    'activeReviewAttemptId': activeReviewAttemptId,
     'settings': settings,
     'importedDataVersion': importedDataVersion,
   };
@@ -119,6 +155,9 @@ class AppState {
       _historyEqual(testHistory, other.testHistory) &&
       _mapsEqual(animationPaths, other.animationPaths) &&
       _materialMapsEqual(materials, other.materials) &&
+      _mapsEqual(reviewRecords, other.reviewRecords) &&
+      _mapsEqual(reviewAttempts, other.reviewAttempts) &&
+      activeReviewAttemptId == other.activeReviewAttemptId &&
       _mapsEqual(settings, other.settings) &&
       importedDataVersion == other.importedDataVersion;
 
@@ -142,10 +181,15 @@ class AppState {
         (entry) => Object.hash(entry.key, Object.hashAll(entry.value)),
       ),
     ),
+    Object.hashAllUnordered(reviewRecords.entries),
+    Object.hashAllUnordered(reviewAttempts.entries),
+    activeReviewAttemptId,
     Object.hashAllUnordered(settings.entries),
     importedDataVersion,
   );
 }
+
+const _unset = Object();
 
 Map<String, String> _stringMap(Object? value) => Map<String, Object?>.from(
   value as Map? ?? const {},
