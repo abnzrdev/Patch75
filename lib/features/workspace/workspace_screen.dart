@@ -4,7 +4,7 @@ import 'package:re_editor/re_editor.dart';
 import '../../app/app_controller.dart';
 import '../../core/design/olt_design.dart';
 import '../judge/judge_models.dart';
-import '../materials/learning_materials_panel.dart';
+import '../learning/learning_tools_panel.dart';
 import '../problems/problem.dart';
 import '../problems/problem_browser.dart';
 import '../review/review_queue_screen.dart';
@@ -382,7 +382,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
 
   Widget _rightPane() => OltPanel(
     panelKey: const Key('right-pane'),
-    label: 'AUX/ANIMATION+NOTES · DATA/LOCAL',
+    label: 'AUX/LEARNING+NOTES · DATA/LOCAL',
     child: Column(
       children: [
         Expanded(child: _animationContent()),
@@ -468,18 +468,9 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
     child: _animationContent(),
   );
 
-  Widget _animationContent() => LearningMaterialsPanel(
+  Widget _animationContent() => LearningToolsPanel(
     key: ValueKey(widget.controller.problem.slug),
-    title: widget.controller.problem.title,
-    materials: widget.controller.materials,
-    busy: widget.controller.importingMaterial,
-    errorMessage:
-        widget.controller.materialError ?? widget.controller.animationError,
-    onImportAnimation: widget.controller.importAnimation,
-    onAddMaterial: widget.controller.addMaterial,
-    onReplace: widget.controller.replaceMaterial,
-    onRemove: widget.controller.removeMaterial,
-    onExternalOpen: widget.controller.openMaterial,
+    controller: widget.controller,
   );
 
   Widget _notesPane() => OltPanel(

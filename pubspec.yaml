@@ -71,6 +71,7 @@ flutter:
     - assets/data/problems/
     - assets/data/index/
     - assets/data/animation_index.json
+    - assets/data/learning_metadata.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

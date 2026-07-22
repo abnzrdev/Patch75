@@ -12,6 +12,10 @@ class Problem {
     required this.testCases,
     required this.source,
     required this.sourceUrl,
+    this.hints = const [],
+    this.expectedTimeComplexity = '',
+    this.expectedSpaceComplexity = '',
+    this.complexityExplanation = '',
   });
 
   factory Problem.fromJson(Map<String, Object?> json) {
@@ -42,6 +46,10 @@ class Problem {
           .toList(),
       source: json['source'] as String,
       sourceUrl: json['sourceUrl'] as String,
+      hints: List<String>.from(json['hints'] as List? ?? const []),
+      expectedTimeComplexity: json['expectedTimeComplexity'] as String? ?? '',
+      expectedSpaceComplexity: json['expectedSpaceComplexity'] as String? ?? '',
+      complexityExplanation: json['complexityExplanation'] as String? ?? '',
     );
   }
 
@@ -57,6 +65,44 @@ class Problem {
   final List<ProblemTestCase> testCases;
   final String source;
   final String sourceUrl;
+  final List<String> hints;
+  final String expectedTimeComplexity;
+  final String expectedSpaceComplexity;
+  final String complexityExplanation;
+
+  Problem withLearningMetadata(Map<String, Object?> metadata) => Problem(
+    id: id,
+    slug: slug,
+    title: title,
+    difficulty: difficulty,
+    topics: topics,
+    description: description,
+    examples: examples,
+    constraints: constraints,
+    starterCodeByLanguage: starterCodeByLanguage,
+    testCases: testCases,
+    source: source,
+    sourceUrl: sourceUrl,
+    hints: List<String>.from(metadata['hints'] as List),
+    expectedTimeComplexity: metadata['time'] as String,
+    expectedSpaceComplexity: metadata['space'] as String,
+    complexityExplanation: metadata['explanation'] as String,
+  );
+
+  Map<String, Type> get inputFieldTypes {
+    if (testCases.isEmpty) return const {};
+    return testCases.first.input.map(
+      (key, value) => MapEntry(key, switch (value) {
+        int() => int,
+        double() => double,
+        String() => String,
+        bool() => bool,
+        List() => List,
+        Map() => Map,
+        _ => Object,
+      }),
+    );
+  }
 }
 
 class ProblemExample {

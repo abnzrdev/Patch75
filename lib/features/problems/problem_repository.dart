@@ -20,8 +20,17 @@ class AssetProblemRepository implements ProblemRepository {
               await bundle.loadString('assets/data/index/all_problems.json'),
             )
             as List;
-    return values
-        .map((value) => Problem.fromJson(value as Map<String, Object?>))
-        .toList();
+    final learning = Map<String, Object?>.from(
+      jsonDecode(await bundle.loadString('assets/data/learning_metadata.json'))
+          as Map,
+    );
+    return values.map((value) {
+      final problem = Problem.fromJson(value as Map<String, Object?>);
+      final metadata = learning[problem.slug];
+      if (metadata is! Map) {
+        throw FormatException('Missing learning metadata: ${problem.slug}');
+      }
+      return problem.withLearningMetadata(Map<String, Object?>.from(metadata));
+    }).toList();
   }
 }
