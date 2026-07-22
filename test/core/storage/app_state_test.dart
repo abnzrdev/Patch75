@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:offline_leetcode_trainer/core/storage/app_state.dart';
 import 'package:offline_leetcode_trainer/features/materials/learning_material.dart';
 import 'package:offline_leetcode_trainer/features/review/fsrs_scheduler_service.dart';
+import 'package:offline_leetcode_trainer/features/custom_tests/custom_test_case.dart';
 
 void main() {
   test('loads defaults for missing fields and migrates old state', () {
@@ -99,5 +100,27 @@ void main() {
 
     expect(restored.progress['two-sum'], 'solved');
     expect(restored.reviewRecords['two-sum'], record);
+  });
+
+  test('round trips custom tests per problem', () {
+    final testCase = CustomTestCase.create(
+      id: 'custom-two-sum-1',
+      problemSlug: 'two-sum',
+      name: 'edge',
+      input: const {
+        'nums': [2, 7],
+        'target': 9,
+      },
+      nowUtc: DateTime.utc(2026, 7, 22),
+    );
+    final restored = AppState.fromJson(
+      AppState(
+        customTests: {
+          'two-sum': [testCase],
+        },
+      ).toJson(),
+    );
+
+    expect(restored.customTests['two-sum'], [testCase]);
   });
 }

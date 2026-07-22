@@ -4,12 +4,15 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 import '../core/storage/app_state.dart';
+import '../features/custom_tests/custom_test_case.dart';
+import '../features/custom_tests/custom_test_repository.dart';
 import '../features/animations/local_animation_store.dart';
 import '../features/judge/judge_models.dart';
 import '../features/judge/judge_service.dart';
 import '../features/materials/learning_material.dart';
 import '../features/materials/local_material_store.dart';
 import '../features/problems/problem.dart';
+import '../features/learning/complexity_checker.dart';
 import '../features/review/fsrs_scheduler_service.dart';
 import '../features/review/review_attempt.dart';
 import '../features/review/review_models.dart';
@@ -64,10 +67,12 @@ class AppController extends ChangeNotifier {
   bool judgeAvailable = false;
   bool judging = false;
   JudgeResult? judgeResult;
+  JudgeResult? customJudgeResult;
   bool importingAnimation = false;
   String? animationError;
   bool importingMaterial = false;
   String? materialError;
+  final Map<String, List<int>> _practiceHints = {};
 
   ReviewAttempt? get activeReviewAttempt => state.activeReviewAttemptId == null
       ? null
@@ -136,6 +141,13 @@ class AppController extends ChangeNotifier {
     ];
   }
 
+  List<CustomTestCase> get customTests =>
+      state.customTests[problem.slug] ?? const [];
+  List<int> get revealedHintLevels =>
+      activeReviewAttempt?.problemSlug == problem.slug
+      ? activeReviewAttempt!.hintsUsed
+      : _practiceHints[problem.slug] ?? const [];
+
   Future<void> refreshJudgeAvailability() async {
     judgeAvailable = await judgeService.isAvailable();
     notifyListeners();
@@ -177,6 +189,128 @@ class AppController extends ChangeNotifier {
     }
     _save();
     notifyListeners();
+  }
+
+  void revealNextHint() {
+    final next = revealedHintLevels.length + 1;
+    if (next > problem.hints.length || next > 3) return;
+    final attempt = activeReviewAttempt;
+    if (attempt != null && attempt.problemSlug == problem.slug) {
+      _replaceAttempt(
+        attempt.copyWith(
+          hintsUsed: [...attempt.hintsUsed, next],
+          updatedAtUtc: now().toUtc(),
+        ),
+      );
+    } else {
+      _practiceHints[problem.slug] = [...revealedHintLevels, next];
+      notifyListeners();
+    }
+  }
+
+  ComplexityComparison recordComplexityAnswers(
+    String timeComplexity,
+    String spaceComplexity,
+  ) {
+    final comparison = compareComplexity(
+      timeComplexity,
+      problem.expectedTimeComplexity,
+      spaceComplexity,
+      problem.expectedSpaceComplexity,
+    );
+    final attempt = activeReviewAttempt;
+    if (attempt != null && attempt.problemSlug == problem.slug) {
+      _replaceAttempt(
+        attempt.copyWith(
+          timeComplexity: timeComplexity,
+          spaceComplexity: spaceComplexity,
+          updatedAtUtc: now().toUtc(),
+        ),
+      );
+    }
+    return comparison;
+  }
+
+  void saveCustomTest({
+    String? id,
+    required String name,
+    required Map<String, Object?> input,
+  }) {
+    final instant = now().toUtc();
+    final existing = id == null
+        ? null
+        : customTests.where((item) => item.id == id).firstOrNull;
+    final value = existing == null
+        ? CustomTestCase.create(
+            id: 'custom-${problem.slug}-${instant.microsecondsSinceEpoch}',
+            problemSlug: problem.slug,
+            name: name,
+            input: input,
+            nowUtc: instant,
+          )
+        : existing.copyWith(name: name, input: input, updatedAtUtc: instant);
+    final values = _customRepository.save(customTests, value);
+    _setCustomTests(values);
+  }
+
+  void deleteCustomTest(String id) =>
+      _setCustomTests(_customRepository.delete(customTests, id));
+
+  void duplicateCustomTest(String id) => _setCustomTests(
+    _customRepository.duplicate(customTests, id, nowUtc: now().toUtc()),
+  );
+
+  void toggleCustomTest(String id, bool enabled) => _setCustomTests(
+    _customRepository.toggle(customTests, id, enabled, nowUtc: now().toUtc()),
+  );
+
+  void reorderCustomTests(int oldIndex, int newIndex) => _setCustomTests(
+    _customRepository.reorder(customTests, oldIndex, newIndex),
+  );
+
+  Future<void> runCustomTests({CustomTestCase? selected}) async {
+    final values = selected == null
+        ? customTests.where((item) => item.enabled).toList()
+        : [selected];
+    if (values.isEmpty) return;
+    judging = true;
+    customJudgeResult = null;
+    notifyListeners();
+    final inputs = [
+      for (final value in values)
+        JudgeTestInput(id: value.id, values: value.input),
+    ];
+    customJudgeResult = await judgeService.run(
+      JudgeRequest(
+        problemSlug: problem.slug,
+        language: 'python',
+        sourceCode: draft,
+        selectedTests: inputs.map((item) => item.id).toList(),
+      ),
+      inputs,
+    );
+    judging = false;
+    final attempt = activeReviewAttempt;
+    if (attempt != null) {
+      _replaceAttempt(
+        attempt.copyWith(
+          customTestsUsed: attempt.customTestsUsed + values.length,
+          updatedAtUtc: now().toUtc(),
+        ),
+        notify: false,
+      );
+    }
+    _changed();
+  }
+
+  LocalCustomTestRepository get _customRepository =>
+      LocalCustomTestRepository(requiredFields: problem.inputFieldTypes);
+
+  void _setCustomTests(List<CustomTestCase> values) {
+    state = state.copyWith(
+      customTests: {...state.customTests, problem.slug: values},
+    );
+    _changed();
   }
 
   Future<void> startReview(Problem value) async {

@@ -245,6 +245,61 @@ void main() {
     expect(controller.state.reviewAttempts.values.single.abandoned, isTrue);
     expect(controller.state.reviewAttempts.values.single.fsrsRating, isNull);
   });
+
+  test('reveals hints in order and records review telemetry', () async {
+    final problem =
+        Problem.fromJson(
+          jsonDecode(_problemJson) as Map<String, Object?>,
+        ).withLearningMetadata(const {
+          'hints': ['nudge', 'idea', 'pseudocode'],
+          'time': 'O(n)',
+          'space': 'O(n)',
+          'explanation': 'map',
+        });
+    final controller = AppController(
+      problem: problem,
+      state: const AppState(),
+      now: () => DateTime.utc(2026, 7, 22),
+    );
+    addTearDown(controller.dispose);
+    await controller.startReview(problem);
+
+    controller.revealNextHint();
+    controller.revealNextHint();
+    controller.revealNextHint();
+    controller.revealNextHint();
+
+    expect(controller.revealedHintLevels, [1, 2, 3]);
+    expect(controller.activeReviewAttempt?.hintsUsed, [1, 2, 3]);
+  });
+
+  test('custom results remain separate and never mark solved', () async {
+    final judge = _CapturingJudge();
+    final problem = Problem.fromJson(
+      jsonDecode(_problemJson) as Map<String, Object?>,
+    );
+    final controller = AppController(
+      problem: problem,
+      state: const AppState(),
+      judgeService: judge,
+      now: () => DateTime.utc(2026, 7, 22),
+    );
+    addTearDown(controller.dispose);
+    controller.saveCustomTest(
+      name: 'custom',
+      input: const {
+        'nums': [2, 7],
+        'target': 9,
+      },
+    );
+
+    await controller.runCustomTests();
+
+    expect(judge.lastRequest?.submit, isFalse);
+    expect(controller.customJudgeResult?.status, JudgeStatus.passed);
+    expect(controller.judgeResult, isNull);
+    expect(controller.state.progress['two-sum'], isNot('solved'));
+  });
 }
 
 class _PassingJudge implements JudgeService {
@@ -274,6 +329,16 @@ class _PassingJudge implements JudgeService {
         ),
     ],
   );
+}
+
+class _CapturingJudge extends _PassingJudge {
+  JudgeRequest? lastRequest;
+
+  @override
+  Future<JudgeResult> run(JudgeRequest request, List<JudgeTestInput> tests) {
+    lastRequest = request;
+    return super.run(request, tests);
+  }
 }
 
 const _problemJson = r'''

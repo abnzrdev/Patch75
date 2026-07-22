@@ -1,4 +1,5 @@
 import '../../features/materials/learning_material.dart';
+import '../../features/custom_tests/custom_test_case.dart';
 import '../../features/review/review_attempt.dart';
 import '../../features/review/review_models.dart';
 
@@ -17,6 +18,7 @@ class AppState {
     this.reviewRecords = const {},
     this.reviewAttempts = const {},
     this.activeReviewAttemptId,
+    this.customTests = const {},
     this.settings = const {},
     this.importedDataVersion = 1,
   });
@@ -61,11 +63,23 @@ class AppState {
       ),
     ),
     activeReviewAttemptId: json['activeReviewAttemptId'] as String?,
+    customTests: (json['customTests'] as Map? ?? const {}).map(
+      (key, value) => MapEntry(
+        key as String,
+        (value as List)
+            .map(
+              (item) => CustomTestCase.fromJson(
+                Map<String, Object?>.from(item as Map),
+              ),
+            )
+            .toList(),
+      ),
+    ),
     settings: Map<String, Object?>.from(json['settings'] as Map? ?? const {}),
     importedDataVersion: json['importedDataVersion'] as int? ?? 1,
   );
 
-  static const currentSchemaVersion = 5;
+  static const currentSchemaVersion = 6;
 
   final int schemaVersion;
   final String selectedProblemSlug;
@@ -80,6 +94,7 @@ class AppState {
   final Map<String, ReviewRecord> reviewRecords;
   final Map<String, ReviewAttempt> reviewAttempts;
   final String? activeReviewAttemptId;
+  final Map<String, List<CustomTestCase>> customTests;
   final Map<String, Object?> settings;
   final int importedDataVersion;
 
@@ -96,6 +111,7 @@ class AppState {
     Map<String, ReviewRecord>? reviewRecords,
     Map<String, ReviewAttempt>? reviewAttempts,
     Object? activeReviewAttemptId = _unset,
+    Map<String, List<CustomTestCase>>? customTests,
     Map<String, Object?>? settings,
     int? importedDataVersion,
   }) => AppState(
@@ -113,6 +129,7 @@ class AppState {
     activeReviewAttemptId: activeReviewAttemptId == _unset
         ? this.activeReviewAttemptId
         : activeReviewAttemptId as String?,
+    customTests: customTests ?? this.customTests,
     settings: settings ?? this.settings,
     importedDataVersion: importedDataVersion ?? this.importedDataVersion,
   );
@@ -138,6 +155,10 @@ class AppState {
       (key, value) => MapEntry(key, value.toJson()),
     ),
     'activeReviewAttemptId': activeReviewAttemptId,
+    'customTests': customTests.map(
+      (key, value) =>
+          MapEntry(key, value.map((item) => item.toJson()).toList()),
+    ),
     'settings': settings,
     'importedDataVersion': importedDataVersion,
   };
@@ -158,6 +179,7 @@ class AppState {
       _mapsEqual(reviewRecords, other.reviewRecords) &&
       _mapsEqual(reviewAttempts, other.reviewAttempts) &&
       activeReviewAttemptId == other.activeReviewAttemptId &&
+      _customTestMapsEqual(customTests, other.customTests) &&
       _mapsEqual(settings, other.settings) &&
       importedDataVersion == other.importedDataVersion;
 
@@ -184,6 +206,11 @@ class AppState {
     Object.hashAllUnordered(reviewRecords.entries),
     Object.hashAllUnordered(reviewAttempts.entries),
     activeReviewAttemptId,
+    Object.hashAllUnordered(
+      customTests.entries.map(
+        (entry) => Object.hash(entry.key, Object.hashAll(entry.value)),
+      ),
+    ),
     Object.hashAllUnordered(settings.entries),
     importedDataVersion,
   );
@@ -215,6 +242,18 @@ bool _historyEqual(
 bool _materialMapsEqual(
   Map<String, List<LearningMaterial>> left,
   Map<String, List<LearningMaterial>> right,
+) =>
+    left.length == right.length &&
+    left.entries.every((entry) {
+      final values = right[entry.key];
+      return values != null &&
+          values.length == entry.value.length &&
+          values.indexed.every((item) => item.$2 == entry.value[item.$1]);
+    });
+
+bool _customTestMapsEqual(
+  Map<String, List<CustomTestCase>> left,
+  Map<String, List<CustomTestCase>> right,
 ) =>
     left.length == right.length &&
     left.entries.every((entry) {
