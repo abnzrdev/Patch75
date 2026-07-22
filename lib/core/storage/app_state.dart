@@ -20,6 +20,7 @@ class AppState {
     this.activeReviewAttemptId,
     this.customTests = const {},
     this.settings = const {},
+    this.updatedAtUtc = const {},
     this.importedDataVersion = 1,
   });
 
@@ -76,10 +77,11 @@ class AppState {
       ),
     ),
     settings: Map<String, Object?>.from(json['settings'] as Map? ?? const {}),
+    updatedAtUtc: _stringMap(json['updatedAtUtc']),
     importedDataVersion: json['importedDataVersion'] as int? ?? 1,
   );
 
-  static const currentSchemaVersion = 6;
+  static const currentSchemaVersion = 7;
 
   final int schemaVersion;
   final String selectedProblemSlug;
@@ -96,6 +98,7 @@ class AppState {
   final String? activeReviewAttemptId;
   final Map<String, List<CustomTestCase>> customTests;
   final Map<String, Object?> settings;
+  final Map<String, String> updatedAtUtc;
   final int importedDataVersion;
 
   AppState copyWith({
@@ -113,6 +116,7 @@ class AppState {
     Object? activeReviewAttemptId = _unset,
     Map<String, List<CustomTestCase>>? customTests,
     Map<String, Object?>? settings,
+    Map<String, String>? updatedAtUtc,
     int? importedDataVersion,
   }) => AppState(
     selectedProblemSlug: selectedProblemSlug ?? this.selectedProblemSlug,
@@ -131,6 +135,7 @@ class AppState {
         : activeReviewAttemptId as String?,
     customTests: customTests ?? this.customTests,
     settings: settings ?? this.settings,
+    updatedAtUtc: updatedAtUtc ?? this.updatedAtUtc,
     importedDataVersion: importedDataVersion ?? this.importedDataVersion,
   );
 
@@ -160,6 +165,7 @@ class AppState {
           MapEntry(key, value.map((item) => item.toJson()).toList()),
     ),
     'settings': settings,
+    'updatedAtUtc': updatedAtUtc,
     'importedDataVersion': importedDataVersion,
   };
 
@@ -181,6 +187,7 @@ class AppState {
       activeReviewAttemptId == other.activeReviewAttemptId &&
       _customTestMapsEqual(customTests, other.customTests) &&
       _mapsEqual(settings, other.settings) &&
+      _mapsEqual(updatedAtUtc, other.updatedAtUtc) &&
       importedDataVersion == other.importedDataVersion;
 
   @override
@@ -212,6 +219,7 @@ class AppState {
       ),
     ),
     Object.hashAllUnordered(settings.entries),
+    Object.hashAllUnordered(updatedAtUtc.entries),
     importedDataVersion,
   );
 }

@@ -29,67 +29,58 @@ class LearningMaterialsPanel extends StatelessWidget {
   final String? errorMessage;
 
   @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.stretch,
+  Widget build(BuildContext context) => ListView(
+    key: const Key('materials-scroll'),
+    padding: const EdgeInsets.all(OltSpace.x2),
     children: [
-      Padding(
-        padding: const EdgeInsets.all(OltSpace.x2),
-        child: Wrap(
-          spacing: OltSpace.x2,
-          runSpacing: OltSpace.x2,
-          children: [
-            OltButton(
-              label: busy ? 'IMPORTING...' : 'IMPORT ANIMATION',
-              onPressed: busy ? null : onImportAnimation,
-            ),
-            OltButton(
-              label: 'ADD MATERIAL',
-              signal: true,
-              onPressed: busy ? null : onAddMaterial,
-            ),
-          ],
-        ),
+      Wrap(
+        spacing: OltSpace.x2,
+        runSpacing: OltSpace.x2,
+        children: [
+          OltButton(
+            label: busy ? 'IMPORTING...' : 'IMPORT ANIMATION',
+            onPressed: busy ? null : onImportAnimation,
+          ),
+          OltButton(
+            label: 'ADD MATERIAL',
+            signal: true,
+            onPressed: busy ? null : onAddMaterial,
+          ),
+        ],
       ),
-      const Padding(
-        padding: EdgeInsets.symmetric(horizontal: OltSpace.x2),
-        child: Text(
-          'Import only files you created or have permission to use.',
-          style: microStyle,
-        ),
+      const SizedBox(height: OltSpace.x2),
+      const Text(
+        'Import only files you created or have permission to use.',
+        style: microStyle,
       ),
       if (errorMessage != null)
         Padding(
-          padding: const EdgeInsets.fromLTRB(
-            OltSpace.x2,
-            OltSpace.x2,
-            OltSpace.x2,
-            0,
-          ),
+          padding: const EdgeInsets.only(top: OltSpace.x2),
           child: Text(
             errorMessage!,
             style: const TextStyle(color: OltColors.danger, fontSize: 12),
           ),
         ),
       const SizedBox(height: OltSpace.x2),
-      Expanded(
-        child: materials.isEmpty
-            ? const Center(child: Text('NO LOCAL MATERIALS', style: microStyle))
-            : ListView.separated(
-                padding: const EdgeInsets.all(OltSpace.x2),
-                itemCount: materials.length,
-                separatorBuilder: (_, _) => const SizedBox(height: OltSpace.x2),
-                itemBuilder: (context, index) => _MaterialRow(
-                  material: materials[index],
-                  onOpen: () => _open(context, materials[index]),
-                  onReplace: onReplace == null || busy
-                      ? null
-                      : () => onReplace!(materials[index]),
-                  onRemove: onRemove == null || busy
-                      ? null
-                      : () => onRemove!(materials[index]),
-                ),
-              ),
-      ),
+      if (materials.isEmpty)
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: OltSpace.x6),
+          child: Center(child: Text('NO LOCAL MATERIALS', style: microStyle)),
+        )
+      else
+        for (final (index, material) in materials.indexed) ...[
+          if (index > 0) const SizedBox(height: OltSpace.x2),
+          _MaterialRow(
+            material: material,
+            onOpen: () => _open(context, material),
+            onReplace: onReplace == null || busy
+                ? null
+                : () => onReplace!(material),
+            onRemove: onRemove == null || busy
+                ? null
+                : () => onRemove!(material),
+          ),
+        ],
     ],
   );
 
