@@ -190,7 +190,7 @@ void main() {
   });
 
   testWidgets('Android landscape layout has no overflow', (tester) async {
-    tester.view.physicalSize = const Size(780, 390);
+    tester.view.physicalSize = const Size(1000, 450);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
     await tester.pumpWidget(
@@ -200,6 +200,9 @@ void main() {
     );
 
     expect(find.byKey(const Key('problem-pane')), findsOneWidget);
+    await tester.tap(find.text('MATERIALS'));
+    await tester.pump();
+    expect(find.byKey(const Key('materials-scroll')), findsOneWidget);
     expect(tester.takeException(), isNull);
     await _disposeEditor(tester);
   });

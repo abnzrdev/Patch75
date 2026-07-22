@@ -12,6 +12,7 @@ import '../features/judge/judge_service.dart';
 import '../features/materials/learning_material.dart';
 import '../features/materials/local_material_store.dart';
 import '../features/problems/problem.dart';
+import '../features/portability/progress_archive_service.dart';
 import '../features/learning/complexity_checker.dart';
 import '../features/review/fsrs_scheduler_service.dart';
 import '../features/review/review_attempt.dart';
@@ -27,6 +28,7 @@ class AppController extends ChangeNotifier {
     this.animationStore,
     this.materialStore,
     this.materialOpener,
+    this.progressArchiveService,
     ReviewSchedulerService? reviewScheduler,
     ReviewRepository? reviewRepository,
     DateTime Function()? now,
@@ -55,6 +57,7 @@ class AppController extends ChangeNotifier {
   final LocalAnimationStore? animationStore;
   final LocalMaterialStore? materialStore;
   final Future<String?> Function(LearningMaterial material)? materialOpener;
+  final ProgressArchiveService? progressArchiveService;
   final JudgeService judgeService;
   ReviewSchedulerService reviewScheduler;
   late final ReviewRepository reviewRepository;
@@ -463,7 +466,10 @@ class AppController extends ChangeNotifier {
       settings['reviewTargetmediumMinutes'] = mediumMinutes;
     }
     if (hardMinutes != null) settings['reviewTargethardMinutes'] = hardMinutes;
-    state = state.copyWith(settings: settings);
+    state = state.copyWith(
+      settings: settings,
+      updatedAtUtc: _touch('settings'),
+    );
     _changed();
   }
 
@@ -705,6 +711,24 @@ class AppController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> importProgress(List<int> bytes, ImportMode mode) async {
+    final service = progressArchiveService;
+    if (service == null) {
+      throw StateError('Progress portability is unavailable');
+    }
+    state = await service.apply(
+      bytes,
+      current: state,
+      mode: mode,
+      persist: onSave,
+    );
+    final selected = problems.where(
+      (value) => value.slug == state.selectedProblemSlug,
+    );
+    if (selected.isNotEmpty) problem = selected.first;
+    notifyListeners();
+  }
+
   void selectProblem(Problem value) {
     problem = value;
     judgeResult = null;
@@ -728,12 +752,16 @@ class AppController extends ChangeNotifier {
   void updateDraft(String value) {
     state = state.copyWith(
       drafts: {...state.drafts, '${problem.slug}:python': value},
+      updatedAtUtc: _touch('draft:${problem.slug}:python'),
     );
     _save();
   }
 
   void updateNotes(String value) {
-    state = state.copyWith(notes: {...state.notes, problem.slug: value});
+    state = state.copyWith(
+      notes: {...state.notes, problem.slug: value},
+      updatedAtUtc: _touch('note:${problem.slug}'),
+    );
     _save();
   }
 
@@ -748,6 +776,11 @@ class AppController extends ChangeNotifier {
     notifyListeners();
     _save();
   }
+
+  Map<String, String> _touch(String key) => {
+    ...state.updatedAtUtc,
+    key: now().toUtc().toIso8601String(),
+  };
 
   void _save() {
     onSave?.call(state);

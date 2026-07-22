@@ -31,3 +31,4 @@ android/local.properties
 .judge-tmp/
 tmp/
 screenshots/runtime/
+*.olt.zip

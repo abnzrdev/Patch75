@@ -7,6 +7,7 @@ import '../judge/judge_models.dart';
 import '../learning/learning_tools_panel.dart';
 import '../problems/problem.dart';
 import '../problems/problem_browser.dart';
+import '../portability/portability_screen.dart';
 import '../review/review_queue_screen.dart';
 import '../review/review_summary_sheet.dart';
 import 'python_code_theme.dart';
@@ -68,6 +69,12 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
     context: context,
     builder: (context) => Dialog.fullscreen(
       child: ReviewQueueScreen(controller: widget.controller),
+    ),
+  );
+
+  Future<void> _openPortability() => Navigator.of(context).push<void>(
+    MaterialPageRoute(
+      builder: (_) => PortabilityScreen(controller: widget.controller),
     ),
   );
 
@@ -138,6 +145,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
                 controller: widget.controller,
                 onBrowse: _openBrowser,
                 onReview: _openReviews,
+                onPortability: _openPortability,
                 onReviewSummary: _openReviewSummary,
               ),
               Expanded(
@@ -625,12 +633,14 @@ class _StatusRail extends StatelessWidget {
     required this.controller,
     required this.onBrowse,
     required this.onReview,
+    required this.onPortability,
     required this.onReviewSummary,
   });
 
   final AppController controller;
   final VoidCallback onBrowse;
   final VoidCallback onReview;
+  final VoidCallback onPortability;
   final VoidCallback onReviewSummary;
 
   @override
@@ -648,7 +658,7 @@ class _StatusRail extends StatelessWidget {
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final compact = constraints.maxWidth < 840;
+          final compact = constraints.maxWidth < 1200;
           return Row(
             children: [
               if (!compact) ...[
@@ -747,6 +757,12 @@ class _StatusRail extends StatelessWidget {
                     child: const Icon(Icons.event_repeat, size: 18),
                   ),
                 ),
+              IconButton(
+                key: const Key('progress-portability'),
+                tooltip: 'Export or import progress',
+                onPressed: onPortability,
+                icon: const Icon(Icons.import_export, size: 18),
+              ),
               if (!compact)
                 OltButton(
                   buttonKey: const Key('focus-toggle'),

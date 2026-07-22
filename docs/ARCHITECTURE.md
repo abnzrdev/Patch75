@@ -8,8 +8,8 @@ imported animations work without a network connection. Code execution is an
 optional platform capability: Docker via a localhost bridge on desktop and an
 embedded Python runtime on Android.
 
-Anki, FSRS, accounts, cloud sync, analytics, social features, and a remote judge
-are outside this release.
+Accounts, cloud sync, analytics, social features, and a remote judge are outside
+this release. FSRS scheduling and ZIP portability are private local features.
 
 ## Structure
 
@@ -28,6 +28,10 @@ lib/
     animations/        manifest matching and local viewer
     notes/             note repository and editor
     progress/          attempts, solved state, history
+    review/            FSRS cards, attempts, queue, history
+    learning/          hints and complexity self-checks
+    custom_tests/      per-problem user test inputs
+    portability/       validated progress ZIP export/import and sharing
     settings/          persisted app preferences
 ```
 
@@ -74,8 +78,9 @@ Runtime state is one versioned JSON document in the application-support
 directory. Writes use a sibling temporary file followed by rename. Invalid JSON
 is moved aside and defaults are loaded. The document stores selected problem,
 drafts, notes, timers, focus preference, progress, test history, settings, and
-the imported-data version. This avoids a database dependency for a bounded set
-of 75 records.
+the imported-data version, review records, review attempts, custom tests,
+learning materials, and mutation timestamps. This avoids a database dependency
+for a bounded set of 75 records.
 
 ## Judge flow
 
@@ -111,7 +116,7 @@ minimum 44 px touch targets, text scaling, and overflow handling are mandatory.
 
 At 900 logical pixels or wider the workspace is problem/editor/right-pane.
 Focus mode removes the right pane. Below 900 it switches to five destinations:
-Problem, Code, Results, Animation, and Notes. No desktop columns are squeezed
+Problem, Code, Results, Materials, and Notes. No desktop columns are squeezed
 onto a handset.
 
 ## Lifecycle and errors

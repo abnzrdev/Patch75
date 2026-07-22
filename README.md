@@ -5,7 +5,8 @@ normalized cojudge problem data, keeps drafts/notes/timers/progress in a local
 versioned JSON store, runs Python in locked-down Docker containers on desktop,
 and embeds Python through Chaquopy on Android.
 
-No account, internet connection, cloud sync, analytics, Anki, or FSRS is used.
+No account, internet connection, cloud sync, analytics, or Anki is used. Review
+scheduling uses the local FSRS algorithm and never contacts a service.
 
 ## Feature matrix
 
@@ -13,7 +14,9 @@ No account, internet connection, cloud sync, analytics, Anki, or FSRS is used.
 |---|---:|---:|---:|
 | Browse all Blind 75 problems | Yes | Yes | Yes |
 | Editor, drafts, notes, timer, focus mode | Yes | Yes | Yes |
-| Local animation manifest and viewer states | Yes | Yes | Yes |
+| Private learning materials and viewers | Yes | Yes | Yes |
+| Timed FSRS review queue | Yes | Yes | Yes |
+| Versioned progress ZIP export/import | Yes | Yes | Yes |
 | Python Run/Submit | Docker bridge | Chaquopy | Unavailable |
 | Offline after installation | Yes | Yes | Yes |
 
@@ -108,3 +111,5 @@ performed in the recorded environment because Chrome is absent.
 
 See [security](docs/SECURITY.md), [performance](docs/PERFORMANCE.md), and
 [architecture](docs/ARCHITECTURE.md) for measured results and limitations.
+Review behavior is documented in [FSRS review](docs/FSRS_REVIEW.md); archive
+validation and merge rules are in [export format](docs/EXPORT_FORMAT.md).

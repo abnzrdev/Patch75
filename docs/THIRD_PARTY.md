@@ -39,3 +39,10 @@
 
 Package versions and transitive notices are regenerated from `pubspec.lock`
 and Gradle dependency output before release.
+
+# Runtime packages added for local learning
+
+- `fsrs` 2.0.1, MIT: local spaced-repetition scheduling.
+- `archive` 4.0.9, MIT: ZIP encoding and decoding.
+- `crypto` 3.0.7, BSD-3-Clause: SHA-256 archive integrity.
+- `share_plus` 13.2.1, BSD-3-Clause: explicit operating-system sharing.

@@ -12,6 +12,7 @@ import 'features/animations/local_animation_store.dart';
 import 'features/judge/judge_service.dart';
 import 'features/materials/local_material_store.dart';
 import 'features/problems/problem_repository.dart';
+import 'features/portability/progress_archive_service.dart';
 import 'features/review/fsrs_scheduler_service.dart';
 
 Future<void> main() async {
@@ -30,6 +31,9 @@ Future<void> main() async {
     onSave: store.save,
     animationStore: LocalAnimationStore(supportDirectory: supportDirectory),
     materialStore: LocalMaterialStore(supportDirectory: supportDirectory),
+    progressArchiveService: ProgressArchiveService(
+      supportDirectory: supportDirectory,
+    ),
     materialOpener: (material) async {
       try {
         final result = await OpenFilex.open(material.path);
