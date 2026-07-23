@@ -39,10 +39,7 @@ class _PortabilityScreenState extends State<PortabilityScreen> {
         final file = File('${directory.path}/$name');
         await file.writeAsBytes(bytes, flush: true);
         await SharePlus.instance.share(
-          ShareParams(
-            files: [XFile(file.path)],
-            text: 'Offline LeetCode Trainer progress',
-          ),
+          ShareParams(files: [XFile(file.path)], text: 'Patch75 progress'),
         );
         _message = 'Share sheet opened.';
       } else {

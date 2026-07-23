@@ -1,11 +1,11 @@
 {
-    "name": "offline_leetcode_trainer",
-    "short_name": "offline_leetcode_trainer",
+    "name": "Patch75 — Offline Algorithm Trainer",
+    "short_name": "Patch75",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0B0D17",
+    "theme_color": "#0B0D17",
+    "description": "Offline Algorithm Trainer",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

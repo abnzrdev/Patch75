@@ -12,7 +12,7 @@ class OfflineTrainerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: 'Offline LeetCode Trainer',
+    title: 'Patch75',
     theme: buildOltTheme(),
     home: WorkspaceScreen(controller: controller),
   );
