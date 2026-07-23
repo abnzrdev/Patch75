@@ -18,13 +18,30 @@ void main() {
           expect(request.url.port, 5376);
           expect(request.url.path, '/health');
 
-          return http.Response(jsonEncode({'status': 'ok'}), 200);
+          return http.Response(
+            jsonEncode({
+              'status': 'ok',
+              'capabilities': ['scratch'],
+            }),
+            200,
+          );
         }),
         retryDelay: Duration.zero,
       );
 
       expect(await service.isAvailable(), isTrue);
       expect(calls, 1);
+    });
+
+    test('rejects a stale bridge without scratch support', () async {
+      final service = DesktopCojudgeJudgeService(
+        client: MockClient(
+          (_) async => http.Response(jsonEncode({'status': 'ok'}), 200),
+        ),
+        retryDelay: Duration.zero,
+      );
+
+      expect(await service.isAvailable(), isFalse);
     });
 
     test('rejects HTTP 500 after three attempts', () async {
@@ -66,7 +83,13 @@ void main() {
 
           await Future<void>.delayed(const Duration(milliseconds: 30));
 
-          return http.Response(jsonEncode({'status': 'ok'}), 200);
+          return http.Response(
+            jsonEncode({
+              'status': 'ok',
+              'capabilities': ['scratch'],
+            }),
+            200,
+          );
         }),
         healthTimeout: const Duration(milliseconds: 2),
         retryDelay: Duration.zero,
@@ -90,7 +113,13 @@ void main() {
             );
           }
 
-          return http.Response(jsonEncode({'status': 'ok'}), 200);
+          return http.Response(
+            jsonEncode({
+              'status': 'ok',
+              'capabilities': ['scratch'],
+            }),
+            200,
+          );
         }),
         retryDelay: Duration.zero,
       );
