@@ -47,6 +47,7 @@ Future<void> _handle(HttpRequest request) async {
         jsonEncode({
           'status': available ? 'ok' : 'unavailable',
           'backend': 'cojudge',
+          'capabilities': const ['scratch'],
         }),
       );
       return;

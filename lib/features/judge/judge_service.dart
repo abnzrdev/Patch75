@@ -54,10 +54,12 @@ class DesktopCojudgeJudgeService implements JudgeService {
 
         final payload = jsonDecode(response.body);
 
-        if (payload is! Map<String, dynamic> || payload['status'] != 'ok') {
-          throw const FormatException(
-            'Judge health response must contain status "ok"',
-          );
+        if (payload is! Map<String, dynamic> ||
+            payload['status'] != 'ok' ||
+            !(payload['capabilities'] as List? ?? const []).contains(
+              'scratch',
+            )) {
+          throw const FormatException('Judge health response is incompatible');
         }
 
         return true;
