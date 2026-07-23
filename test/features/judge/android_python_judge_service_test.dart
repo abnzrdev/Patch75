@@ -15,6 +15,7 @@ void main() {
           expect(call.method, 'run');
           final request = jsonDecode(call.arguments as String) as Map;
           expect(request['problemSlug'], 'two-sum');
+          expect(request['mode'], 'scratch');
           return jsonEncode({
             'status': 'passed',
             'stdout': '',
@@ -43,8 +44,9 @@ void main() {
       const JudgeRequest(
         problemSlug: 'two-sum',
         language: 'python',
-        sourceCode: 'class Solution: pass',
-        selectedTests: ['sample-1'],
+        sourceCode: 'print("hello")',
+        selectedTests: [],
+        mode: JudgeMode.scratch,
       ),
       const [
         JudgeTestInput(

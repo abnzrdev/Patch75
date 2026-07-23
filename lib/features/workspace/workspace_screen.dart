@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:re_editor/re_editor.dart';
 
 import '../../app/app_controller.dart';
@@ -346,18 +347,26 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
             border: Border(top: BorderSide(color: OltColors.border)),
           ),
           child: LayoutBuilder(
-            builder: (context, constraints) => Row(
-              children: [
+            builder: (context, constraints) {
+              final actions = [
+                OltButton(
+                  buttonKey: const Key('run-code'),
+                  label: 'RUN CODE',
+                  signal: true,
+                  onPressed:
+                      widget.controller.judgeAvailable &&
+                          !widget.controller.judging
+                      ? widget.controller.runCode
+                      : null,
+                ),
                 OltButton(
                   label: 'RUN TESTS',
-                  signal: true,
                   onPressed:
                       widget.controller.judgeAvailable &&
                           !widget.controller.judging
                       ? () => widget.controller.runTests(submit: false)
                       : null,
                 ),
-                const SizedBox(width: OltSpace.x2),
                 OltButton(
                   label: 'SUBMIT',
                   onPressed:
@@ -366,7 +375,20 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
                       ? _submit
                       : null,
                 ),
-                if (constraints.maxWidth > 500) ...[
+              ];
+              if (constraints.maxWidth <= 500) {
+                return Wrap(
+                  spacing: OltSpace.x2,
+                  runSpacing: OltSpace.x2,
+                  children: actions,
+                );
+              }
+              return Row(
+                children: [
+                  for (final (index, action) in actions.indexed) ...[
+                    if (index > 0) const SizedBox(width: OltSpace.x2),
+                    action,
+                  ],
                   const Spacer(),
                   Flexible(
                     child: Text(
@@ -380,8 +402,8 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
                     ),
                   ),
                 ],
-              ],
-            ),
+              );
+            },
           ),
         ),
       ],
@@ -417,24 +439,52 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
       return const Center(child: CircularProgressIndicator());
     }
     if (result == null) {
-      return const Center(
-        child: Text('Run tests to inspect structured output.'),
-      );
+      return const Center(child: Text('Run code or tests to inspect output.'));
     }
+    final scratch = widget.controller.judgeMode == JudgeMode.scratch;
+    final output = result.stdout.isEmpty
+        ? result.stderr
+        : result.stderr.isEmpty
+        ? result.stdout
+        : '${result.stdout}${result.stdout.endsWith('\n') ? '' : '\n'}'
+              '${result.stderr}';
     return ListView(
       padding: const EdgeInsets.all(OltSpace.x2),
       children: [
-        Text(
-          'TEST/${result.passedTests.toString().padLeft(2, '0')}-PASSED · '
-          'TOTAL/${result.totalTests.toString().padLeft(2, '0')} · '
-          'TIME/${result.executionTimeMs}MS',
-          style: microStyle.copyWith(
-            color: result.status == JudgeStatus.passed
-                ? OltColors.signal
-                : OltColors.danger,
-          ),
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                scratch
+                    ? 'RUN/${result.status.name.toUpperCase()} · '
+                          'TIME/${result.executionTimeMs}MS'
+                    : 'TEST/${result.passedTests.toString().padLeft(2, '0')}-PASSED · '
+                          'TOTAL/${result.totalTests.toString().padLeft(2, '0')} · '
+                          'TIME/${result.executionTimeMs}MS',
+                style: microStyle.copyWith(
+                  color: result.status == JudgeStatus.passed
+                      ? OltColors.signal
+                      : OltColors.danger,
+                ),
+              ),
+            ),
+            OltButton(
+              buttonKey: const Key('copy-output'),
+              label: 'COPY OUTPUT',
+              onPressed: output.isEmpty
+                  ? null
+                  : () => Clipboard.setData(ClipboardData(text: output)),
+            ),
+            const SizedBox(width: OltSpace.x2),
+            OltButton(
+              buttonKey: const Key('clear-output'),
+              label: 'CLEAR',
+              onPressed: widget.controller.clearJudgeResult,
+            ),
+          ],
         ),
         const SizedBox(height: OltSpace.x2),
+        if (result.stdout.isNotEmpty) Text(result.stdout),
         for (final test in result.testResults)
           Container(
             margin: const EdgeInsets.only(bottom: OltSpace.x2),

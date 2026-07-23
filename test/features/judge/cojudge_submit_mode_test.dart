@@ -44,7 +44,7 @@ void main() {
         language: 'python',
         sourceCode: 'class Solution: pass',
         selectedTests: ['official-1'],
-        submit: true,
+        mode: JudgeMode.submit,
       ),
       const [],
     );

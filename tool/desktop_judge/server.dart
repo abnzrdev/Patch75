@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:offline_leetcode_trainer/features/judge/judge_models.dart';
+import 'package:offline_leetcode_trainer/features/judge/desktop_docker_runner.dart';
 
 const _maxRequestBytes = 256 * 1024;
 const _maxBackendBytes = 2 * 1024 * 1024;
@@ -105,7 +106,7 @@ Future<Map<String, Object?>> _judge(Map<String, Object?> json) async {
     selectedTests: List<String>.from(
       json['selectedTests'] as List? ?? const [],
     ),
-    submit: json['submit'] == true,
+    mode: JudgeMode.values.byName(json['mode'] as String? ?? 'tests'),
   );
 
   try {
@@ -118,6 +119,10 @@ Future<Map<String, Object?>> _judge(Map<String, Object?> json) async {
         elapsedMs: started.elapsedMilliseconds,
         totalTests: request.selectedTests.length,
       );
+    }
+
+    if (request.mode == JudgeMode.scratch) {
+      return await _runScratch(request);
     }
 
     final problemDirectory = Directory(
@@ -163,6 +168,31 @@ Future<Map<String, Object?>> _judge(Map<String, Object?> json) async {
       elapsedMs: started.elapsedMilliseconds,
       totalTests: request.selectedTests.length,
     );
+  }
+}
+
+Future<Map<String, Object?>> _runScratch(JudgeRequest request) async {
+  final name = 'olt-run-${DateTime.now().microsecondsSinceEpoch}';
+  final process = await Process.start('docker', dockerArguments(name));
+  process.stdin.write(dockerPayload(request, const []));
+  await process.stdin.close();
+
+  try {
+    final values = await Future.wait<Object>([
+      _readBounded(process.stdout, _maxRequestBytes),
+      _readBounded(process.stderr, _maxRequestBytes),
+      process.exitCode,
+    ]).timeout(const Duration(seconds: 10));
+    final output = utf8.decode(values[0] as List<int>, allowMalformed: true);
+    final error = utf8.decode(values[1] as List<int>, allowMalformed: true);
+    final exitCode = values[2] as int;
+    if (exitCode != 0) {
+      throw StateError(error.isEmpty ? 'Docker exited $exitCode' : error);
+    }
+    return Map<String, Object?>.from(jsonDecode(output) as Map);
+  } on Object {
+    process.kill();
+    rethrow;
   }
 }
 

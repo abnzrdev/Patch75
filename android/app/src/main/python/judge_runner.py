@@ -42,53 +42,61 @@ SAFE_BUILTINS = {
 
 def run(payload_json):
     payload = json.loads(payload_json)
+    mode = payload.get("mode", "tests")
     if (
         payload.get("problemSlug") != "two-sum"
         or payload.get("language") != "python"
         or len(payload.get("sourceCode", "").encode()) > 65536
+        or mode not in ("scratch", "tests", "submit")
     ):
         raise ValueError("Invalid judge request")
     tests = payload.get("tests", [])
-    if not 0 < len(tests) <= 100:
+    if mode != "scratch" and not 0 < len(tests) <= 100:
         raise ValueError("Select between 1 and 100 tests")
 
     captured_out, captured_err = io.StringIO(), io.StringIO()
     results = []
     started = time.perf_counter()
     try:
+        builtins = (
+            {**SAFE_BUILTINS, "print": print}
+            if mode == "scratch"
+            else SAFE_BUILTINS
+        )
         namespace = {
             "__name__": "submission",
-            "__builtins__": SAFE_BUILTINS,
+            "__builtins__": builtins,
         }
         with contextlib.redirect_stdout(captured_out), contextlib.redirect_stderr(
             captured_err
         ):
             exec(compile(payload["sourceCode"], "submission.py", "exec"), namespace)
-            solution = namespace["Solution"]()
-            for test in tests:
-                nums, target = test["nums"], test["target"]
-                output = solution.twoSum(list(nums), target)
-                valid = (
-                    isinstance(output, list)
-                    and len(output) == 2
-                    and all(
-                        isinstance(index, int) and 0 <= index < len(nums)
-                        for index in output
+            if mode != "scratch":
+                solution = namespace["Solution"]()
+                for test in tests:
+                    nums, target = test["nums"], test["target"]
+                    output = solution.twoSum(list(nums), target)
+                    valid = (
+                        isinstance(output, list)
+                        and len(output) == 2
+                        and all(
+                            isinstance(index, int) and 0 <= index < len(nums)
+                            for index in output
+                        )
+                        and output[0] != output[1]
+                        and nums[output[0]] + nums[output[1]] == target
                     )
-                    and output[0] != output[1]
-                    and nums[output[0]] + nums[output[1]] == target
-                )
-                results.append(
-                    {
-                        "id": test["id"],
-                        "passed": valid,
-                        "output": json.dumps(output, separators=(",", ":")),
-                        "expected": "two distinct indices whose values sum to target",
-                        "error": None if valid else "Wrong Answer",
-                    }
-                )
+                    results.append(
+                        {
+                            "id": test["id"],
+                            "passed": valid,
+                            "output": json.dumps(output, separators=(",", ":")),
+                            "expected": "two distinct indices whose values sum to target",
+                            "error": None if valid else "Wrong Answer",
+                        }
+                    )
         passed = sum(item["passed"] for item in results)
-        status = "passed" if passed == len(results) else "failed"
+        status = "passed" if mode == "scratch" or passed == len(results) else "failed"
         error = captured_err.getvalue()
     except Exception as exception:
         passed, status = 0, "error"

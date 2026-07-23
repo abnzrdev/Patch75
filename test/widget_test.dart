@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:offline_leetcode_trainer/app/app_controller.dart';
 import 'package:offline_leetcode_trainer/app/offline_trainer_app.dart';
 import 'package:offline_leetcode_trainer/core/storage/app_state.dart';
+import 'package:offline_leetcode_trainer/features/judge/judge_models.dart';
+import 'package:offline_leetcode_trainer/features/judge/judge_service.dart';
 import 'package:offline_leetcode_trainer/features/problems/problem.dart';
 import 'package:offline_leetcode_trainer/features/workspace/python_code_theme.dart';
 import 'package:re_editor/re_editor.dart';
@@ -42,6 +45,49 @@ void main() {
     expect(find.byKey(const Key('editor-pane')), findsOneWidget);
     expect(find.byKey(const Key('right-pane')), findsOneWidget);
     expect(find.text('NO LOCAL MATERIALS'), findsOneWidget);
+    await _disposeEditor(tester);
+  });
+
+  testWidgets('runs scratch code and supports copy and clear output', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(360, 780);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final controller = AppController(
+      problem: problem,
+      state: const AppState(),
+      judgeService: _ScratchJudge(),
+    )..judgeAvailable = true;
+    String? clipboard;
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(SystemChannels.platform, (call) async {
+          if (call.method == 'Clipboard.setData') {
+            clipboard = (call.arguments as Map)['text'] as String;
+          }
+          return null;
+        });
+    addTearDown(
+      () => TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(SystemChannels.platform, null),
+    );
+
+    await tester.pumpWidget(OfflineTrainerApp(controller: controller));
+    await tester.tap(find.text('CODE'));
+    await tester.pump();
+    await tester.tap(find.byKey(const Key('run-code')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('RUN/PASSED · TIME/6MS'), findsOneWidget);
+    expect(find.text('hello\n'), findsOneWidget);
+    await tester.tap(find.byKey(const Key('copy-output')));
+    await tester.pump();
+    expect(clipboard, 'hello\nwarning');
+
+    await tester.tap(find.byKey(const Key('clear-output')));
+    await tester.pump();
+    expect(controller.judgeResult, isNull);
+    expect(find.byKey(const Key('copy-output')), findsNothing);
     await _disposeEditor(tester);
   });
 
@@ -228,6 +274,26 @@ Future<void> _disposeEditor(WidgetTester tester) async {
   FocusManager.instance.primaryFocus?.unfocus();
   await tester.pump(const Duration(milliseconds: 200));
   await tester.pumpWidget(const SizedBox());
+}
+
+class _ScratchJudge implements JudgeService {
+  @override
+  Future<bool> isAvailable() async => true;
+
+  @override
+  Future<JudgeResult> run(
+    JudgeRequest request,
+    List<JudgeTestInput> tests,
+  ) async => const JudgeResult(
+    status: JudgeStatus.passed,
+    stdout: 'hello\n',
+    stderr: 'warning',
+    executionTimeMs: 6,
+    memoryUsageBytes: null,
+    passedTests: 0,
+    totalTests: 0,
+    testResults: [],
+  );
 }
 
 const _twoSumJson = r'''

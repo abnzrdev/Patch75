@@ -1,12 +1,14 @@
 import 'dart:convert';
 
+enum JudgeMode { scratch, tests, submit }
+
 class JudgeRequest {
   const JudgeRequest({
     required this.problemSlug,
     required this.language,
     required this.sourceCode,
     required this.selectedTests,
-    this.submit = false,
+    this.mode = JudgeMode.tests,
   });
 
   static const maxSourceBytes = 64 * 1024;
@@ -16,7 +18,9 @@ class JudgeRequest {
   final String language;
   final String sourceCode;
   final List<String> selectedTests;
-  final bool submit;
+  final JudgeMode mode;
+
+  bool get submit => mode == JudgeMode.submit;
 
   void validate() {
     if (!RegExp(r'^[a-z0-9]+(?:-[a-z0-9]+)*$').hasMatch(problemSlug)) {

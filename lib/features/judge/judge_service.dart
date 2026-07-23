@@ -97,6 +97,7 @@ class DesktopCojudgeJudgeService implements JudgeService {
               'language': request.language,
               'sourceCode': request.sourceCode,
               'selectedTests': request.selectedTests,
+              'mode': request.mode.name,
               'submit': request.submit,
               'tests': tests.map((test) => test.toJson()).toList(),
             }),
@@ -176,6 +177,7 @@ class AndroidPythonJudgeService implements JudgeService {
       'language': request.language,
       'sourceCode': request.sourceCode,
       'selectedTests': request.selectedTests,
+      'mode': request.mode.name,
       'tests': tests.map((test) => test.toJson()).toList(),
     });
     if (utf8.encode(payload).length > 256 * 1024) {

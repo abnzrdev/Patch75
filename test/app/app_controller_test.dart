@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -31,6 +32,53 @@ void main() {
     expect(controller.judgeResult?.passedTests, 1);
     expect(controller.judging, isFalse);
     expect(controller.state.testHistory['two-sum'], ['passed:1/1']);
+  });
+
+  test('runs scratch code without changing learning state', () async {
+    final judge = _CapturingJudge();
+    final controller = AppController(
+      problem: Problem.fromJson(
+        jsonDecode(_problemJson) as Map<String, Object?>,
+      ),
+      state: const AppState(),
+      judgeService: judge,
+    );
+    addTearDown(controller.dispose);
+
+    await controller.runCode();
+
+    expect(judge.lastRequest?.mode, JudgeMode.scratch);
+    expect(controller.judgeResult?.stdout, 'hello\n');
+    expect(controller.state.testHistory, isEmpty);
+    expect(controller.state.progress, isEmpty);
+    expect(controller.state.reviewAttempts, isEmpty);
+  });
+
+  test('discards scratch output after navigating to another problem', () async {
+    final first = Problem.fromJson(
+      jsonDecode(_problemJson) as Map<String, Object?>,
+    );
+    final second = Problem.fromJson(
+      jsonDecode(_problemJson.replaceAll('two-sum', 'three-sum'))
+          as Map<String, Object?>,
+    );
+    final judge = _DelayedJudge();
+    final controller = AppController(
+      problem: first,
+      problems: [first, second],
+      state: const AppState(),
+      judgeService: judge,
+    );
+    addTearDown(controller.dispose);
+
+    final running = controller.runCode();
+    controller.selectProblem(second);
+    judge.complete();
+    await running;
+
+    expect(controller.problem, second);
+    expect(controller.judgeResult, isNull);
+    expect(controller.judging, isFalse);
   });
 
   test(
@@ -312,7 +360,7 @@ class _PassingJudge implements JudgeService {
     List<JudgeTestInput> tests,
   ) async => JudgeResult(
     status: JudgeStatus.passed,
-    stdout: '',
+    stdout: request.mode == JudgeMode.scratch ? 'hello\n' : '',
     stderr: '',
     executionTimeMs: 4,
     memoryUsageBytes: null,
@@ -339,6 +387,27 @@ class _CapturingJudge extends _PassingJudge {
     lastRequest = request;
     return super.run(request, tests);
   }
+}
+
+class _DelayedJudge extends _PassingJudge {
+  final _result = Completer<JudgeResult>();
+
+  void complete() => _result.complete(
+    const JudgeResult(
+      status: JudgeStatus.passed,
+      stdout: 'stale',
+      stderr: '',
+      executionTimeMs: 1,
+      memoryUsageBytes: null,
+      passedTests: 0,
+      totalTests: 0,
+      testResults: [],
+    ),
+  );
+
+  @override
+  Future<JudgeResult> run(JudgeRequest request, List<JudgeTestInput> tests) =>
+      _result.future;
 }
 
 const _problemJson = r'''

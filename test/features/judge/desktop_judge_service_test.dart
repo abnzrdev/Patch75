@@ -135,8 +135,9 @@ void main() {
       const JudgeRequest(
         problemSlug: 'two-sum',
         language: 'python',
-        sourceCode: 'class Solution: pass',
-        selectedTests: ['sample-1'],
+        sourceCode: 'print("hello")',
+        selectedTests: [],
+        mode: JudgeMode.scratch,
       ),
       const [
         JudgeTestInput(
@@ -152,6 +153,7 @@ void main() {
     expect(sent!.url.host, '127.0.0.1');
     expect(sent!.url.port, 5376);
     expect(jsonDecode(sent!.body), containsPair('problemSlug', 'two-sum'));
+    expect(jsonDecode(sent!.body), containsPair('mode', 'scratch'));
     expect(result.status, JudgeStatus.passed);
   });
 }
