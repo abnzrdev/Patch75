@@ -26,7 +26,7 @@ void main() {
       ),
     );
 
-    expect(find.text('OFFLINE LEETCODE TRAINER'), findsOneWidget);
+    expect(find.text('PATCH75'), findsOneWidget);
     expect(find.textContaining('PROBLEM/0001'), findsOneWidget);
     expect(
       tester

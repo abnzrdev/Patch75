@@ -663,7 +663,7 @@ class _StatusRail extends StatelessWidget {
             children: [
               if (!compact) ...[
                 const Text(
-                  'OFFLINE LEETCODE TRAINER',
+                  'PATCH75',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 18,

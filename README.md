@@ -1,6 +1,6 @@
-# Offline LeetCode Trainer
+# Patch75
 
-Offline-first Blind 75 practice for Flutter desktop and Android. The app bundles
+Offline Algorithm Trainer for Flutter desktop and Android. The app bundles
 normalized cojudge problem data, keeps drafts/notes/timers/progress in a local
 versioned JSON store, runs Python in locked-down Docker containers on desktop,
 and embeds Python through Chaquopy on Android.
