@@ -11,6 +11,20 @@ void main() {
     );
 
     expect(() => request.validate(), returnsNormally);
+    expect(request.mode, JudgeMode.tests);
+  });
+
+  test('accepts scratch execution without selected tests', () {
+    const request = JudgeRequest(
+      problemSlug: 'two-sum',
+      language: 'python',
+      sourceCode: 'print("hello")',
+      selectedTests: [],
+      mode: JudgeMode.scratch,
+    );
+
+    expect(() => request.validate(), returnsNormally);
+    expect(request.submit, isFalse);
   });
 
   test('rejects traversal, unsupported languages, and oversized code', () {

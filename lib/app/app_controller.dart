@@ -70,6 +70,7 @@ class AppController extends ChangeNotifier {
   bool judgeAvailable = false;
   bool judging = false;
   JudgeResult? judgeResult;
+  JudgeMode? judgeMode;
   JudgeResult? customJudgeResult;
   bool importingAnimation = false;
   String? animationError;
@@ -156,8 +157,40 @@ class AppController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> runCode() async {
+    final problemSlug = problem.slug;
+    judging = true;
+    judgeMode = JudgeMode.scratch;
+    notifyListeners();
+    final result = await judgeService.run(
+      JudgeRequest(
+        problemSlug: problem.slug,
+        language: 'python',
+        sourceCode: draft,
+        selectedTests: const [],
+        mode: JudgeMode.scratch,
+      ),
+      const [],
+    );
+    judging = false;
+    if (problem.slug != problemSlug) {
+      notifyListeners();
+      return;
+    }
+    judgeResult = result;
+    judgeAvailable = result.status != JudgeStatus.unavailable;
+    notifyListeners();
+  }
+
+  void clearJudgeResult() {
+    judgeResult = null;
+    judgeMode = null;
+    notifyListeners();
+  }
+
   Future<void> runTests({required bool submit}) async {
     judging = true;
+    judgeMode = submit ? JudgeMode.submit : JudgeMode.tests;
     notifyListeners();
     final cases = problem.testCases
         .where((test) => submit || test.sample)
@@ -168,7 +201,7 @@ class AppController extends ChangeNotifier {
         problemSlug: problem.slug,
         language: 'python',
         sourceCode: draft,
-        submit: submit,
+        mode: submit ? JudgeMode.submit : JudgeMode.tests,
         selectedTests: cases.map((test) => test.id).toList(),
       ),
       cases,
