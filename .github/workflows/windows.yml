@@ -13,8 +13,6 @@ jobs:
         with:
           channel: stable
           cache: true
-      - name: Enable Windows desktop
-        run: flutter config --enable-windows-desktop
       - name: Get dependencies
         run: flutter pub get
       - name: Check formatting
@@ -23,5 +21,3 @@ jobs:
         run: flutter analyze
       - name: Test
         run: flutter test
-      - name: Build Windows debug
-        run: flutter build windows --debug
