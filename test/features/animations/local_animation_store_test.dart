@@ -42,15 +42,14 @@ void main() {
 
     expect(importedPath, isNotNull);
     expect(
-      importedPath,
-      startsWith(
-        '${supportDirectory.path}/animations/'
-        'two-sum/animation-',
-      ),
+      File(importedPath!).parent.uri,
+      Directory.fromUri(
+        supportDirectory.uri.resolve('animations/two-sum/'),
+      ).uri,
     );
     expect(importedPath, endsWith('.gif'));
 
-    expect(await File(importedPath!).readAsBytes(), await source.readAsBytes());
+    expect(await File(importedPath).readAsBytes(), await source.readAsBytes());
   });
 
   test('returns null when selection is cancelled', () async {
