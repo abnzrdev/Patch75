@@ -31,7 +31,10 @@ void main() {
 
       expect(material, isNotNull);
       expect(material!.extension, extension);
-      expect(material.path, startsWith('${support.path}/materials/two-sum/'));
+      expect(
+        File(material.path).parent.uri,
+        Directory.fromUri(support.uri.resolve('materials/two-sum/')).uri,
+      );
       expect(await File(material.path).readAsBytes(), [1, 2, 3]);
     });
   }
