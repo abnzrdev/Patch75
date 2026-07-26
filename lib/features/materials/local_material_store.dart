@@ -64,8 +64,12 @@ class LocalMaterialStore {
     final directory = _problemDirectory(slug);
     await directory.create(recursive: true);
     final id = DateTime.now().microsecondsSinceEpoch.toString();
-    final target = File('${directory.path}/material-$id.$extension');
-    final temporary = File('${directory.path}/.import-$id.$extension');
+    final target = File.fromUri(
+      directory.uri.resolve('material-$id.$extension'),
+    );
+    final temporary = File.fromUri(
+      directory.uri.resolve('.import-$id.$extension'),
+    );
 
     try {
       if (picked.path case final path?) {
@@ -99,13 +103,11 @@ class LocalMaterialStore {
   Future<void> delete(LearningMaterial material, String slug) async {
     _validateSlug(slug);
     final directory = _problemDirectory(slug).absolute;
-    final path = File(material.path).absolute.path;
-    final prefix = '${directory.path}${Platform.pathSeparator}';
-    if (!path.startsWith(prefix) ||
-        !File(path).uri.pathSegments.last.startsWith('material-')) {
+    final file = File(material.path).absolute;
+    if (!file.uri.toString().startsWith(directory.uri.toString()) ||
+        !file.uri.pathSegments.last.startsWith('material-')) {
       throw ArgumentError.value(material.path, 'material.path');
     }
-    final file = File(path);
     if (await file.exists()) await file.delete();
     if (await directory.exists() && await directory.list().isEmpty) {
       await directory.delete();
@@ -113,7 +115,7 @@ class LocalMaterialStore {
   }
 
   Directory _problemDirectory(String slug) =>
-      Directory('${supportDirectory.path}/materials/$slug');
+      Directory.fromUri(supportDirectory.uri.resolve('materials/$slug/'));
 
   static Future<PlatformFile?> _pickFile(Set<String> extensions) async =>
       FilePicker.pickFile(
