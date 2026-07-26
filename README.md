@@ -1,115 +1,175 @@
-# Patch75
+<p align="center">
+  <img src="docs/images/patch75-logo.png" width="152" alt="Patch75 logo">
+</p>
 
-Offline Algorithm Trainer for Flutter desktop and Android. The app bundles
-normalized cojudge problem data, keeps drafts/notes/timers/progress in a local
-versioned JSON store, runs Python in locked-down Docker containers on desktop,
-and embeds Python through Chaquopy on Android.
+<h1 align="center">Patch75</h1>
 
-No account, internet connection, cloud sync, analytics, or Anki is used. Review
-scheduling uses the local FSRS algorithm and never contacts a service.
+<p align="center">
+  A private, offline-first Blind 75 algorithm trainer for Linux and Android.
+</p>
 
-## Feature matrix
+![Patch75 running on Linux and Android](docs/images/patch75-hero.png)
 
-| Capability | Linux | Android | Web |
-|---|---:|---:|---:|
-| Browse all Blind 75 problems | Yes | Yes | Yes |
-| Editor, drafts, notes, timer, focus mode | Yes | Yes | Yes |
-| Private learning materials and viewers | Yes | Yes | Yes |
-| Timed FSRS review queue | Yes | Yes | Yes |
-| Versioned progress ZIP export/import | Yes | Yes | Yes |
-| Python Run/Submit | Docker bridge | Chaquopy | Unavailable |
+<p align="center">
+  <a href="https://github.com/abnzrdev/Patch75/releases/tag/v1.0.0">v1.0.0 release</a>
+  ·
+  <a href="https://github.com/abnzrdev/Patch75/releases/download/v1.0.0/Patch75-linux-x86_64-v1.0.0.tar.gz">Linux x86_64</a>
+  ·
+  <a href="https://github.com/abnzrdev/Patch75/releases/download/v1.0.0/Patch75-android-v1.0.0.apk">Android APK</a>
+  ·
+  <a href="https://github.com/abnzrdev/Patch75/releases/download/v1.0.0/SHA256SUMS">SHA-256 checksums</a>
+</p>
+
+## Train without the noise
+
+Patch75 keeps the full practice loop on your device: browse the Blind 75,
+understand the prompt, write Python, keep notes, run code, execute structured
+tests, and schedule another review. There is no account, analytics, cloud sync,
+or network requirement after installation.
+
+| | |
+|---|---|
+| **75 offline problems** | Normalized prompts, examples, constraints, categories, and starter code ship with the app. |
+| **Editor and notes** | Per-problem drafts, local notes, focus mode, timer, hints, and complexity checks. |
+| **Run Code and Run Tests** | Freeform Python execution and structured test results on Linux and Android. |
+| **Review that stays local** | Timed FSRS review queue, attempt history, and portable progress archives. |
+
+## Real application screenshots
+
+### Linux
+
+| Workspace | Focus mode |
+|---|---|
+| ![Two Sum workspace on Linux](docs/images/linux-workspace.png) | ![Patch75 focus mode on Linux](docs/images/linux-focus.png) |
+
+![Expanded animation and learning panel on Linux](docs/images/linux-animation-expanded.png)
+
+### Android
+
+| Problem | Editor |
+|---|---|
+| <img src="docs/images/android-problem.png" width="360" alt="Two Sum problem on Android"> | <img src="docs/images/android-editor.png" width="360" alt="Python editor on Android"> |
+
+| Test results | Animation |
+|---|---|
+| <img src="docs/images/android-results.png" width="360" alt="Structured test results on Android"> | <img src="docs/images/android-animation.png" width="360" alt="Animation panel on Android"> |
+
+## Platform support
+
+| Capability | Linux x86_64 | Android 7.0+ | Web |
+|---|:---:|:---:|:---:|
+| Browse and study all Blind 75 problems | Yes | Yes | Yes |
+| Editor, drafts, notes, timer, and focus mode | Yes | Yes | Yes |
+| Hints, complexity checks, and local materials | Yes | Yes | Yes |
+| FSRS review queue and progress archive | Yes | Yes | Yes |
+| Python Run Code and Run Tests | Docker bridge | Embedded Python | No |
 | Offline after installation | Yes | Yes | Yes |
+| v1.0.0 packaged release | tar.gz | APK | Source build |
 
-LeetCodeAnimation does not publish a redistribution license. Its manifest is
-matched locally, but its GIFs and articles are not packaged. The app displays an
-explicit missing-media state and supports the viewer controls without claiming
-that unlicensed media is included.
+## Privacy and security
 
-## Requirements
+- User code, drafts, notes, review history, and progress stay on the device.
+- Patch75 has no login, telemetry, advertising, analytics, or cloud sync.
+- Linux Python execution uses a locked-down local Docker container through a
+  loopback-only bridge. Browsing and studying work without Docker.
+- Android executes embedded Python in a non-exported separate service process
+  with a seven-second host watchdog. This limits impact but is **not a secure
+  sandbox for hostile Python**.
+- Progress imports validate archive paths, sizes, versions, and checksums before
+  merging local state.
+- LeetCodeAnimation media is not redistributed because its source repository
+  does not publish a redistribution license.
 
-- Flutter 3.44.6 / Dart 3.12.2
-- Linux desktop toolchain
-- Android SDK 36 and Java 21 for Android builds
-- Docker for desktop execution only
-- An authorized Android API 24+ device for physical-device tests
+Read the detailed [security model](docs/SECURITY.md) and
+[desktop judge notes](docs/DESKTOP_JUDGE.md).
 
-Load the project environment before every Flutter command:
+## Install v1.0.0
+
+GitHub authentication is required to download assets while this repository is
+private.
+
+### Linux x86_64
+
+Docker is needed only for Run Code and Run Tests.
 
 ```bash
-source scripts/flutter-env.sh
-flutter pub get
+gh release download v1.0.0 \
+  --repo abnzrdev/Patch75 \
+  --pattern 'Patch75-linux-x86_64-v1.0.0.tar.gz'
+tar -xzf Patch75-linux-x86_64-v1.0.0.tar.gz
+cd Patch75
+./install-linux.sh
+patch75
 ```
 
-## Run on Linux
+From a source checkout, start the local judge in a second terminal when
+executing Python:
 
 ```bash
-source scripts/flutter-env.sh
 docker pull python:3.13-alpine
 scripts/start-desktop-judge.sh
 ```
 
-In another terminal:
+Uninstall the application while preserving drafts, notes, and progress:
+
+```bash
+./uninstall-linux.sh
+```
+
+### Android
+
+```bash
+gh release download v1.0.0 \
+  --repo abnzrdev/Patch75 \
+  --pattern 'Patch75-android-v1.0.0.apk'
+adb install -r Patch75-android-v1.0.0.apk
+```
+
+Android 7.0 / API 24 or newer is required. The v1.0.0 APK is intended for
+authorized direct installation; no Play Store signing or distribution is
+included.
+
+### Verify downloads
+
+Download all five release files into one directory, then run:
+
+```bash
+sha256sum -c SHA256SUMS
+```
+
+## Build from source
+
+Requirements:
+
+- Flutter 3.44.x and Dart 3.12.2
+- Linux desktop toolchain
+- Android SDK 36 and Java 21
+- Docker for Linux Python execution
+
+Load the pinned project environment before Flutter commands:
 
 ```bash
 source scripts/flutter-env.sh
+flutter pub get
 flutter run -d linux
 ```
 
-Browsing and studying still work if Docker or the bridge is stopped.
-
-## Build and install Android
-
-```bash
-source scripts/flutter-env.sh
-flutter build apk --debug
-adb install -r build/app/outputs/flutter-apk/app-debug.apk
-```
-
-Android executes Python 3.11 in a non-exported separate service process. A
-seven-second host watchdog kills that process on timeout. This reduces impact
-but is not a secure sandbox for hostile Python.
-
-See [Android setup](docs/ANDROID_SETUP.md) and
-[desktop judge](docs/DESKTOP_JUDGE.md).
-
-## Rebuild local data
-
-External repositories are ignored by Git:
-
-```bash
-git clone --depth 1 https://github.com/cojudge/cojudge .cache/external/cojudge
-git clone --depth 1 --filter=blob:none --sparse \
-  https://github.com/MisterBooo/LeetCodeAnimation \
-  .cache/external/LeetCodeAnimation
-git -C .cache/external/LeetCodeAnimation sparse-checkout set docs/data
-
-source scripts/flutter-env.sh
-dart run tool/import_cojudge.dart
-dart run tool/import_animations.dart
-```
-
-The cojudge importer writes 75 normalized records plus a combined startup
-bundle. The animation importer writes metadata only; it never copies upstream
-media. Attribution and exact inspected revisions are in
-[third-party sources](docs/THIRD_PARTY.md).
-
-## Verification
+Required release verification:
 
 ```bash
 source scripts/flutter-env.sh
 dart format --output=none --set-exit-if-changed lib test integration_test tool
 flutter analyze
 flutter test
-flutter build linux
-flutter build apk --debug
-flutter build web
-flutter test integration_test/android_python_judge_test.dart -d DEVICE_SERIAL
+flutter build linux --release
+flutter build apk --release
 ```
 
-Chrome is not required to build web output. Browser runtime testing was not
-performed in the recorded environment because Chrome is absent.
+The Android App Bundle is optional for this direct-download release; v1.0.0
+ships the verified APK.
 
-See [security](docs/SECURITY.md), [performance](docs/PERFORMANCE.md), and
-[architecture](docs/ARCHITECTURE.md) for measured results and limitations.
-Review behavior is documented in [FSRS review](docs/FSRS_REVIEW.md); archive
-validation and merge rules are in [export format](docs/EXPORT_FORMAT.md).
+See [Android setup](docs/ANDROID_SETUP.md),
+[architecture](docs/ARCHITECTURE.md),
+[performance](docs/PERFORMANCE.md), and
+[third-party sources](docs/THIRD_PARTY.md) for implementation details and
+recorded limitations.
