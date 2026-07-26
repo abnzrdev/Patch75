@@ -43,8 +43,12 @@ class LocalAnimationStore {
     await directory.create(recursive: true);
 
     final version = DateTime.now().microsecondsSinceEpoch;
-    final target = File('${directory.path}/animation-$version.$extension');
-    final temporary = File('${directory.path}/.import-$version.$extension');
+    final target = File.fromUri(
+      directory.uri.resolve('animation-$version.$extension'),
+    );
+    final temporary = File.fromUri(
+      directory.uri.resolve('.import-$version.$extension'),
+    );
 
     try {
       final sourcePath = picked.path;
@@ -100,7 +104,7 @@ class LocalAnimationStore {
   }
 
   Directory _problemDirectory(String slug) =>
-      Directory('${supportDirectory.path}/animations/$slug');
+      Directory.fromUri(supportDirectory.uri.resolve('animations/$slug/'));
 
   static Future<PlatformFile?> _pickFile() async {
     final extensions = allowedExtensions.toList()..sort();
