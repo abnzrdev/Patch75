@@ -20,6 +20,12 @@ they do not indicate endorsement, affiliation, or content included in the
 current tree. No license from one project is assumed to cover third-party
 problem material.
 
+The legacy Dart package name and Android application ID still contain
+`offline_leetcode_trainer`. They are technical compatibility identifiers,
+retained so existing local drafts and progress continue to use the same app
+storage. Patch75 is not an official LeetCode product and does not use that name
+as its public product brand.
+
 The current application distributes none of the former statements, examples,
 constraints, starter code, official tests, learning metadata, animation media,
 or content-derived screenshots. Those historical objects must be removed from
