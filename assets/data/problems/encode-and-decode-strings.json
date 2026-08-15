@@ -1,0 +1,55 @@
+{
+  "id": 59,
+  "slug": "encode-and-decode-strings",
+  "title": "Encode and Decode Strings",
+  "difficulty": "medium",
+  "topics": [
+    "string"
+  ],
+  "description": "Encode a list of Unicode strings into one reversible string, then return the decoded list. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+  "examples": [
+    {
+      "input": "{\"value\":[\"a#b\",\"\",\"雪\"]}",
+      "output": "[\"a#b\",\"\",\"雪\"]",
+      "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+    }
+  ],
+  "constraints": [
+    "Inputs use only the fields shown in the examples and deterministic tests.",
+    "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+    "The result must be deterministic for identical input."
+  ],
+  "starterCodeByLanguage": {
+    "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+  },
+  "testCases": [
+    {
+      "id": "sample-original",
+      "input": {
+        "value": [
+          "a#b",
+          "",
+          "雪"
+        ]
+      },
+      "expected": [
+        "a#b",
+        "",
+        "雪"
+      ],
+      "sample": true
+    },
+    {
+      "id": "edge-original",
+      "input": {
+        "value": []
+      },
+      "expected": [],
+      "sample": false
+    }
+  ],
+  "source": "Patch75",
+  "sourceUrl": "",
+  "license": "AGPL-3.0-only",
+  "originalContent": true
+}

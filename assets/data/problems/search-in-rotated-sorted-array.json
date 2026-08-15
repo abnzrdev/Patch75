@@ -1,0 +1,63 @@
+{
+  "id": 8,
+  "slug": "search-in-rotated-sorted-array",
+  "title": "Search in Rotated Sorted Array",
+  "difficulty": "medium",
+  "topics": [
+    "array"
+  ],
+  "description": "Return the index of a target in a distinct ascending array shifted at an unknown pivot, or -1. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+  "examples": [
+    {
+      "input": "{\"arguments\":[[12,15,2,5,9],5]}",
+      "output": "3",
+      "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+    }
+  ],
+  "constraints": [
+    "Inputs use only the fields shown in the examples and deterministic tests.",
+    "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+    "The result must be deterministic for identical input."
+  ],
+  "starterCodeByLanguage": {
+    "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+  },
+  "testCases": [
+    {
+      "id": "sample-original",
+      "input": {
+        "arguments": [
+          [
+            12,
+            15,
+            2,
+            5,
+            9
+          ],
+          5
+        ]
+      },
+      "expected": 3,
+      "sample": true
+    },
+    {
+      "id": "edge-original",
+      "input": {
+        "arguments": [
+          [
+            4,
+            7,
+            1
+          ],
+          6
+        ]
+      },
+      "expected": -1,
+      "sample": false
+    }
+  ],
+  "source": "Patch75",
+  "sourceUrl": "",
+  "license": "AGPL-3.0-only",
+  "originalContent": true
+}

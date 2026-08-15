@@ -1,0 +1,47 @@
+{
+  "id": 57,
+  "slug": "longest-palindromic-substring",
+  "title": "Longest Palindromic Substring",
+  "difficulty": "medium",
+  "topics": [
+    "string"
+  ],
+  "description": "Return the longest contiguous palindrome; choose the earliest one when lengths tie. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+  "examples": [
+    {
+      "input": "{\"value\":\"forgeeksskeegfor\"}",
+      "output": "\"geeksskeeg\"",
+      "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+    }
+  ],
+  "constraints": [
+    "Inputs use only the fields shown in the examples and deterministic tests.",
+    "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+    "The result must be deterministic for identical input."
+  ],
+  "starterCodeByLanguage": {
+    "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+  },
+  "testCases": [
+    {
+      "id": "sample-original",
+      "input": {
+        "value": "forgeeksskeegfor"
+      },
+      "expected": "geeksskeeg",
+      "sample": true
+    },
+    {
+      "id": "edge-original",
+      "input": {
+        "value": "abac"
+      },
+      "expected": "aba",
+      "sample": false
+    }
+  ],
+  "source": "Patch75",
+  "sourceUrl": "",
+  "license": "AGPL-3.0-only",
+  "originalContent": true
+}

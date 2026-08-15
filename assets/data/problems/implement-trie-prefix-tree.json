@@ -1,0 +1,75 @@
+{
+  "id": 65,
+  "slug": "implement-trie-prefix-tree",
+  "title": "Implement Trie (Prefix Tree)",
+  "difficulty": "medium",
+  "topics": [
+    "tree"
+  ],
+  "description": "Process insert, exact-search, and prefix-search operations and return the boolean query results. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+  "examples": [
+    {
+      "input": "{\"value\":[[\"insert\",\"sun\"],[\"search\",\"sun\"],[\"startsWith\",\"su\"],[\"search\",\"sum\"]]}",
+      "output": "[true,true,false]",
+      "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+    }
+  ],
+  "constraints": [
+    "Inputs use only the fields shown in the examples and deterministic tests.",
+    "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+    "The result must be deterministic for identical input."
+  ],
+  "starterCodeByLanguage": {
+    "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+  },
+  "testCases": [
+    {
+      "id": "sample-original",
+      "input": {
+        "value": [
+          [
+            "insert",
+            "sun"
+          ],
+          [
+            "search",
+            "sun"
+          ],
+          [
+            "startsWith",
+            "su"
+          ],
+          [
+            "search",
+            "sum"
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        true,
+        false
+      ],
+      "sample": true
+    },
+    {
+      "id": "edge-original",
+      "input": {
+        "value": [
+          [
+            "startsWith",
+            "a"
+          ]
+        ]
+      },
+      "expected": [
+        false
+      ],
+      "sample": false
+    }
+  ],
+  "source": "Patch75",
+  "sourceUrl": "",
+  "license": "AGPL-3.0-only",
+  "originalContent": true
+}

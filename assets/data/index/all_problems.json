@@ -1,0 +1,4559 @@
+[
+  {
+    "id": 9,
+    "slug": "3sum",
+    "title": "3Sum",
+    "difficulty": "medium",
+    "topics": [
+      "array"
+    ],
+    "description": "Return every distinct sorted triple of values whose total is zero. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[-4,1,3,0]}",
+        "output": "[[-4,1,3]]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            -4,
+            1,
+            3,
+            0
+          ]
+        },
+        "expected": [
+          [
+            -4,
+            1,
+            3
+          ]
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            1,
+            2,
+            4
+          ]
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 2,
+    "slug": "best-time-to-buy-and-sell-stock",
+    "title": "Best Time to Buy and Sell Stock",
+    "difficulty": "easy",
+    "topics": [
+      "array"
+    ],
+    "description": "Given daily token prices, return the largest gain from one earlier purchase and one later sale. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[9,4,7,2,8]}",
+        "output": "6",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            9,
+            4,
+            7,
+            2,
+            8
+          ]
+        },
+        "expected": 6,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            8,
+            6,
+            4
+          ]
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 10,
+    "slug": "container-with-most-water",
+    "title": "Container With Most Water",
+    "difficulty": "medium",
+    "topics": [
+      "array"
+    ],
+    "description": "Choose two fence posts; return the greatest rectangular water area bounded by their heights and separation. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[2,9,4,7,3]}",
+        "output": "21",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            2,
+            9,
+            4,
+            7,
+            3
+          ]
+        },
+        "expected": 21,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            5
+          ]
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 3,
+    "slug": "contains-duplicate",
+    "title": "Contains Duplicate",
+    "difficulty": "easy",
+    "topics": [
+      "array"
+    ],
+    "description": "Report whether any integer occurs more than once. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[4,2,4]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            4,
+            2,
+            4
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            4,
+            2,
+            9
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 7,
+    "slug": "find-minimum-in-rotated-sorted-array",
+    "title": "Find Minimum in Rotated Sorted Array",
+    "difficulty": "medium",
+    "topics": [
+      "array"
+    ],
+    "description": "Return the least value in an ascending array shifted at an unknown pivot. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[8,10,1,3,6]}",
+        "output": "1",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            8,
+            10,
+            1,
+            3,
+            6
+          ]
+        },
+        "expected": 1,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            2
+          ]
+        },
+        "expected": 2,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 6,
+    "slug": "maximum-product-subarray",
+    "title": "Maximum Product Subarray",
+    "difficulty": "medium",
+    "topics": [
+      "array"
+    ],
+    "description": "Return the largest product made by a nonempty contiguous segment. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[-2,3,-4]}",
+        "output": "24",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            -2,
+            3,
+            -4
+          ]
+        },
+        "expected": 24,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            0,
+            -5
+          ]
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 5,
+    "slug": "maximum-subarray",
+    "title": "Maximum Subarray",
+    "difficulty": "medium",
+    "topics": [
+      "array"
+    ],
+    "description": "Return the greatest sum made by a nonempty contiguous segment. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[-4,6,-2,5,-8]}",
+        "output": "9",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            -4,
+            6,
+            -2,
+            5,
+            -8
+          ]
+        },
+        "expected": 9,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            -3
+          ]
+        },
+        "expected": -3,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 4,
+    "slug": "product-of-array-except-self",
+    "title": "Product of Array Except Self",
+    "difficulty": "medium",
+    "topics": [
+      "array"
+    ],
+    "description": "Build an output where each position is the product of all input values except the value at that position, without division. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[2,3,5,4]}",
+        "output": "[60,40,24,30]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        "expected": [
+          60,
+          40,
+          24,
+          30
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            7
+          ]
+        },
+        "expected": [
+          1
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 8,
+    "slug": "search-in-rotated-sorted-array",
+    "title": "Search in Rotated Sorted Array",
+    "difficulty": "medium",
+    "topics": [
+      "array"
+    ],
+    "description": "Return the index of a target in a distinct ascending array shifted at an unknown pivot, or -1. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[[12,15,2,5,9],5]}",
+        "output": "3",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            [
+              12,
+              15,
+              2,
+              5,
+              9
+            ],
+            5
+          ]
+        },
+        "expected": 3,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            [
+              4,
+              7,
+              1
+            ],
+            6
+          ]
+        },
+        "expected": -1,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 1,
+    "slug": "two-sum",
+    "title": "Two Sum",
+    "difficulty": "easy",
+    "topics": [
+      "array"
+    ],
+    "description": "Return the increasing pair of indices whose values add to the requested total, or an empty list. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[[8,3,11,6],14]}",
+        "output": "[1,2]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            [
+              8,
+              3,
+              11,
+              6
+            ],
+            14
+          ]
+        },
+        "expected": [
+          1,
+          2
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            [
+              1,
+              2,
+              5
+            ],
+            20
+          ]
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 13,
+    "slug": "counting-bits",
+    "title": "Counting Bits",
+    "difficulty": "easy",
+    "topics": [
+      "binary"
+    ],
+    "description": "For every integer from zero through n, return how many set bits its binary form contains. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":5}",
+        "output": "[0,1,1,2,1,2]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": 5
+        },
+        "expected": [
+          0,
+          1,
+          1,
+          2,
+          1,
+          2
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": 0
+        },
+        "expected": [
+          0
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 14,
+    "slug": "missing-number",
+    "title": "Missing Number",
+    "difficulty": "easy",
+    "topics": [
+      "binary"
+    ],
+    "description": "The input contains distinct values from 0 through n with one absent; return the absent value. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[4,2,0,1]}",
+        "output": "3",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            4,
+            2,
+            0,
+            1
+          ]
+        },
+        "expected": 3,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            1
+          ]
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 12,
+    "slug": "number-of-1-bits",
+    "title": "Number of 1 Bits",
+    "difficulty": "easy",
+    "topics": [
+      "binary"
+    ],
+    "description": "Return the count of set bits in a nonnegative integer. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":22}",
+        "output": "3",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": 22
+        },
+        "expected": 3,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": 0
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 15,
+    "slug": "reverse-bits",
+    "title": "Reverse Bits",
+    "difficulty": "easy",
+    "topics": [
+      "binary"
+    ],
+    "description": "Reverse exactly 32 binary positions of an unsigned integer and return the resulting value. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":1}",
+        "output": "2147483648",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": 1
+        },
+        "expected": 2147483648,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": 0
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 11,
+    "slug": "sum-of-two-integers",
+    "title": "Sum of Two Integers",
+    "difficulty": "medium",
+    "topics": [
+      "binary"
+    ],
+    "description": "Add two signed integers using bit operations rather than arithmetic addition or subtraction. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[-7,12]}",
+        "output": "5",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            -7,
+            12
+          ]
+        },
+        "expected": 5,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            -3,
+            -6
+          ]
+        },
+        "expected": -9,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 16,
+    "slug": "climbing-stairs",
+    "title": "Climbing Stairs",
+    "difficulty": "easy",
+    "topics": [
+      "dp"
+    ],
+    "description": "A robot may advance one or two tiles; return the number of distinct move sequences that land exactly on tile n. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":5}",
+        "output": "8",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": 5
+        },
+        "expected": 8,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": 1
+        },
+        "expected": 1,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 17,
+    "slug": "coin-change",
+    "title": "Coin Change",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Return the fewest coins needed to form an amount from reusable denominations, or -1. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[[1,4,6],8]}",
+        "output": "2",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            [
+              1,
+              4,
+              6
+            ],
+            8
+          ]
+        },
+        "expected": 2,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            [
+              5,
+              7
+            ],
+            3
+          ]
+        },
+        "expected": -1,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 21,
+    "slug": "combination-sum-iv",
+    "title": "Combination Sum IV",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Count ordered sequences of reusable positive values whose sum equals the target. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[[2,3],7]}",
+        "output": "3",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            [
+              2,
+              3
+            ],
+            7
+          ]
+        },
+        "expected": 3,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            [
+              4
+            ],
+            3
+          ]
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 24,
+    "slug": "decode-ways",
+    "title": "Decode Ways",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Digits 1 through 26 name symbols; return how many valid symbol sequences a digit string represents. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":\"1213\"}",
+        "output": "5",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": "1213"
+        },
+        "expected": 5,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": "0"
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 22,
+    "slug": "house-robber",
+    "title": "House Robber",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Choose nonadjacent lockers in a row and return the greatest total value. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[4,1,2,9,3]}",
+        "output": "13",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            4,
+            1,
+            2,
+            9,
+            3
+          ]
+        },
+        "expected": 13,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            6
+          ]
+        },
+        "expected": 6,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 23,
+    "slug": "house-robber-ii",
+    "title": "House Robber II",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Choose nonadjacent lockers arranged in a ring and return the greatest total value. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[8,2,5,9]}",
+        "output": "11",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            8,
+            2,
+            5,
+            9
+          ]
+        },
+        "expected": 11,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            6
+          ]
+        },
+        "expected": 6,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 26,
+    "slug": "jump-game",
+    "title": "Jump Game",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Each value is the farthest forward jump from that position; report whether the last position is reachable. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[2,0,2,0]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            2,
+            0,
+            2,
+            0
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            1,
+            0,
+            2
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 19,
+    "slug": "longest-common-subsequence",
+    "title": "Longest Common Subsequence",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Return the length of the longest sequence appearing in order, not necessarily contiguously, in both strings. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[\"stone\",\"long\"]}",
+        "output": "2",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            "stone",
+            "long"
+          ]
+        },
+        "expected": 2,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            "abc",
+            "xyz"
+          ]
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 18,
+    "slug": "longest-increasing-subsequence",
+    "title": "Longest Increasing Subsequence",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Return the length of the longest strictly increasing subsequence. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[7,2,5,3,8,9]}",
+        "output": "4",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            7,
+            2,
+            5,
+            3,
+            8,
+            9
+          ]
+        },
+        "expected": 4,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            5,
+            4
+          ]
+        },
+        "expected": 1,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 25,
+    "slug": "unique-paths",
+    "title": "Unique Paths",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Count routes from the upper-left to lower-right of an m by n grid using only right and down moves. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[3,4]}",
+        "output": "10",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            3,
+            4
+          ]
+        },
+        "expected": 10,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            1,
+            7
+          ]
+        },
+        "expected": 1,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 20,
+    "slug": "word-break",
+    "title": "Word Break",
+    "difficulty": "medium",
+    "topics": [
+      "dp"
+    ],
+    "description": "Report whether a string can be split into one or more words from the supplied dictionary. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[\"patchwork\",[\"patch\",\"work\"]]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            "patchwork",
+            [
+              "patch",
+              "work"
+            ]
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            "mint",
+            [
+              "mi",
+              "in",
+              "t"
+            ]
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 32,
+    "slug": "alien-dictionary",
+    "title": "Alien Dictionary",
+    "difficulty": "hard",
+    "topics": [
+      "graph"
+    ],
+    "description": "Given words sorted by an unknown alphabet, return one valid character order or an empty string if none exists. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[\"za\",\"zb\",\"ca\",\"cb\"]}",
+        "output": "\"zabc\"",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            "za",
+            "zb",
+            "ca",
+            "cb"
+          ]
+        },
+        "expected": "zabc",
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            "abc",
+            "ab"
+          ]
+        },
+        "expected": "",
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 27,
+    "slug": "clone-graph",
+    "title": "Clone Graph",
+    "difficulty": "medium",
+    "topics": [
+      "graph"
+    ],
+    "description": "Given an adjacency map and a start label, return an independent adjacency map for the reachable graph. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[2],[1,3],[2]]}",
+        "output": "[[2],[1,3],[2]]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              2
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2
+            ]
+          ]
+        },
+        "expected": [
+          [
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2
+          ]
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": []
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 28,
+    "slug": "course-schedule",
+    "title": "Course Schedule",
+    "difficulty": "medium",
+    "topics": [
+      "graph"
+    ],
+    "description": "Given prerequisite pairs, report whether every course can be completed. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[4,[[1,0],[2,1],[3,1]]]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            4,
+            [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            2,
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 33,
+    "slug": "graph-valid-tree",
+    "title": "Graph Valid Tree",
+    "difficulty": "medium",
+    "topics": [
+      "graph"
+    ],
+    "description": "Report whether n labeled vertices and undirected edges form exactly one tree. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[4,[[0,1],[1,2],[1,3]]]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            4,
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                3
+              ]
+            ]
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            3,
+            [
+              [
+                0,
+                1
+              ]
+            ]
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 31,
+    "slug": "longest-consecutive-sequence",
+    "title": "Longest Consecutive Sequence",
+    "difficulty": "medium",
+    "topics": [
+      "graph"
+    ],
+    "description": "Return the length of the longest run of consecutive integer values, regardless of input order. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[8,2,4,3,10]}",
+        "output": "3",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            8,
+            2,
+            4,
+            3,
+            10
+          ]
+        },
+        "expected": 3,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": []
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 34,
+    "slug": "number-of-connected-components-in-an-undirected-graph",
+    "title": "Number of Connected Components in an Undirected Graph",
+    "difficulty": "medium",
+    "topics": [
+      "graph"
+    ],
+    "description": "Return the number of connected groups among n vertices and undirected edges. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[5,[[0,2],[1,3]]]}",
+        "output": "3",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            5,
+            [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                3
+              ]
+            ]
+          ]
+        },
+        "expected": 3,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            1,
+            []
+          ]
+        },
+        "expected": 1,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 30,
+    "slug": "number-of-islands",
+    "title": "Number of Islands",
+    "difficulty": "medium",
+    "topics": [
+      "graph"
+    ],
+    "description": "Count four-directionally connected groups of 1 cells in a rectangular 0/1 grid. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[1,0,1],[1,0,0],[0,1,1]]}",
+        "output": "3",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ]
+        },
+        "expected": 3,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 29,
+    "slug": "pacific-atlantic-water-flow",
+    "title": "Pacific Atlantic Water Flow",
+    "difficulty": "medium",
+    "topics": [
+      "graph"
+    ],
+    "description": "Cells drain to equal-or-lower neighbors; return coordinates able to reach both the top/left and bottom/right borders. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[1]]}",
+        "output": "[[0,0]]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              1
+            ]
+          ]
+        },
+        "expected": [
+          [
+            0,
+            0
+          ]
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        "expected": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 35,
+    "slug": "insert-interval",
+    "title": "Insert Interval",
+    "difficulty": "medium",
+    "topics": [
+      "interval"
+    ],
+    "description": "Insert one closed interval into sorted disjoint intervals and merge every overlap. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[[[1,2],[6,8]],[2,7]]}",
+        "output": "[[1,8]]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            [
+              [
+                1,
+                2
+              ],
+              [
+                6,
+                8
+              ]
+            ],
+            [
+              2,
+              7
+            ]
+          ]
+        },
+        "expected": [
+          [
+            1,
+            8
+          ]
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            [],
+            [
+              3,
+              5
+            ]
+          ]
+        },
+        "expected": [
+          [
+            3,
+            5
+          ]
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 38,
+    "slug": "meeting-rooms",
+    "title": "Meeting Rooms",
+    "difficulty": "easy",
+    "topics": [
+      "interval"
+    ],
+    "description": "Report whether one person can attend every half-open meeting interval without overlap. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[1,3],[3,6],[8,9]]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              1,
+              3
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              8,
+              9
+            ]
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              1,
+              5
+            ],
+            [
+              4,
+              7
+            ]
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 39,
+    "slug": "meeting-rooms-ii",
+    "title": "Meeting Rooms II",
+    "difficulty": "medium",
+    "topics": [
+      "interval"
+    ],
+    "description": "Return the minimum number of rooms required for half-open meeting intervals. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[0,4],[1,2],[3,6]]}",
+        "output": "2",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              6
+            ]
+          ]
+        },
+        "expected": 2,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        },
+        "expected": 1,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 36,
+    "slug": "merge-intervals",
+    "title": "Merge Intervals",
+    "difficulty": "medium",
+    "topics": [
+      "interval"
+    ],
+    "description": "Merge overlapping closed intervals and return them in increasing order. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[1,4],[3,7],[9,10]]}",
+        "output": "[[1,7],[9,10]]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              1,
+              4
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        },
+        "expected": [
+          [
+            1,
+            7
+          ],
+          [
+            9,
+            10
+          ]
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        "expected": [
+          [
+            2,
+            2
+          ]
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 37,
+    "slug": "non-overlapping-intervals",
+    "title": "Non-overlapping Intervals",
+    "difficulty": "medium",
+    "topics": [
+      "interval"
+    ],
+    "description": "Return the fewest intervals to remove so all remaining half-open intervals are disjoint. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[1,4],[2,3],[4,6]]}",
+        "output": "1",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              6
+            ]
+          ]
+        },
+        "expected": 1,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 41,
+    "slug": "linked-list-cycle",
+    "title": "Detect Cycle in a Linked List",
+    "difficulty": "easy",
+    "topics": [
+      "linked-list"
+    ],
+    "description": "Given a next-index array where -1 ends a chain, report whether traversal from index 0 enters a cycle. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[1,2,0]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            1,
+            2,
+            0
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            1,
+            -1
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 43,
+    "slug": "merge-k-sorted-lists",
+    "title": "Merge K Sorted Lists",
+    "difficulty": "hard",
+    "topics": [
+      "linked-list"
+    ],
+    "description": "Merge several ascending integer lists into one ascending list. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[1,5],[2,2,8],[]]}",
+        "output": "[1,2,2,5,8]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              2,
+              8
+            ],
+            []
+          ]
+        },
+        "expected": [
+          1,
+          2,
+          2,
+          5,
+          8
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [],
+            []
+          ]
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 42,
+    "slug": "merge-two-sorted-lists",
+    "title": "Merge Two Sorted Lists",
+    "difficulty": "easy",
+    "topics": [
+      "linked-list"
+    ],
+    "description": "Merge two ascending integer lists into one ascending list. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[1,4,9],[2,2,7]]}",
+        "output": "[1,2,2,4,7,9]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              1,
+              4,
+              9
+            ],
+            [
+              2,
+              2,
+              7
+            ]
+          ]
+        },
+        "expected": [
+          1,
+          2,
+          2,
+          4,
+          7,
+          9
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [],
+            [
+              3
+            ]
+          ]
+        },
+        "expected": [
+          3
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 44,
+    "slug": "remove-nth-node-from-end-of-list",
+    "title": "Remove Nth Node From End Of List",
+    "difficulty": "medium",
+    "topics": [
+      "linked-list"
+    ],
+    "description": "Remove the nth value counted from the end of a list and return the remaining values. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[[8,3,6,1],2]}",
+        "output": "[8,3,1]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            [
+              8,
+              3,
+              6,
+              1
+            ],
+            2
+          ]
+        },
+        "expected": [
+          8,
+          3,
+          1
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            [
+              5
+            ],
+            1
+          ]
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 45,
+    "slug": "reorder-list",
+    "title": "Reorder List",
+    "difficulty": "medium",
+    "topics": [
+      "linked-list"
+    ],
+    "description": "Reorder values by alternating from the front and back until all values are used. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[1,2,3,4,5]}",
+        "output": "[1,5,2,4,3]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "expected": [
+          1,
+          5,
+          2,
+          4,
+          3
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            9,
+            8
+          ]
+        },
+        "expected": [
+          9,
+          8
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 40,
+    "slug": "reverse-linked-list",
+    "title": "Reverse Linked List",
+    "difficulty": "easy",
+    "topics": [
+      "linked-list"
+    ],
+    "description": "Return the values of a singly linked chain in reverse traversal order. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[7,2,9]}",
+        "output": "[9,2,7]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            7,
+            2,
+            9
+          ]
+        },
+        "expected": [
+          9,
+          2,
+          7
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": []
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 48,
+    "slug": "rotate-image",
+    "title": "Rotate Image",
+    "difficulty": "medium",
+    "topics": [
+      "matrix"
+    ],
+    "description": "Rotate a square integer matrix ninety degrees clockwise in place and return it. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[1,2],[3,4]]}",
+        "output": "[[3,1],[4,2]]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ]
+        },
+        "expected": [
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              7
+            ]
+          ]
+        },
+        "expected": [
+          [
+            7
+          ]
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 46,
+    "slug": "set-matrix-zeroes",
+    "title": "Set Matrix Zeroes",
+    "difficulty": "medium",
+    "topics": [
+      "matrix"
+    ],
+    "description": "If a matrix cell is zero, set its entire row and column to zero and return the matrix. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[2,0,4],[5,6,7]]}",
+        "output": "[[0,0,0],[5,0,7]]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              2,
+              0,
+              4
+            ],
+            [
+              5,
+              6,
+              7
+            ]
+          ]
+        },
+        "expected": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            5,
+            0,
+            7
+          ]
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              3
+            ]
+          ]
+        },
+        "expected": [
+          [
+            3
+          ]
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 47,
+    "slug": "spiral-matrix",
+    "title": "Spiral Matrix",
+    "difficulty": "medium",
+    "topics": [
+      "matrix"
+    ],
+    "description": "Return rectangular matrix values in clockwise spiral order from the upper-left corner. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[1,2,3],[4,5,6]]}",
+        "output": "[1,2,3,6,5,4]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              4,
+              5,
+              6
+            ]
+          ]
+        },
+        "expected": [
+          1,
+          2,
+          3,
+          6,
+          5,
+          4
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              8
+            ]
+          ]
+        },
+        "expected": [
+          8
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 49,
+    "slug": "word-search",
+    "title": "Word Search",
+    "difficulty": "medium",
+    "topics": [
+      "matrix"
+    ],
+    "description": "Report whether a word can be traced through orthogonally adjacent cells without reusing a cell. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[[[\"C\",\"A\"],[\"T\",\"R\"]],\"CAR\"]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            [
+              [
+                "C",
+                "A"
+              ],
+              [
+                "T",
+                "R"
+              ]
+            ],
+            "CAR"
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            [
+              [
+                "A",
+                "B"
+              ]
+            ],
+            "AA"
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 59,
+    "slug": "encode-and-decode-strings",
+    "title": "Encode and Decode Strings",
+    "difficulty": "medium",
+    "topics": [
+      "string"
+    ],
+    "description": "Encode a list of Unicode strings into one reversible string, then return the decoded list. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[\"a#b\",\"\",\"雪\"]}",
+        "output": "[\"a#b\",\"\",\"雪\"]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            "a#b",
+            "",
+            "雪"
+          ]
+        },
+        "expected": [
+          "a#b",
+          "",
+          "雪"
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": []
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 54,
+    "slug": "group-anagrams",
+    "title": "Group Anagrams",
+    "difficulty": "medium",
+    "topics": [
+      "string"
+    ],
+    "description": "Group strings that contain identical character counts; sort strings within groups and groups by first member. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[\"arc\",\"car\",\"rat\"]}",
+        "output": "[[\"arc\",\"car\"],[\"rat\"]]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            "arc",
+            "car",
+            "rat"
+          ]
+        },
+        "expected": [
+          [
+            "arc",
+            "car"
+          ],
+          [
+            "rat"
+          ]
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            "x"
+          ]
+        },
+        "expected": [
+          [
+            "x"
+          ]
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 57,
+    "slug": "longest-palindromic-substring",
+    "title": "Longest Palindromic Substring",
+    "difficulty": "medium",
+    "topics": [
+      "string"
+    ],
+    "description": "Return the longest contiguous palindrome; choose the earliest one when lengths tie. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":\"forgeeksskeegfor\"}",
+        "output": "\"geeksskeeg\"",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": "forgeeksskeegfor"
+        },
+        "expected": "geeksskeeg",
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": "abac"
+        },
+        "expected": "aba",
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 51,
+    "slug": "longest-repeating-character-replacement",
+    "title": "Longest Repeating Character Replacement",
+    "difficulty": "medium",
+    "topics": [
+      "string"
+    ],
+    "description": "With at most k character replacements, return the longest substring that can be made one repeated character. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[\"ABBAAC\",2]}",
+        "output": "5",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            "ABBAAC",
+            2
+          ]
+        },
+        "expected": 5,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            "XYZ",
+            0
+          ]
+        },
+        "expected": 1,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 50,
+    "slug": "longest-substring-without-repeating-characters",
+    "title": "Longest Substring Without Repeating Characters",
+    "difficulty": "medium",
+    "topics": [
+      "string"
+    ],
+    "description": "Return the maximum length of a substring containing no repeated character. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":\"pwwkewz\"}",
+        "output": "4",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": "pwwkewz"
+        },
+        "expected": 4,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": ""
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 52,
+    "slug": "minimum-window-substring",
+    "title": "Minimum Window Substring",
+    "difficulty": "hard",
+    "topics": [
+      "string"
+    ],
+    "description": "Return the shortest substring containing every requested character multiplicity, or an empty string. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[\"cabefgecdaecf\",\"cae\"]}",
+        "output": "\"aec\"",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            "cabefgecdaecf",
+            "cae"
+          ]
+        },
+        "expected": "aec",
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": "abc"
+        },
+        "expected": "zz",
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 58,
+    "slug": "palindromic-substrings",
+    "title": "Palindromic Substrings",
+    "difficulty": "medium",
+    "topics": [
+      "string"
+    ],
+    "description": "Count contiguous substrings that read the same forward and backward. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":\"aaa\"}",
+        "output": "6",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": "aaa"
+        },
+        "expected": 6,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": "ab"
+        },
+        "expected": 2,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 53,
+    "slug": "valid-anagram",
+    "title": "Valid Anagram",
+    "difficulty": "easy",
+    "topics": [
+      "string"
+    ],
+    "description": "Report whether two strings contain the same characters with the same multiplicities. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[\"rail\",\"liar\"]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            "rail",
+            "liar"
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            "tone",
+            "notee"
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 56,
+    "slug": "valid-palindrome",
+    "title": "Valid Palindrome",
+    "difficulty": "easy",
+    "topics": [
+      "string"
+    ],
+    "description": "After discarding non-alphanumeric characters and ignoring case, report whether text is a palindrome. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":\"Was it a rat I saw?\"}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": "Was it a rat I saw?"
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": "open"
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 55,
+    "slug": "valid-parentheses",
+    "title": "Valid Parentheses",
+    "difficulty": "easy",
+    "topics": [
+      "string"
+    ],
+    "description": "Report whether bracket characters are correctly nested and paired. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":\"{[()]}\"}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": "{[()]}"
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": "([)]"
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 64,
+    "slug": "binary-tree-level-order-traversal",
+    "title": "Binary Tree Level Order Traversal",
+    "difficulty": "medium",
+    "topics": [
+      "tree"
+    ],
+    "description": "Given a level-order tree array with null gaps, return node values grouped by depth. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[5,3,8,null,4]}",
+        "output": "[[5],[3,8],[4]]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            5,
+            3,
+            8,
+            null,
+            4
+          ]
+        },
+        "expected": [
+          [
+            5
+          ],
+          [
+            3,
+            8
+          ],
+          [
+            4
+          ]
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": []
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 63,
+    "slug": "binary-tree-maximum-path-sum",
+    "title": "Binary Tree Maximum Path Sum",
+    "difficulty": "hard",
+    "topics": [
+      "tree"
+    ],
+    "description": "Return the greatest sum along any nonempty path in a binary tree; a path cannot branch. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[5,-2,7]}",
+        "output": "12",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            5,
+            -2,
+            7
+          ]
+        },
+        "expected": 12,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            -8
+          ]
+        },
+        "expected": -8,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 67,
+    "slug": "construct-binary-tree-from-preorder-and-inorder-traversal",
+    "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+    "difficulty": "medium",
+    "topics": [
+      "tree"
+    ],
+    "description": "Reconstruct a distinct-valued binary tree and return its level-order array from preorder and inorder traversals. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[[4,2,1,3,6,5],[1,2,3,4,5,6]]}",
+        "output": "[4,2,6,1,3,5]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            [
+              4,
+              2,
+              1,
+              3,
+              6,
+              5
+            ],
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          ]
+        },
+        "expected": [
+          4,
+          2,
+          6,
+          1,
+          3,
+          5
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            [
+              1
+            ],
+            [
+              1
+            ]
+          ]
+        },
+        "expected": [
+          1
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 65,
+    "slug": "implement-trie-prefix-tree",
+    "title": "Implement Trie (Prefix Tree)",
+    "difficulty": "medium",
+    "topics": [
+      "tree"
+    ],
+    "description": "Process insert, exact-search, and prefix-search operations and return the boolean query results. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[\"insert\",\"sun\"],[\"search\",\"sun\"],[\"startsWith\",\"su\"],[\"search\",\"sum\"]]}",
+        "output": "[true,true,false]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              "insert",
+              "sun"
+            ],
+            [
+              "search",
+              "sun"
+            ],
+            [
+              "startsWith",
+              "su"
+            ],
+            [
+              "search",
+              "sum"
+            ]
+          ]
+        },
+        "expected": [
+          true,
+          true,
+          false
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              "startsWith",
+              "a"
+            ]
+          ]
+        },
+        "expected": [
+          false
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 71,
+    "slug": "design-add-and-search-words-data-structure",
+    "title": "Design Add and Search Words Data Structure",
+    "difficulty": "medium",
+    "topics": [
+      "tree"
+    ],
+    "description": "Process add and search operations where dot in a search matches one character; return query results. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[\"add\",\"mint\"],[\"add\",\"mind\"],[\"search\",\"mi.t\"],[\"search\",\"m..e\"]]}",
+        "output": "[true,false]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              "add",
+              "mint"
+            ],
+            [
+              "add",
+              "mind"
+            ],
+            [
+              "search",
+              "mi.t"
+            ],
+            [
+              "search",
+              "m..e"
+            ]
+          ]
+        },
+        "expected": [
+          true,
+          false
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              "search",
+              "."
+            ]
+          ]
+        },
+        "expected": [
+          false
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 62,
+    "slug": "invert-binary-tree",
+    "title": "Invert/Flip Binary Tree",
+    "difficulty": "easy",
+    "topics": [
+      "tree"
+    ],
+    "description": "Swap left and right children throughout a binary tree and return its level-order array. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[4,2,7,1,3,6,9]}",
+        "output": "[4,7,2,9,6,3,1]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            4,
+            2,
+            7,
+            1,
+            3,
+            6,
+            9
+          ]
+        },
+        "expected": [
+          4,
+          7,
+          2,
+          9,
+          6,
+          3,
+          1
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": []
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 69,
+    "slug": "kth-smallest-element-in-a-bst",
+    "title": "Kth Smallest Element in a BST",
+    "difficulty": "medium",
+    "topics": [
+      "tree"
+    ],
+    "description": "Return the kth value in ascending order from a binary search tree. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"arguments\":[[8,3,10,1,6],3]}",
+        "output": "6",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "arguments": [
+            [
+              8,
+              3,
+              10,
+              1,
+              6
+            ],
+            3
+          ]
+        },
+        "expected": 6,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "arguments": [
+            [
+              2,
+              1,
+              3
+            ],
+            1
+          ]
+        },
+        "expected": 1,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 70,
+    "slug": "lowest-common-ancestor-of-a-binary-search-tree",
+    "title": "Lowest Common Ancestor of BST",
+    "difficulty": "medium",
+    "topics": [
+      "tree"
+    ],
+    "description": "Return the value of the lowest node that is an ancestor of both requested values in a BST. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[8,3,10,1,6,9,14],1,6]}",
+        "output": "3",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              8,
+              3,
+              10,
+              1,
+              6,
+              9,
+              14
+            ],
+            1,
+            6
+          ]
+        },
+        "expected": 3,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              5,
+              2,
+              7
+            ],
+            2,
+            7
+          ]
+        },
+        "expected": 5,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 60,
+    "slug": "maximum-depth-of-binary-tree",
+    "title": "Maximum Depth of Binary Tree",
+    "difficulty": "easy",
+    "topics": [
+      "tree"
+    ],
+    "description": "Return the number of nodes on the longest root-to-leaf route. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[9,4,12,null,6]}",
+        "output": "3",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            9,
+            4,
+            12,
+            null,
+            6
+          ]
+        },
+        "expected": 3,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": []
+        },
+        "expected": 0,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 61,
+    "slug": "same-tree",
+    "title": "Same Tree",
+    "difficulty": "easy",
+    "topics": [
+      "tree"
+    ],
+    "description": "Report whether two binary trees have identical shapes and values. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[2,1,3],[2,1,3]]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              2,
+              1,
+              3
+            ]
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              null,
+              1
+            ]
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 72,
+    "slug": "serialize-and-deserialize-binary-tree",
+    "title": "Serialize and Deserialize Binary Tree",
+    "difficulty": "hard",
+    "topics": [
+      "tree"
+    ],
+    "description": "Serialize a binary tree to a deterministic string, deserialize it, and return the reconstructed level-order array. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[6,2,9,null,4]}",
+        "output": "[6,2,9,null,4]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            6,
+            2,
+            9,
+            null,
+            4
+          ]
+        },
+        "expected": [
+          6,
+          2,
+          9,
+          null,
+          4
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": []
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 66,
+    "slug": "subtree-of-another-tree",
+    "title": "Subtree of Another Tree",
+    "difficulty": "easy",
+    "topics": [
+      "tree"
+    ],
+    "description": "Report whether one binary tree occurs as an exact rooted subtree of another. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[5,3,8,2,4],[3,2,4]]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              5,
+              3,
+              8,
+              2,
+              4
+            ],
+            [
+              3,
+              2,
+              4
+            ]
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 68,
+    "slug": "validate-binary-search-tree",
+    "title": "Validate Binary Search Tree",
+    "difficulty": "medium",
+    "topics": [
+      "tree"
+    ],
+    "description": "Report whether every node in a binary tree satisfies strict binary-search ordering. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[8,3,10,1,6,9,14]}",
+        "output": "true",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            8,
+            3,
+            10,
+            1,
+            6,
+            9,
+            14
+          ]
+        },
+        "expected": true,
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            5,
+            2,
+            7,
+            null,
+            null,
+            4,
+            8
+          ]
+        },
+        "expected": false,
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 73,
+    "slug": "word-search-ii",
+    "title": "Word Search II",
+    "difficulty": "hard",
+    "topics": [
+      "tree"
+    ],
+    "description": "Return the sorted distinct dictionary words traceable through orthogonally adjacent board cells without cell reuse. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[[\"o\",\"a\"],[\"t\",\"h\"]],[\"oat\",\"hat\",\"oa\"]]}",
+        "output": "[\"oa\",\"oat\"]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              [
+                "o",
+                "a"
+              ],
+              [
+                "t",
+                "h"
+              ]
+            ],
+            [
+              "oat",
+              "hat",
+              "oa"
+            ]
+          ]
+        },
+        "expected": [
+          "oa",
+          "oat"
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              [
+                "a"
+              ]
+            ],
+            [
+              "b"
+            ]
+          ]
+        },
+        "expected": [],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 74,
+    "slug": "find-median-from-data-stream",
+    "title": "Find Median from Data Stream",
+    "difficulty": "hard",
+    "topics": [
+      "heap"
+    ],
+    "description": "After each inserted number, return the median of all values seen so far. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[7,1,5,2]}",
+        "output": "[7,4,5,3.5]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            7,
+            1,
+            5,
+            2
+          ]
+        },
+        "expected": [
+          7,
+          4,
+          5,
+          3.5
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            3
+          ]
+        },
+        "expected": [
+          3
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  },
+  {
+    "id": 75,
+    "slug": "top-k-frequent-elements",
+    "title": "Top K Frequent Elements",
+    "difficulty": "medium",
+    "topics": [
+      "heap"
+    ],
+    "description": "Return the k most frequent values, breaking frequency ties by smaller value. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+    "examples": [
+      {
+        "input": "{\"value\":[[4,4,2,2,2,9],2]}",
+        "output": "[2,4]",
+        "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+      }
+    ],
+    "constraints": [
+      "Inputs use only the fields shown in the examples and deterministic tests.",
+      "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+      "The result must be deterministic for identical input."
+    ],
+    "starterCodeByLanguage": {
+      "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+    },
+    "testCases": [
+      {
+        "id": "sample-original",
+        "input": {
+          "value": [
+            [
+              4,
+              4,
+              2,
+              2,
+              2,
+              9
+            ],
+            2
+          ]
+        },
+        "expected": [
+          2,
+          4
+        ],
+        "sample": true
+      },
+      {
+        "id": "edge-original",
+        "input": {
+          "value": [
+            [
+              5,
+              6
+            ],
+            1
+          ]
+        },
+        "expected": [
+          5
+        ],
+        "sample": false
+      }
+    ],
+    "source": "Patch75",
+    "sourceUrl": "",
+    "license": "AGPL-3.0-only",
+    "originalContent": true
+  }
+]

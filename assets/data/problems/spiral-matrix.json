@@ -1,0 +1,71 @@
+{
+  "id": 47,
+  "slug": "spiral-matrix",
+  "title": "Spiral Matrix",
+  "difficulty": "medium",
+  "topics": [
+    "matrix"
+  ],
+  "description": "Return rectangular matrix values in clockwise spiral order from the upper-left corner. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+  "examples": [
+    {
+      "input": "{\"value\":[[1,2,3],[4,5,6]]}",
+      "output": "[1,2,3,6,5,4]",
+      "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+    }
+  ],
+  "constraints": [
+    "Inputs use only the fields shown in the examples and deterministic tests.",
+    "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+    "The result must be deterministic for identical input."
+  ],
+  "starterCodeByLanguage": {
+    "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+  },
+  "testCases": [
+    {
+      "id": "sample-original",
+      "input": {
+        "value": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ]
+        ]
+      },
+      "expected": [
+        1,
+        2,
+        3,
+        6,
+        5,
+        4
+      ],
+      "sample": true
+    },
+    {
+      "id": "edge-original",
+      "input": {
+        "value": [
+          [
+            8
+          ]
+        ]
+      },
+      "expected": [
+        8
+      ],
+      "sample": false
+    }
+  ],
+  "source": "Patch75",
+  "sourceUrl": "",
+  "license": "AGPL-3.0-only",
+  "originalContent": true
+}

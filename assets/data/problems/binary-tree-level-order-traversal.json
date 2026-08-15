@@ -1,0 +1,64 @@
+{
+  "id": 64,
+  "slug": "binary-tree-level-order-traversal",
+  "title": "Binary Tree Level Order Traversal",
+  "difficulty": "medium",
+  "topics": [
+    "tree"
+  ],
+  "description": "Given a level-order tree array with null gaps, return node values grouped by depth. Implement `solve(data)` in Python. The input is a JSON-compatible map; return only the requested result and do not mutate caller-owned collections unless the task explicitly says in place.",
+  "examples": [
+    {
+      "input": "{\"value\":[5,3,8,null,4]}",
+      "output": "[[5],[3,8],[4]]",
+      "explanation": "Applying the stated rules to this independently authored case produces the shown result."
+    }
+  ],
+  "constraints": [
+    "Inputs use only the fields shown in the examples and deterministic tests.",
+    "Collections contain at most 10,000 items; text contains at most 20,000 Unicode code points.",
+    "The result must be deterministic for identical input."
+  ],
+  "starterCodeByLanguage": {
+    "python": "def solve(data):\n    \"\"\"Return the result described by this exercise.\"\"\"\n    raise NotImplementedError\n"
+  },
+  "testCases": [
+    {
+      "id": "sample-original",
+      "input": {
+        "value": [
+          5,
+          3,
+          8,
+          null,
+          4
+        ]
+      },
+      "expected": [
+        [
+          5
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4
+        ]
+      ],
+      "sample": true
+    },
+    {
+      "id": "edge-original",
+      "input": {
+        "value": []
+      },
+      "expected": [],
+      "sample": false
+    }
+  ],
+  "source": "Patch75",
+  "sourceUrl": "",
+  "license": "AGPL-3.0-only",
+  "originalContent": true
+}

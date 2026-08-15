@@ -1,0 +1,752 @@
+{
+  "3sum": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n²)",
+    "space": "O(1) beyond the returned triples",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "best-time-to-buy-and-sell-stock": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "container-with-most-water": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "contains-duplicate": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "find-minimum-in-rotated-sorted-array": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(log n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "maximum-product-subarray": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "maximum-subarray": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "product-of-array-except-self": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1) beyond the returned array",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "search-in-rotated-sorted-array": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(log n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "two-sum": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "counting-bits": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(w), where w is the fixed integer width",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "missing-number": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(w), where w is the fixed integer width",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "number-of-1-bits": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(w), where w is the fixed integer width",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "reverse-bits": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(w), where w is the fixed integer width",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "sum-of-two-integers": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(w), where w is the fixed integer width",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "climbing-stairs": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "coin-change": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n · m)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "combination-sum-iv": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n · m)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "decode-ways": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "house-robber": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "house-robber-ii": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "jump-game": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "longest-common-subsequence": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n · m)",
+    "space": "O(min(n, m))",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "longest-increasing-subsequence": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n log n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "unique-paths": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(m · n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "word-break": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n · m)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "alien-dictionary": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(V + E)",
+    "space": "O(V + E)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "clone-graph": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(V + E)",
+    "space": "O(V + E)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "course-schedule": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(V + E)",
+    "space": "O(V + E)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "graph-valid-tree": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(V + E)",
+    "space": "O(V + E)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "longest-consecutive-sequence": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(V + E)",
+    "space": "O(V + E)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "number-of-connected-components-in-an-undirected-graph": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(V + E)",
+    "space": "O(V + E)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "number-of-islands": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(V + E)",
+    "space": "O(V + E)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "pacific-atlantic-water-flow": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(V + E)",
+    "space": "O(V + E)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "insert-interval": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n log n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "meeting-rooms": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n log n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "meeting-rooms-ii": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n log n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "merge-intervals": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n log n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "non-overlapping-intervals": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n log n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "linked-list-cycle": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1) beyond the returned list",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "merge-k-sorted-lists": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n log k)",
+    "space": "O(k)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "merge-two-sorted-lists": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1) beyond the returned list",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "remove-nth-node-from-end-of-list": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1) beyond the returned list",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "reorder-list": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1) beyond the returned list",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "reverse-linked-list": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(1) beyond the returned list",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "rotate-image": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(rows · columns)",
+    "space": "O(rows · columns) in the worst case",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "set-matrix-zeroes": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(rows · columns)",
+    "space": "O(rows · columns) in the worst case",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "spiral-matrix": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(rows · columns)",
+    "space": "O(rows · columns) in the worst case",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "word-search": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(rows · columns)",
+    "space": "O(rows · columns) in the worst case",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "encode-and-decode-strings": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "group-anagrams": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "longest-palindromic-substring": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n²)",
+    "space": "O(1)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "longest-repeating-character-replacement": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "longest-substring-without-repeating-characters": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "minimum-window-substring": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n + m)",
+    "space": "O(m)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "palindromic-substrings": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "valid-anagram": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "valid-palindrome": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "valid-parentheses": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "binary-tree-level-order-traversal": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "binary-tree-maximum-path-sum": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "construct-binary-tree-from-preorder-and-inorder-traversal": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "implement-trie-prefix-tree": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "design-add-and-search-words-data-structure": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "invert-binary-tree": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "kth-smallest-element-in-a-bst": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "lowest-common-ancestor-of-a-binary-search-tree": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "maximum-depth-of-binary-tree": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "same-tree": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "serialize-and-deserialize-binary-tree": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "subtree-of-another-tree": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "validate-binary-search-tree": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "word-search-ii": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(board · words · wordLength)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "find-median-from-data-stream": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(log n) per insertion",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  },
+  "top-k-frequent-elements": {
+    "hints": [
+      "Name the invariant that remains true after each iteration or recursive call.",
+      "Choose a representation that makes the next required operation inexpensive.",
+      "Check empty, singleton, duplicate, and boundary-shaped inputs before optimizing."
+    ],
+    "time": "O(n log k)",
+    "space": "O(n)",
+    "explanation": "The target bound follows from the central data structure and visits described by the hints; define each size variable in the submitted analysis."
+  }
+}
