@@ -10,7 +10,7 @@
   "examples": [
     {
       "input": "{\"value\":[[[\"o\",\"a\"],[\"t\",\"h\"]],[\"oat\",\"hat\",\"oa\"]]}",
-      "output": "[\"oa\",\"oat\"]",
+      "output": "[\"oa\"]",
       "explanation": "Applying the stated rules to this independently authored case produces the shown result."
     }
   ],
@@ -45,8 +45,7 @@
         ]
       },
       "expected": [
-        "oa",
-        "oat"
+        "oa"
       ],
       "sample": true
     },

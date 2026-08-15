@@ -10,7 +10,7 @@
   "examples": [
     {
       "input": "{\"value\":[2,9,4,7,3]}",
-      "output": "21",
+      "output": "14",
       "explanation": "Applying the stated rules to this independently authored case produces the shown result."
     }
   ],
@@ -34,7 +34,7 @@
           3
         ]
       },
-      "expected": 21,
+      "expected": 14,
       "sample": true
     },
     {

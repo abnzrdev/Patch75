@@ -130,7 +130,7 @@
     "examples": [
       {
         "input": "{\"value\":[2,9,4,7,3]}",
-        "output": "21",
+        "output": "14",
         "explanation": "Applying the stated rules to this independently authored case produces the shown result."
       }
     ],
@@ -154,7 +154,7 @@
             3
           ]
         },
-        "expected": 21,
+        "expected": 14,
         "sample": true
       },
       {
@@ -1117,7 +1117,7 @@
     "examples": [
       {
         "input": "{\"value\":[8,2,5,9]}",
-        "output": "11",
+        "output": "13",
         "explanation": "Applying the stated rules to this independently authored case produces the shown result."
       }
     ],
@@ -1140,7 +1140,7 @@
             9
           ]
         },
-        "expected": 11,
+        "expected": 13,
         "sample": true
       },
       {
@@ -4364,7 +4364,7 @@
     "examples": [
       {
         "input": "{\"value\":[[[\"o\",\"a\"],[\"t\",\"h\"]],[\"oat\",\"hat\",\"oa\"]]}",
-        "output": "[\"oa\",\"oat\"]",
+        "output": "[\"oa\"]",
         "explanation": "Applying the stated rules to this independently authored case produces the shown result."
       }
     ],
@@ -4399,8 +4399,7 @@
           ]
         },
         "expected": [
-          "oa",
-          "oat"
+          "oa"
         ],
         "sample": true
       },
