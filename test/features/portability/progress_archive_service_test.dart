@@ -158,4 +158,22 @@ void main() {
     );
     expect(() => service.preview([1, 2, 3]), throwsFormatException);
   });
+
+  test('rejects cumulative expanded data above configured limit', () async {
+    final exporter = ProgressArchiveService(supportDirectory: directory);
+    final bytes = await exporter.export(
+      AppState(
+        drafts: {'two-sum:python': List.filled(200, 'x').join()},
+        notes: {'two-sum': List.filled(200, 'y').join()},
+      ),
+    );
+    final service = ProgressArchiveService(
+      supportDirectory: directory,
+      maxArchiveBytes: bytes.length + 1,
+      maxEntryBytes: 4096,
+      maxExpandedBytes: 100,
+    );
+
+    expect(() => service.preview(bytes), throwsFormatException);
+  });
 }

@@ -1,48 +1,26 @@
-# Third-Party Sources
+# Third-party boundaries
 
-## cojudge/cojudge
+Patch75-owned code and educational content use `AGPL-3.0-only`. The license does
+not alter the licenses of Flutter, Dart packages, Android components,
+Chaquopy/CPython, generated platform files, or user-supplied material.
 
-- Repository: https://github.com/cojudge/cojudge
-- Inspected revision: `d8736f2c53f74e4e08dde25d38f4f0586302dd02`
-- License: MIT, copyright 2025 cojudge.
-- Use: Blind 75 ordering, normalized problem metadata/statements/examples,
-  starter code, tests, and reference behavior for the Docker judge.
-- Redistribution: permitted with the copyright and permission notice. The
-  project preserves source URLs and includes the upstream license alongside
-  generated data attribution.
-- Caveat: upstream states that some tests and reference markers were
-  AI-assisted and human-reviewed; imported cases remain covered by local tests.
+## Runtime and build dependencies
 
-## MisterBooo/LeetCodeAnimation
+Material dependencies include Flutter, `re_editor`, `fsrs`, `archive`,
+`crypto`, `share_plus`, and Chaquopy/CPython. Each retains its upstream license.
+A binary release must generate and ship the notices required by the exact
+locked dependency graph; `pubspec.lock` alone is not a notice bundle.
 
-- Repository: https://github.com/MisterBooo/LeetCodeAnimation
-- Inspected revision: `e853d7a5a893292b9d4636c78c080daf11552c81`
-- License: no LICENSE file or license grant was present at inspection time.
-- Use: manifest metadata only for ID/slug/title matching and local checkout path
-  discovery.
-- Redistribution: not authorized. GIFs, images, articles, translated text, and
-  preview media are not committed or packaged. Users may point the importer at
-  their ignored local checkout; the app records attribution and availability.
-- Revisit only after the copyright holder publishes an explicit compatible
-  license or grants written permission.
+## Names referenced for attribution only
 
-## Flutter packages and Android runtime
+The private development history previously used data associated with cojudge,
+LeetCode, the community curriculum commonly called Blind 75, and
+MisterBooo/LeetCodeAnimation. Those names identify excluded historical sources;
+they do not indicate endorsement, affiliation, or content included in the
+current tree. No license from one project is assumed to cover third-party
+problem material.
 
-- Flutter/Dart: BSD-3-Clause; application framework and standard libraries.
-- `re_editor` 0.10.0: MIT; editable cross-platform code editor with line
-  numbers and keyboard editing.
-- `re_highlight`: BSD-3-Clause; Python syntax highlighting used by
-  `re_editor`.
-- `path_provider`: BSD-3-Clause; application-support directory discovery.
-- Chaquopy 17.0 with Python 3.11: MIT; Android embedded CPython. Minimum Android API 24 and AGP
-  7.3–9.2. It is an execution runtime, not a secure hostile-code sandbox.
-
-Package versions and transitive notices are regenerated from `pubspec.lock`
-and Gradle dependency output before release.
-
-# Runtime packages added for local learning
-
-- `fsrs` 2.0.1, MIT: local spaced-repetition scheduling.
-- `archive` 4.0.9, MIT: ZIP encoding and decoding.
-- `crypto` 3.0.7, BSD-3-Clause: SHA-256 archive integrity.
-- `share_plus` 13.2.1, BSD-3-Clause: explicit operating-system sharing.
+The current application distributes none of the former statements, examples,
+constraints, starter code, official tests, learning metadata, animation media,
+or content-derived screenshots. Those historical objects must be removed from
+all public refs before publication.

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Patch75 mark</title>
+  <rect width="512" height="512" rx="96" fill="#0b0d17"/>
+  <path d="M112 128h152c70 0 120 46 120 112s-50 112-120 112h-56v48h-96V128zm96 80v64h48c20 0 32-12 32-32s-12-32-32-32h-48z" fill="#c7ff4a"/>
+  <path d="M320 320h80v80h-80z" fill="#6747f5"/>
+</svg>

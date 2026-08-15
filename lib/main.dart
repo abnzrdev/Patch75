@@ -8,7 +8,6 @@ import 'package:open_filex/open_filex.dart';
 import 'app/app_controller.dart';
 import 'app/offline_trainer_app.dart';
 import 'core/storage/state_store.dart';
-import 'features/animations/local_animation_store.dart';
 import 'features/judge/judge_service.dart';
 import 'features/materials/local_material_store.dart';
 import 'features/problems/problem_repository.dart';
@@ -29,7 +28,6 @@ Future<void> main() async {
     problems: problems,
     state: state,
     onSave: store.save,
-    animationStore: LocalAnimationStore(supportDirectory: supportDirectory),
     materialStore: LocalMaterialStore(supportDirectory: supportDirectory),
     progressArchiveService: ProgressArchiveService(
       supportDirectory: supportDirectory,
@@ -54,7 +52,7 @@ Future<void> main() async {
             TargetPlatform.android => const AndroidPythonJudgeService(),
             TargetPlatform.linux ||
             TargetPlatform.macOS ||
-            TargetPlatform.windows => DesktopCojudgeJudgeService(),
+            TargetPlatform.windows => DesktopDockerJudgeService(),
             _ => const UnsupportedJudgeService(),
           },
   );

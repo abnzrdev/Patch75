@@ -39,21 +39,15 @@ class LocalMaterialStore {
 
   Future<LearningMaterial?> importForProblem(
     String slug, {
-    Set<LearningMaterialKind>? kinds,
     LearningMaterial? replacing,
   }) async {
     _validateSlug(slug);
-    final extensions = kinds == null
-        ? allowedExtensions
-        : allowedExtensions
-              .where((value) => kinds.contains(_kind(value)))
-              .toSet();
-    final picked = await _picker(extensions);
+    final picked = await _picker(allowedExtensions);
     if (picked == null) return null;
 
     final name = _basename(picked.name);
     final extension = _extension(name);
-    if (!extensions.contains(extension)) {
+    if (!allowedExtensions.contains(extension)) {
       throw FormatException('Unsupported material format: .$extension');
     }
     final limit = _kind(extension) == LearningMaterialKind.video

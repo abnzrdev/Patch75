@@ -32,23 +32,12 @@ void main() {
     await tester.pumpAndSettle();
 
     await _save(
-      'screenshots/verification/linux-workspace.png',
+      'screenshots/runtime/linux-workspace.png',
       await _capture(tester),
     );
     await tester.tap(find.byKey(const Key('focus-toggle')));
     await tester.pumpAndSettle();
-    await _save(
-      'screenshots/verification/linux-focus.png',
-      await _capture(tester),
-    );
-    await tester.tap(find.text('EXIT FOCUS'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('EXPAND'));
-    await tester.pumpAndSettle();
-    await _save(
-      'screenshots/verification/linux-animation-expanded.png',
-      await _capture(tester),
-    );
+    await _save('screenshots/runtime/linux-focus.png', await _capture(tester));
   });
 }
 

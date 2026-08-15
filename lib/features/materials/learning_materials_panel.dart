@@ -8,7 +8,6 @@ class LearningMaterialsPanel extends StatelessWidget {
   const LearningMaterialsPanel({
     required this.title,
     required this.materials,
-    required this.onImportAnimation,
     required this.onAddMaterial,
     this.onReplace,
     this.onRemove,
@@ -20,7 +19,6 @@ class LearningMaterialsPanel extends StatelessWidget {
 
   final String title;
   final List<LearningMaterial> materials;
-  final Future<void> Function() onImportAnimation;
   final Future<void> Function() onAddMaterial;
   final Future<void> Function(LearningMaterial material)? onReplace;
   final Future<void> Function(LearningMaterial material)? onRemove;
@@ -38,11 +36,7 @@ class LearningMaterialsPanel extends StatelessWidget {
         runSpacing: OltSpace.x2,
         children: [
           OltButton(
-            label: busy ? 'IMPORTING...' : 'IMPORT ANIMATION',
-            onPressed: busy ? null : onImportAnimation,
-          ),
-          OltButton(
-            label: 'ADD MATERIAL',
+            label: busy ? 'IMPORTING...' : 'ADD MATERIAL',
             signal: true,
             onPressed: busy ? null : onAddMaterial,
           ),

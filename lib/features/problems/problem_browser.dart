@@ -57,7 +57,7 @@ class _ProblemBrowserState extends State<ProblemBrowser> {
               onChanged: (value) => setState(() => query = value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.search),
-                hintText: 'SEARCH/BLIND75',
+                hintText: 'SEARCH/PATCH75',
               ),
             ),
           ),
@@ -112,7 +112,7 @@ class _ProblemBrowserState extends State<ProblemBrowser> {
                   ),
                   title: Text(problem.title),
                   subtitle: Text(
-                    'REF/BLIND75-${problem.id.toString().padLeft(4, '0')} · '
+                    'REF/PATCH75-${problem.id.toString().padLeft(4, '0')} · '
                     '${problem.topics.join('+').toUpperCase()}',
                     style: microStyle,
                   ),

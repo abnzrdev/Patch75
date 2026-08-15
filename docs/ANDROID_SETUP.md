@@ -18,6 +18,13 @@ Install:
 adb install -r build/app/outputs/flutter-apk/app-debug.apk
 ```
 
+## Release signing
+
+The repository deliberately has no release signing configuration and never
+falls back to the debug key. Before public distribution, configure Gradle from
+maintainer-local credentials or CI secrets and sign with a dedicated release
+key. Never commit the keystore, passwords, or generated signing properties.
+
 ## Offline Python
 
 Chaquopy 17.0 packages Python 3.11 for Android API 24+. The app manifest exports
@@ -37,8 +44,8 @@ The runner:
 This is defense in depth, not a hostile-code sandbox. The Python process retains
 the app UID, Android APIs may still be reachable through creative runtime
 techniques, and CPython resource accounting is not a security boundary. The app
-contains no credentials or private user data and requests no runtime
-permissions.
+bundles no credentials and requests no runtime permissions, but the app UID may
+access the user's private drafts, notes, progress, and imported materials.
 
 ## Physical-device test
 
@@ -49,4 +56,3 @@ flutter test integration_test/android_python_judge_test.dart -d R9ZX30B0CHB
 
 The recorded Samsung SM-M145F/API 35 run covered passing output, wrong answer,
 and an infinite loop terminated as timeout.
-

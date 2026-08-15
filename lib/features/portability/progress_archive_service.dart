@@ -29,8 +29,9 @@ class ProgressArchiveService {
   ProgressArchiveService({
     required this.supportDirectory,
     DateTime Function()? now,
-    this.maxArchiveBytes = 512 * 1024 * 1024,
-    this.maxEntryBytes = 256 * 1024 * 1024,
+    this.maxArchiveBytes = 128 * 1024 * 1024,
+    this.maxEntryBytes = 64 * 1024 * 1024,
+    this.maxExpandedBytes = 128 * 1024 * 1024,
   }) : now = now ?? DateTime.now;
 
   static const schemaVersion = 1;
@@ -39,6 +40,7 @@ class ProgressArchiveService {
   final DateTime Function() now;
   final int maxArchiveBytes;
   final int maxEntryBytes;
+  final int maxExpandedBytes;
 
   Future<List<int>> export(
     AppState state, {
@@ -50,7 +52,7 @@ class ProgressArchiveService {
     final files = <Map<String, Object?>>[];
     final exportedState = includeMaterials
         ? state
-        : state.copyWith(materials: const {}, animationPaths: const {});
+        : state.copyWith(materials: const {});
     _add(
       archive,
       files,
@@ -171,6 +173,7 @@ class ProgressArchiveService {
         throw const FormatException('Progress archive has too many files');
       }
       final entries = <String, List<int>>{};
+      var expandedBytes = 0;
       for (final entry in archive) {
         if (!entry.isFile || entry.isSymbolicLink) {
           throw const FormatException(
@@ -181,7 +184,19 @@ class ProgressArchiveService {
         if (entry.size > maxEntryBytes || entries.containsKey(entry.name)) {
           throw const FormatException('Progress archive entry is not allowed');
         }
-        entries[entry.name] = entry.readBytes()!;
+        if (expandedBytes + entry.size > maxExpandedBytes) {
+          throw const FormatException(
+            'Progress archive expanded size is not allowed',
+          );
+        }
+        final data = entry.readBytes()!;
+        expandedBytes += data.length;
+        if (expandedBytes > maxExpandedBytes) {
+          throw const FormatException(
+            'Progress archive expanded size is not allowed',
+          );
+        }
+        entries[entry.name] = data;
       }
       final manifest = Map<String, Object?>.from(
         jsonDecode(utf8.decode(entries['manifest.json']!)) as Map,

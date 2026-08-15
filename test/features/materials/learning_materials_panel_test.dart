@@ -15,7 +15,6 @@ void main() {
       extension: 'md',
       sizeBytes: 1536,
     );
-    var animationImports = 0;
     var materialImports = 0;
     var replacements = 0;
     var removals = 0;
@@ -25,7 +24,6 @@ void main() {
           body: LearningMaterialsPanel(
             title: 'Two Sum',
             materials: const [material],
-            onImportAnimation: () async => animationImports++,
             onAddMaterial: () async => materialImports++,
             onReplace: (_) async => replacements++,
             onRemove: (_) async => removals++,
@@ -40,12 +38,11 @@ void main() {
     expect(find.textContaining('1.5 KB'), findsOneWidget);
     expect(find.textContaining('permission'), findsOneWidget);
 
-    await tester.tap(find.text('IMPORT ANIMATION'));
     await tester.tap(find.text('ADD MATERIAL'));
     await tester.tap(find.text('REPLACE'));
     await tester.tap(find.text('REMOVE'));
-    expect(animationImports, 1);
     expect(materialImports, 1);
+    expect(find.text('IMPORT ANIMATION'), findsNothing);
     expect(replacements, 1);
     expect(removals, 1);
 
@@ -63,7 +60,6 @@ void main() {
           body: LearningMaterialsPanel(
             title: 'Two Sum',
             materials: const [],
-            onImportAnimation: () async {},
             onAddMaterial: () async {},
           ),
         ),
@@ -71,7 +67,7 @@ void main() {
     );
 
     expect(find.text('NO LOCAL MATERIALS'), findsOneWidget);
-    expect(find.text('IMPORT ANIMATION'), findsOneWidget);
+    expect(find.text('IMPORT ANIMATION'), findsNothing);
     expect(find.text('ADD MATERIAL'), findsOneWidget);
   });
 }

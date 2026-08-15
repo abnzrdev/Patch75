@@ -1,10 +1,6 @@
-# External sources
+# External source checkouts
 
-Do not copy large repositories here yet.
-
-Planned sources:
-
-- cojudge: https://github.com/cojudge/cojudge
-- LeetCodeAnimation: https://github.com/MisterBooo/LeetCodeAnimation
-
-We will later add scripts that download only the files/assets actually needed.
+Third-party checkouts are ignored and must not be committed here. The retained
+cojudge importer is provenance tooling only; importing data does not establish
+redistribution rights. See `docs/LICENSING_REVIEW.md` before regenerating or
+publishing bundled records.

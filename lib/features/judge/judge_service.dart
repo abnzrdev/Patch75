@@ -15,8 +15,8 @@ abstract interface class JudgeService {
   Future<JudgeResult> run(JudgeRequest request, List<JudgeTestInput> tests);
 }
 
-class DesktopCojudgeJudgeService implements JudgeService {
-  DesktopCojudgeJudgeService({
+class DesktopDockerJudgeService implements JudgeService {
+  DesktopDockerJudgeService({
     http.Client? client,
     this._healthTimeout = const Duration(seconds: 1),
     this._retryDelay = const Duration(milliseconds: 200),
@@ -89,6 +89,20 @@ class DesktopCojudgeJudgeService implements JudgeService {
     List<JudgeTestInput> tests,
   ) async {
     request.validate();
+    if (request.mode != JudgeMode.scratch) {
+      return JudgeResult(
+        status: JudgeStatus.unavailable,
+        stdout: '',
+        stderr:
+            'Linux structured tests and submit are disabled until they can run '
+            'inside the hardened Docker boundary.',
+        executionTimeMs: 0,
+        memoryUsageBytes: null,
+        passedTests: 0,
+        totalTests: tests.length,
+        testResults: const [],
+      );
+    }
     try {
       final response = await _client
           .post(

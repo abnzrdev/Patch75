@@ -12,6 +12,8 @@ class Problem {
     required this.testCases,
     required this.source,
     required this.sourceUrl,
+    this.license = 'AGPL-3.0-only',
+    this.originalContent = true,
     this.hints = const [],
     this.expectedTimeComplexity = '',
     this.expectedSpaceComplexity = '',
@@ -46,6 +48,8 @@ class Problem {
           .toList(),
       source: json['source'] as String,
       sourceUrl: json['sourceUrl'] as String,
+      license: json['license'] as String,
+      originalContent: json['originalContent'] as bool,
       hints: List<String>.from(json['hints'] as List? ?? const []),
       expectedTimeComplexity: json['expectedTimeComplexity'] as String? ?? '',
       expectedSpaceComplexity: json['expectedSpaceComplexity'] as String? ?? '',
@@ -65,6 +69,8 @@ class Problem {
   final List<ProblemTestCase> testCases;
   final String source;
   final String sourceUrl;
+  final String license;
+  final bool originalContent;
   final List<String> hints;
   final String expectedTimeComplexity;
   final String expectedSpaceComplexity;
@@ -83,6 +89,8 @@ class Problem {
     testCases: testCases,
     source: source,
     sourceUrl: sourceUrl,
+    license: license,
+    originalContent: originalContent,
     hints: List<String>.from(metadata['hints'] as List),
     expectedTimeComplexity: metadata['time'] as String,
     expectedSpaceComplexity: metadata['space'] as String,

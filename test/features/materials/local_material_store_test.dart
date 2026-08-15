@@ -142,7 +142,7 @@ void main() {
     expect(picked, isFalse);
   });
 
-  test('filters animations and replaces only after a valid import', () async {
+  test('replaces only after a valid import', () async {
     final old = File('${support.path}/materials/two-sum/material-old.gif');
     await old.parent.create(recursive: true);
     await old.writeAsBytes([1]);
@@ -177,11 +177,10 @@ void main() {
 
     final replacement = await store.importForProblem(
       'two-sum',
-      kinds: {LearningMaterialKind.image},
       replacing: oldMaterial,
     );
 
-    expect(requested, LocalMaterialStore.imageExtensions);
+    expect(requested, LocalMaterialStore.allowedExtensions);
     expect(replacement!.path, isNot(old.path));
     expect(await old.exists(), isTrue);
   });

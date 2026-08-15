@@ -6,8 +6,8 @@ version, UTC export time, origin device ID, size, and SHA-256 for every payload.
 materials use `materials/<problem-slug>/<material-id>.<extension>`.
 
 Import rejects corrupt checksums, absolute paths, traversal, backslashes,
-links, duplicate paths, more than 1000 entries, archives over 512 MiB, and
-entries over 256 MiB. Replace restores the archive state; merge combines
+links, duplicate paths, more than 1000 entries, archives over 128 MiB, entries
+over 64 MiB, and cumulative expanded data over 128 MiB. Replace restores the archive state; merge combines
 problem data, deduplicates stable IDs, uses the newest available timestamp for
 mutable records, and otherwise preserves a local conflict.
 

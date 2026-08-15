@@ -58,9 +58,10 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
       child: ProblemBrowser(
         problems: widget.controller.problems,
         progress: widget.controller.state.progress,
-        onSelected: (problem) {
+        onSelected: (problem) async {
           widget.controller.selectProblem(problem);
-          Navigator.pop(context);
+          await widget.controller.flush();
+          if (context.mounted) Navigator.pop(context);
         },
       ),
     ),
@@ -96,7 +97,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
     final review = widget.controller.activeReviewAttempt;
     if (review != null) {
       final paused = review.timer['paused'] as bool? ?? false;
@@ -117,6 +118,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
       _pausedByLifecycle = true;
       widget.controller.toggleTimer();
     }
+    await widget.controller.flush();
   }
 
   @override
@@ -129,6 +131,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
     _notes
       ..removeListener(_saveNotes)
       ..dispose();
+    widget.controller.flush();
     widget.controller.dispose();
     super.dispose();
   }
@@ -149,6 +152,23 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
                 onPortability: _openPortability,
                 onReviewSummary: _openReviewSummary,
               ),
+              if (widget.controller.persistenceError case final error?)
+                Semantics(
+                  liveRegion: true,
+                  child: Container(
+                    width: double.infinity,
+                    color: OltColors.danger,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: OltSpace.x2,
+                      vertical: OltSpace.x1,
+                    ),
+                    child: Text(
+                      error,
+                      key: const Key('persistence-error'),
+                      style: microStyle.copyWith(color: OltColors.background),
+                    ),
+                  ),
+                ),
               Expanded(
                 child: compact
                     ? _compactBody(widget.controller.compactIndex)
@@ -212,7 +232,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
       0 => _problemPane(),
       1 => _editorPane(),
       2 => _resultsPane(),
-      3 => _animationPane(),
+      3 => _materialsPane(),
       _ => _notesPane(),
     },
   );
@@ -232,12 +252,18 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
             children: [
               OltButton(
                 label: 'PREV',
-                onPressed: () => widget.controller.selectAdjacent(-1),
+                onPressed: () async {
+                  widget.controller.selectAdjacent(-1);
+                  await widget.controller.flush();
+                },
               ),
               const SizedBox(width: OltSpace.x2),
               OltButton(
                 label: 'NEXT',
-                onPressed: () => widget.controller.selectAdjacent(1),
+                onPressed: () async {
+                  widget.controller.selectAdjacent(1);
+                  await widget.controller.flush();
+                },
               ),
             ],
           ),
@@ -362,7 +388,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
                 OltButton(
                   label: 'RUN TESTS',
                   onPressed:
-                      widget.controller.judgeAvailable &&
+                      widget.controller.structuredJudgeAvailable &&
                           !widget.controller.judging
                       ? () => widget.controller.runTests(submit: false)
                       : null,
@@ -370,7 +396,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
                 OltButton(
                   label: 'SUBMIT',
                   onPressed:
-                      widget.controller.judgeAvailable &&
+                      widget.controller.structuredJudgeAvailable &&
                           !widget.controller.judging
                       ? _submit
                       : null,
@@ -415,7 +441,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
     label: 'AUX/LEARNING+NOTES · DATA/LOCAL',
     child: Column(
       children: [
-        Expanded(child: _animationContent()),
+        Expanded(child: _materialsContent()),
         const Divider(height: 1, color: OltColors.border),
         Expanded(
           child: Padding(
@@ -520,13 +546,13 @@ class _WorkspaceScreenState extends State<WorkspaceScreen>
     );
   }
 
-  Widget _animationPane() => OltPanel(
-    panelKey: const Key('animation-pane'),
+  Widget _materialsPane() => OltPanel(
+    panelKey: const Key('materials-pane'),
     label: 'MATERIALS/LOCAL · STORAGE/PRIVATE',
-    child: _animationContent(),
+    child: _materialsContent(),
   );
 
-  Widget _animationContent() => LearningToolsPanel(
+  Widget _materialsContent() => LearningToolsPanel(
     key: ValueKey(widget.controller.problem.slug),
     controller: widget.controller,
   );
@@ -788,7 +814,7 @@ class _StatusRail extends StatelessWidget {
                 OltButton(label: 'BROWSE/75', onPressed: onBrowse)
               else
                 IconButton(
-                  tooltip: 'Browse Blind 75',
+                  tooltip: 'Browse Patch75',
                   onPressed: onBrowse,
                   icon: const Icon(Icons.list, size: 18),
                 ),

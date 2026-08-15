@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
 import '../core/storage/app_state.dart';
 import '../features/custom_tests/custom_test_case.dart';
 import '../features/custom_tests/custom_test_repository.dart';
-import '../features/animations/local_animation_store.dart';
 import '../features/judge/judge_models.dart';
 import '../features/judge/judge_service.dart';
 import '../features/materials/learning_material.dart';
@@ -25,7 +23,6 @@ class AppController extends ChangeNotifier {
     List<Problem>? problems,
     required this.state,
     this.onSave,
-    this.animationStore,
     this.materialStore,
     this.materialOpener,
     this.progressArchiveService,
@@ -54,7 +51,6 @@ class AppController extends ChangeNotifier {
   Problem problem;
   final List<Problem> problems;
   final Future<void> Function(AppState state)? onSave;
-  final LocalAnimationStore? animationStore;
   final LocalMaterialStore? materialStore;
   final Future<String?> Function(LearningMaterial material)? materialOpener;
   final ProgressArchiveService? progressArchiveService;
@@ -68,14 +64,17 @@ class AppController extends ChangeNotifier {
   bool _timerPaused = false;
   int compactIndex = 0;
   bool judgeAvailable = false;
+  bool get structuredJudgeAvailable =>
+      judgeAvailable && judgeService is! DesktopDockerJudgeService;
   bool judging = false;
   JudgeResult? judgeResult;
   JudgeMode? judgeMode;
   JudgeResult? customJudgeResult;
-  bool importingAnimation = false;
-  String? animationError;
   bool importingMaterial = false;
   String? materialError;
+  String? persistenceError;
+  Future<void> _pendingSave = Future.value();
+  bool _disposed = false;
   final Map<String, List<int>> _practiceHints = {};
 
   ReviewAttempt? get activeReviewAttempt => state.activeReviewAttemptId == null
@@ -119,31 +118,8 @@ class AppController extends ChangeNotifier {
       problem.starterCodeByLanguage['python'] ??
       '';
   String get notes => state.notes[problem.slug] ?? '';
-  String? get animationPath => state.animationPaths[problem.slug];
-  List<LearningMaterial> get materials {
-    final stored = state.materials[problem.slug] ?? const <LearningMaterial>[];
-    final legacy = animationPath;
-    if (legacy == null || stored.any((item) => item.path == legacy)) {
-      return stored;
-    }
-    final file = File(legacy);
-    final name = file.uri.pathSegments.last;
-    final separator = name.lastIndexOf('.');
-    final extension = separator < 0
-        ? 'gif'
-        : name.substring(separator + 1).toLowerCase();
-    return [
-      ...stored,
-      LearningMaterial(
-        id: 'legacy-animation',
-        name: name,
-        path: legacy,
-        kind: LearningMaterialKind.image,
-        extension: extension,
-        sizeBytes: file.existsSync() ? file.lengthSync() : 0,
-      ),
-    ];
-  }
+  List<LearningMaterial> get materials =>
+      state.materials[problem.slug] ?? const <LearningMaterial>[];
 
   List<CustomTestCase> get customTests =>
       state.customTests[problem.slug] ?? const [];
@@ -189,6 +165,7 @@ class AppController extends ChangeNotifier {
   }
 
   Future<void> runTests({required bool submit}) async {
+    final problemSlug = problem.slug;
     judging = true;
     judgeMode = submit ? JudgeMode.submit : JudgeMode.tests;
     notifyListeners();
@@ -196,9 +173,9 @@ class AppController extends ChangeNotifier {
         .where((test) => submit || test.sample)
         .map((test) => JudgeTestInput(id: test.id, values: test.input))
         .toList();
-    judgeResult = await judgeService.run(
+    final result = await judgeService.run(
       JudgeRequest(
-        problemSlug: problem.slug,
+        problemSlug: problemSlug,
         language: 'python',
         sourceCode: draft,
         mode: submit ? JudgeMode.submit : JudgeMode.tests,
@@ -206,22 +183,27 @@ class AppController extends ChangeNotifier {
       ),
       cases,
     );
-    judgeAvailable = judgeResult!.status != JudgeStatus.unavailable;
     judging = false;
-    final previous = state.testHistory[problem.slug] ?? const <String>[];
+    if (problem.slug != problemSlug) {
+      notifyListeners();
+      return;
+    }
+    judgeResult = result;
+    judgeAvailable = result.status != JudgeStatus.unavailable;
+    final previous = state.testHistory[problemSlug] ?? const <String>[];
     state = state.copyWith(
       testHistory: {
         ...state.testHistory,
-        problem.slug: [
+        problemSlug: [
           ...previous.skip(previous.length > 99 ? previous.length - 99 : 0),
-          '${judgeResult!.status.name}:${judgeResult!.passedTests}/${judgeResult!.totalTests}',
+          '${result.status.name}:${result.passedTests}/${result.totalTests}',
         ],
       },
     );
-    _recordJudgeTelemetry(submit: submit, result: judgeResult!);
-    if (submit && judgeResult!.status == JudgeStatus.passed) {
+    _recordJudgeTelemetry(submit: submit, result: result);
+    if (submit && result.status == JudgeStatus.passed) {
       markSolved();
-      await _ensureReviewCard(problem.slug);
+      await _ensureReviewCard(problemSlug);
     }
     _save();
     notifyListeners();
@@ -553,84 +535,14 @@ class AppController extends ChangeNotifier {
     if (notify) _changed();
   }
 
-  Future<void> importAnimation() async {
-    if (materialStore != null) {
-      await _importMaterial(animation: true);
-      return;
-    }
-    final store = animationStore;
-
-    if (store == null || importingAnimation) return;
-
-    importingAnimation = true;
-    animationError = null;
-    notifyListeners();
-
-    try {
-      final path = await store.importForProblem(problem.slug);
-
-      if (path == null) return;
-
-      state = state.copyWith(
-        animationPaths: {...state.animationPaths, problem.slug: path},
-      );
-      _changed();
-    } on Object catch (error) {
-      animationError = 'Animation import failed: $error';
-    } finally {
-      importingAnimation = false;
-      notifyListeners();
-    }
-  }
-
-  Future<void> removeAnimation() async {
-    if (materialStore != null) {
-      final current = materials.where((item) => item.path == animationPath);
-      if (current.isNotEmpty && current.first.id != 'legacy-animation') {
-        await removeMaterial(current.first);
-        return;
-      }
-    }
-    final store = animationStore;
-
-    if (store == null || importingAnimation || animationPath == null) {
-      return;
-    }
-
-    importingAnimation = true;
-    animationError = null;
-    notifyListeners();
-
-    try {
-      await store.removeForProblem(problem.slug);
-
-      final paths = {...state.animationPaths}..remove(problem.slug);
-
-      state = state.copyWith(animationPaths: paths);
-      _changed();
-    } on Object catch (error) {
-      animationError = 'Animation removal failed: $error';
-    } finally {
-      importingAnimation = false;
-      notifyListeners();
-    }
-  }
-
-  Future<void> addMaterial() => _importMaterial(animation: false);
-
-  Future<void> _importMaterial({required bool animation}) async {
+  Future<void> addMaterial() async {
     final store = materialStore;
     if (store == null || importingMaterial) return;
     importingMaterial = true;
-    importingAnimation = animation;
     materialError = null;
-    animationError = null;
     notifyListeners();
     try {
-      final material = await store.importForProblem(
-        problem.slug,
-        kinds: animation ? {LearningMaterialKind.image} : null,
-      );
+      final material = await store.importForProblem(problem.slug);
       if (material == null) return;
       final values = <LearningMaterial>[
         ...(state.materials[problem.slug] ?? const <LearningMaterial>[]),
@@ -638,27 +550,21 @@ class AppController extends ChangeNotifier {
       ];
       state = state.copyWith(
         materials: {...state.materials, problem.slug: values},
-        animationPaths: animation
-            ? {...state.animationPaths, problem.slug: material.path}
-            : state.animationPaths,
       );
       notifyListeners();
-      await onSave?.call(state);
+      _save();
+      await flush();
     } on Object catch (error) {
       materialError = 'Material import failed: $error';
-      if (animation) animationError = materialError;
     } finally {
       importingMaterial = false;
-      importingAnimation = false;
       notifyListeners();
     }
   }
 
   Future<void> replaceMaterial(LearningMaterial old) async {
     final store = materialStore;
-    if (store == null || importingMaterial || old.id == 'legacy-animation') {
-      return;
-    }
+    if (store == null || importingMaterial) return;
     importingMaterial = true;
     materialError = null;
     notifyListeners();
@@ -675,12 +581,10 @@ class AppController extends ChangeNotifier {
       ];
       state = state.copyWith(
         materials: {...state.materials, problem.slug: values},
-        animationPaths: animationPath == old.path
-            ? {...state.animationPaths, problem.slug: replacement.path}
-            : state.animationPaths,
       );
       notifyListeners();
-      await onSave?.call(state);
+      _save();
+      await flush();
       await store.delete(old, problem.slug);
     } on Object catch (error) {
       materialError = 'Material replacement failed: $error';
@@ -693,10 +597,6 @@ class AppController extends ChangeNotifier {
   Future<void> removeMaterial(LearningMaterial material) async {
     final store = materialStore;
     if (store == null || importingMaterial) return;
-    if (material.id == 'legacy-animation') {
-      await removeAnimation();
-      return;
-    }
     importingMaterial = true;
     materialError = null;
     notifyListeners();
@@ -706,14 +606,12 @@ class AppController extends ChangeNotifier {
             in state.materials[problem.slug] ?? const <LearningMaterial>[])
           if (item.id != material.id) item,
       ];
-      final paths = {...state.animationPaths};
-      if (paths[problem.slug] == material.path) paths.remove(problem.slug);
       state = state.copyWith(
         materials: {...state.materials, problem.slug: values},
-        animationPaths: paths,
       );
       notifyListeners();
-      await onSave?.call(state);
+      _save();
+      await flush();
       await store.delete(material, problem.slug);
     } on Object catch (error) {
       materialError = 'Material removal failed: $error';
@@ -765,7 +663,6 @@ class AppController extends ChangeNotifier {
   void selectProblem(Problem value) {
     problem = value;
     judgeResult = null;
-    animationError = null;
     state = state.copyWith(
       selectedProblemSlug: value.slug,
       progress: {
@@ -816,13 +713,28 @@ class AppController extends ChangeNotifier {
   };
 
   void _save() {
-    onSave?.call(state);
+    final save = onSave;
+    if (save == null) return;
+    final snapshot = state;
+    _pendingSave = _pendingSave
+        .then((_) async {
+          await save(snapshot);
+          final hadError = persistenceError != null;
+          persistenceError = null;
+          if (hadError && !_disposed) notifyListeners();
+        })
+        .catchError((Object error) {
+          persistenceError = 'Could not save local progress: $error';
+          if (!_disposed) notifyListeners();
+        });
   }
+
+  Future<void> flush() => _pendingSave;
 
   @override
   void dispose() {
     _timer.cancel();
-    _save();
+    _disposed = true;
     super.dispose();
   }
 }

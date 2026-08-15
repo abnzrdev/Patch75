@@ -13,7 +13,6 @@ class AppState {
     this.focusMode = false,
     this.progress = const {},
     this.testHistory = const {},
-    this.animationPaths = const {},
     this.materials = const {},
     this.reviewRecords = const {},
     this.reviewAttempts = const {},
@@ -38,7 +37,6 @@ class AppState {
     testHistory: (json['testHistory'] as Map? ?? const {}).map(
       (key, value) => MapEntry(key as String, List<String>.from(value as List)),
     ),
-    animationPaths: _stringMap(json['animationPaths']),
     materials: (json['materials'] as Map? ?? const {}).map(
       (key, value) => MapEntry(
         key as String,
@@ -91,7 +89,6 @@ class AppState {
   final bool focusMode;
   final Map<String, String> progress;
   final Map<String, List<String>> testHistory;
-  final Map<String, String> animationPaths;
   final Map<String, List<LearningMaterial>> materials;
   final Map<String, ReviewRecord> reviewRecords;
   final Map<String, ReviewAttempt> reviewAttempts;
@@ -109,7 +106,6 @@ class AppState {
     bool? focusMode,
     Map<String, String>? progress,
     Map<String, List<String>>? testHistory,
-    Map<String, String>? animationPaths,
     Map<String, List<LearningMaterial>>? materials,
     Map<String, ReviewRecord>? reviewRecords,
     Map<String, ReviewAttempt>? reviewAttempts,
@@ -126,7 +122,6 @@ class AppState {
     focusMode: focusMode ?? this.focusMode,
     progress: progress ?? this.progress,
     testHistory: testHistory ?? this.testHistory,
-    animationPaths: animationPaths ?? this.animationPaths,
     materials: materials ?? this.materials,
     reviewRecords: reviewRecords ?? this.reviewRecords,
     reviewAttempts: reviewAttempts ?? this.reviewAttempts,
@@ -148,7 +143,6 @@ class AppState {
     'focusMode': focusMode,
     'progress': progress,
     'testHistory': testHistory,
-    'animationPaths': animationPaths,
     'materials': materials.map(
       (key, value) =>
           MapEntry(key, value.map((item) => item.toJson()).toList()),
@@ -180,7 +174,6 @@ class AppState {
       focusMode == other.focusMode &&
       _mapsEqual(progress, other.progress) &&
       _historyEqual(testHistory, other.testHistory) &&
-      _mapsEqual(animationPaths, other.animationPaths) &&
       _materialMapsEqual(materials, other.materials) &&
       _mapsEqual(reviewRecords, other.reviewRecords) &&
       _mapsEqual(reviewAttempts, other.reviewAttempts) &&
@@ -204,7 +197,6 @@ class AppState {
         (entry) => Object.hash(entry.key, Object.hashAll(entry.value)),
       ),
     ),
-    Object.hashAllUnordered(animationPaths.entries),
     Object.hashAllUnordered(
       materials.entries.map(
         (entry) => Object.hash(entry.key, Object.hashAll(entry.value)),

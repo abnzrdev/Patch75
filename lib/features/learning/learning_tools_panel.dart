@@ -32,9 +32,7 @@ class LearningToolsPanel extends StatelessWidget {
                 title: controller.problem.title,
                 materials: controller.materials,
                 busy: controller.importingMaterial,
-                errorMessage:
-                    controller.materialError ?? controller.animationError,
-                onImportAnimation: controller.importAnimation,
+                errorMessage: controller.materialError,
                 onAddMaterial: controller.addMaterial,
                 onReplace: controller.replaceMaterial,
                 onRemove: controller.removeMaterial,

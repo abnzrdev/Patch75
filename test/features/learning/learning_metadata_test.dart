@@ -6,7 +6,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   test(
-    'all Blind 75 problems have three hints and expected complexity',
+    'all bundled problems have three hints and expected complexity',
     () async {
       final problems = await AssetProblemRepository(rootBundle).loadAll();
 
