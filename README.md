@@ -19,6 +19,10 @@ Linux structured Run Tests and Submit are intentionally disabled until they can
 use the same hardened Docker boundary. Web builds support studying and editing
 only; they never execute Python.
 
+| Workspace | Focus mode |
+|---|---|
+| ![Patch75 workspace with original Two Sum exercise](docs/images/original-pack-workspace.png) | ![Patch75 focus mode with original Two Sum exercise](docs/images/original-pack-focus.png) |
+
 ## Security boundaries
 
 - Linux code is transferred as bounded JSON/stdin and runs in Docker with no
