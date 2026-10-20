@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="A private, offline-first workspace with 75 original coding exercises, local Python drafts, notes, progress, and spaced review. Built to keep practice focused and your work on your device.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Patch75 — Project overview">
+<meta property="og:description" content="A private, offline-first workspace with 75 original coding exercises, local Python drafts, notes, progress, and spaced review. Built to keep practice focused and your work on your device.">
+<meta property="og:url" content="https://abnzrdev.github.io/Patch75/">
+<title>Patch75 — Project overview</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;color:var(--ink);background:var(--bg)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg)}a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:5px}
+.container{max-width:1140px;margin:0 auto;padding:0 28px}.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--border)}
+.brand{font-size:22px;font-weight:820;letter-spacing:-.06em;display:flex;align-items:center;gap:11px}.brand-mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--accent);color:#fff}
+.nav-right{display:flex;align-items:center;gap:23px;font-size:13px;font-weight:650}.nav-right a:not(.nav-cta){color:var(--muted)}
+.nav-cta{border:1px solid var(--border);border-radius:20px;padding:9px 15px}
+.hero{display:grid;grid-template-columns:1fr 1.04fr;gap:48px;align-items:center;padding:85px 0 72px}.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:800}
+h1,h2,h3,p{margin-top:0}h1{font-size:clamp(48px,6.2vw,78px);line-height:1.035;letter-spacing:-.07em;margin:23px 0}h2{font-size:clamp(29px,4vw,44px);line-height:1.12;letter-spacing:-.055em;margin:14px 0 15px}
+.intro{font-size:17px;line-height:1.75;color:var(--muted);max-width:530px}.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:28px}
+.button{display:inline-flex;align-items:center;justify-content:center;border-radius:11px;font-size:14px;font-weight:750;padding:14px 18px;gap:9px}
+.primary{background:var(--accent);color:#fff}.secondary{border:1px solid var(--border);background:var(--panel)}
+.caption{font-size:11px;color:var(--muted);margin-top:15px;line-height:1.5}.preview{border-radius:19px;box-shadow:0 18px 64px #111a2920;overflow:hidden;border:1px solid var(--border);background:var(--panel)}
+.section{padding:70px 0;border-top:1px solid var(--border)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:25px}.section-head p{max-width:400px;color:var(--muted);line-height:1.7;font-size:14px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{border:1px solid var(--border);border-radius:16px;padding:26px;background:var(--panel);min-height:172px}
+.card-number{color:var(--accent);font-weight:800;font-size:12px;letter-spacing:.13em}.card h3{font-size:18px;letter-spacing:-.035em;margin:22px 0 9px}
+.card p{color:var(--muted);font-size:14px;line-height:1.7}.split{display:grid;grid-template-columns:1.25fr .75fr;gap:32px;background:var(--panel);padding:32px;border:1px solid var(--border);border-radius:19px}
+.split p{color:var(--muted);font-size:14px;line-height:1.75}.tags{display:flex;flex-wrap:wrap;align-content:start;gap:9px}.tag{display:inline-flex;border-radius:50px;border:1px solid var(--border);padding:8px 12px;font-size:12px;font-weight:650}
+.safety{margin-top:24px;border-left:3px solid var(--accent);padding:15px 19px;background:var(--panel);border-radius:0 9px 9px 0;font-size:13px;color:var(--muted);line-height:1.75}
+.end-cta{display:flex;align-items:center;justify-content:space-between;gap:20px;border-radius:19px;padding:35px;background:var(--dark);color:#fff;margin:50px 0 70px}
+.end-cta p{color:#cfd8dd;font-size:14px;margin:5px 0 0}.end-cta h2{font-size:28px;margin:0}.end-cta .button{background:#fff;color:var(--dark);white-space:nowrap}
+footer{border-top:1px solid var(--border);padding:26px 0 40px;display:flex;justify-content:space-between;gap:20px;font-size:12px;color:var(--muted)}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding:55px 0}.hero-visual{max-width:730px;width:100%;margin:auto}.feature-grid{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}}
+@media(max-width:570px){.container{padding:0 17px}.nav-right{gap:10px}.nav-right a:not(.nav-cta){display:none}.nav{min-height:70px}h1{font-size:52px}.intro{font-size:16px}.feature-grid{grid-template-columns:1fr}.section{padding:55px 0}.end-cta{flex-direction:column;align-items:start;padding:27px}.end-cta .button{white-space:normal}footer{flex-direction:column}}
+
+:root{--ink:#212c31;--muted:#6d797b;--border:#d9e5e0;--bg:#f6faf7;--panel:#fff;--accent:#298269;--dark:#19332f}
+.patch-preview{background:#172b29;color:#fff}.app-top{display:flex;gap:9px;align-items:center;font-size:10px;font-weight:800;letter-spacing:.12em;padding:14px 18px}.badge-dot{height:8px;width:8px;background:#7fe0ac;border-radius:50%}.app-actions{margin-left:auto;font-weight:500;font-size:9px;color:#b5e2c6}.patch-preview img{width:100%;height:auto;display:block}.screenshot-under{display:flex;justify-content:space-between;padding:14px 18px;gap:10px;color:#d1e5dc;font-size:11px}.screenshot-under a{text-decoration:underline;text-underline-offset:3px}</style>
+</head>
+<body>
+<div class="container">
+<header class="nav"><a class="brand" href="#top"><span class="brand-mark">75</span>Patch75</a><nav class="nav-right" aria-label="Primary navigation"><a href="#features">Features</a><a href="#engineering">Engineering</a><a class="nav-cta" href="https://github.com/abnzrdev/Patch75" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></header>
+<main id="top">
+<section class="hero"><div><div class="eyebrow">OFFLINE-FIRST · FLUTTER · LINUX & ANDROID</div><h1>Make your next algorithm practice count.</h1><p class="intro">A private, offline-first workspace with 75 original coding exercises, local Python drafts, notes, progress, and spaced review. Built to keep practice focused and your work on your device.</p><div class="actions"><a class="button primary" href="#features">Explore the project ↓</a><a class="button secondary" href="https://github.com/abnzrdev/Patch75" target="_blank" rel="noopener noreferrer">View source code ↗</a></div><p class="caption">A project showcase, not a hosted instance of the native or server-backed app.</p></div><div class="hero-visual"><div class="preview"><div class="patch-preview"><div class="app-top"><span class="badge-dot"></span> PATCH75 <span class="app-actions">OFFLINE · 75 PROBLEMS</span></div><img loading="eager" src="images/original-pack-workspace.png" alt="Real Patch75 workspace screenshot showing problem, code and materials layout" /><div class="screenshot-under"><span>Problem → Code → Results</span><a href="images/original-pack-focus.png" target="_blank" rel="noopener">View focus mode ↗</a></div></div></div></div></section>
+<section class="section" id="features"><div class="section-head"><div><span class="eyebrow">PRODUCT</span><h2>Built for a focused workflow.</h2></div><p>Features and boundaries are described from the repository's current documentation.</p></div><div class="feature-grid"><article class="card"><div class="card-number">01</div><h3>75 original exercises</h3><p>Prompts, examples, constraints, starter code and deterministic tests for a curated algorithm practice set.</p></article><article class="card"><div class="card-number">02</div><h3>One practice workspace</h3><p>Move between problems, Python drafts, results, notes and local learning materials without leaving the app.</p></article><article class="card"><div class="card-number">03</div><h3>Review intelligently</h3><p>Save local progress and use FSRS scheduling to revisit what needs reinforcement.</p></article><article class="card"><div class="card-number">04</div><h3>Bring your progress</h3><p>Validated ZIP export and import let you back up and restore your learning history.</p></article><article class="card"><div class="card-number">05</div><h3>Linux Run Code</h3><p>Execute code using a loopback-only Docker bridge with bounded resources and no network access.</p></article><article class="card"><div class="card-number">06</div><h3>Android Python</h3><p>Run Python in a separate, non-exported app service with timeouts. Designed for your own trusted code, not hostile input.</p></article></div></section>
+<section class="section" id="engineering"><div class="split"><div><span class="eyebrow">BEHIND THE BUILD</span><h2>Practical engineering.</h2><p>A private, offline-first workspace with 75 original coding exercises, local Python drafts, notes, progress, and spaced review. Built to keep practice focused and your work on your device.</p><p>Explore the source repository for setup instructions, architecture and implementation details.</p></div><div><div class="eyebrow" style="margin-bottom:20px">TECHNOLOGIES</div><div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Python</span><span class="tag">Linux</span><span class="tag">Android</span><span class="tag">Docker bridge</span><span class="tag">FSRS</span><span class="tag">Offline-first</span></div></div></div><aside class="safety"><strong>Important scope note.</strong> The browser version supports studying and editing only; it does not execute Python. On Linux, structured Run Tests and Submit are intentionally disabled until they use the hardened Docker execution boundary. Android code execution is not a secure sandbox for untrusted scripts.</aside></section>
+<section class="end-cta"><div><h2>See how it works.</h2><p>Browse the code, README, tests and project documentation on GitHub.</p></div><a class="button" target="_blank" rel="noopener noreferrer" href="https://github.com/abnzrdev/Patch75">Explore the repository ↗</a></section>
+</main>
+<footer><span>© 2026 Abenezer Alemayehu Lemma</span><span>AGPL-3.0-only; original exercises. This is a static project showcase, not an online judge.</span></footer>
+</div>
+</body>
+</html>
